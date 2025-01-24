@@ -2,99 +2,135 @@
 using System.Diagnostics;
 using System.Text;
 
-public class InstallationChecker
+namespace DockerNginxManagerLib
 {
-    /// <summary>
-    /// 檢查系統是否已安裝 Docker。
-    /// </summary>
-    /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
-    public bool IsDockerInstalled()
+    public class InstallationChecker
     {
-        return IsProgramInstalled("docker", "--version");
-    }
-
-    /// <summary>
-    /// 檢查系統是否已安裝 WSL。
-    /// </summary>
-    /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
-    public bool IsWslInstalled()
-    {
-        return IsProgramInstalled("wsl", "--list --quiet");
-    }
-
-    /// <summary>
-    /// 檢查系統是否已安裝特定的 WSL 發行版本（例如 Ubuntu）。
-    /// </summary>
-    /// <param name="distributionName">發行版本名稱，例如 "Ubuntu"</param>
-    /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
-    public bool IsWslDistributionInstalled(string distributionName)
-    {
-        try
+        /// <summary>
+        /// 檢查系統是否已安裝 Docker。
+        /// </summary>
+        /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
+        public bool IsDockerInstalled()
         {
-            // 設定 PowerShell 腳本，將輸出編碼設定為 UTF-8，然後執行 wsl 命令
-            string psScript = $"[Console]::OutputEncoding = [Text.Encoding]::UTF8; wsl --list --verbose";
+            return IsProgramInstalled("docker", "--version");
+        }
 
-            // 設定 ProcessStartInfo
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = "powershell.exe",
-                Arguments = $"-NoProfile -Command \"{psScript}\"",
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                StandardOutputEncoding = Encoding.UTF8 // 設定輸出編碼為 UTF-8
-            };
+        /// <summary>
+        /// 檢查系統是否已安裝 WSL。
+        /// </summary>
+        /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
+        public bool IsWslInstalled()
+        {
+            return IsProgramInstalled("wsl", "--list --quiet");
+        }
 
-            using (Process process = Process.Start(startInfo))
+        /// <summary>
+        /// 檢查系統是否已安裝特定的 WSL 發行版本（例如 Ubuntu）。
+        /// </summary>
+        /// <param name="distributionName">發行版本名稱，例如 "Ubuntu"</param>
+        /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
+        public bool IsWslDistributionInstalled(string distributionName)
+        {
+            try
             {
-                string output = process.StandardOutput.ReadToEnd();
-                output = output.Replace("\0", "");
-                process.WaitForExit();
-                // 檢查輸出中是否包含指定的發行版本名稱
+                string command = "wsl --list --verbose";
+
+                string output = RunCommand(command);
+
                 return output.IndexOf(distributionName, StringComparison.OrdinalIgnoreCase) >= 0;
             }
+            catch
+            {
+                return false;
+            }
         }
-        catch
+
+        /// <summary>
+        /// 取得目前 WSL 的版本資訊。
+        /// </summary>
+        /// <returns>WSL 版本資訊的字串。</returns>
+        public string GetWslVersion()
         {
-            return false;
+            try
+            {
+                string command = "wsl --version";
+
+                return RunCommand(command);
+            }
+            catch (Exception ex)
+            {
+                return $"取得 WSL 版本資訊時發生錯誤：{ex.Message}";
+            }
         }
-    }
 
-    /// <summary>
-    /// 通用方法：檢查系統是否已安裝指定的程式。
-    /// </summary>
-    /// <param name="programName">程式名稱</param>
-    /// <param name="arguments">檢查版本的參數</param>
-    /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
-    private bool IsProgramInstalled(string programName, string arguments)
-    {
-        try
+        /// <summary>
+        /// 設定預設的 WSL 版本為 2。
+        /// </summary>
+        /// <returns>如果設定成功則返回 true，否則返回 false。</returns>
+        public bool SetWslDefaultVersion2()
         {
-            // 設定 PowerShell 腳本，將輸出編碼設定為 UTF-8，然後執行指定的命令
-            string psScript = $"[Console]::OutputEncoding = [Text.Encoding]::UTF8; {programName} {arguments}";
+            try
+            {
+                string command = "wsl --set-default-version 2";
 
-            // 設定 ProcessStartInfo
+                string output = RunCommand(command);
+
+                return output.Contains("WSL 2");
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 執行系統命令並回傳結果。
+        /// </summary>
+        /// <param name="command">要執行的命令。</param>
+        /// <returns>命令執行後的輸出。</returns>
+        private string RunCommand(string command)
+        {
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
-                FileName = "powershell.exe",
-                Arguments = $"-NoProfile -Command \"{psScript}\"",
+                FileName = "cmd.exe",
+                Arguments = $"/c {command}",
                 RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                StandardOutputEncoding = Encoding.UTF8 // 設定輸出編碼為 UTF-8
+                StandardOutputEncoding = Encoding.Unicode
             };
 
             using (Process process = Process.Start(startInfo))
             {
                 string output = process.StandardOutput.ReadToEnd();
-                output = output.Replace("\0", "");
                 process.WaitForExit();
-                return process.ExitCode == 0;
+               
+                output = output.Replace("\0", "").Trim(); // 移除空字元與首尾空格
+                return output;
             }
         }
-        catch
+
+        /// <summary>
+        /// 通用方法：檢查系統是否已安裝指定的程式。
+        /// </summary>
+        /// <param name="programName">程式名稱</param>
+        /// <param name="arguments">檢查版本的參數</param>
+        /// <returns>如果已安裝則返回 true，否則返回 false。</returns>
+        private bool IsProgramInstalled(string programName, string arguments)
         {
-            return false;
+            try
+            {
+                string command = $"{programName} {arguments}";
+
+                string output = RunCommand(command);
+
+                return !string.IsNullOrEmpty(output);
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
