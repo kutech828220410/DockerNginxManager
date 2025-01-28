@@ -1,11 +1,23 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DockerNginxManagerLib
 {
     public class InstallationChecker
     {
+        private readonly PowerShellHost powerShellHost;
+
+        /// <summary>
+        /// 初始化 InstallationChecker 類別的新執行個體。
+        /// </summary>
+        /// <param name="powerShellHost">用於執行 PowerShell 命令的 PowerShellHost 實例。</param>
+        public InstallationChecker(PowerShellHost powerShellHost)
+        {
+            this.powerShellHost = powerShellHost;
+        }
+
         /// <summary>
         /// 檢查系統是否已安裝 Docker。
         /// </summary>
@@ -90,25 +102,7 @@ namespace DockerNginxManagerLib
         /// <returns>命令執行後的輸出。</returns>
         private string RunCommand(string command)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = "cmd.exe",
-                Arguments = $"/c {command}",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                StandardOutputEncoding = Encoding.Unicode
-            };
-
-            using (Process process = Process.Start(startInfo))
-            {
-                string output = process.StandardOutput.ReadToEnd();
-                process.WaitForExit();
-               
-                output = output.Replace("\0", "").Trim(); // 移除空字元與首尾空格
-                return output;
-            }
+            return powerShellHost.RunCommand(command);
         }
 
         /// <summary>

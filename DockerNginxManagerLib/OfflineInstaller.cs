@@ -8,18 +8,26 @@ namespace DockerNginxManagerLib
     public class OfflineInstaller
     {
         private const string DistroName = "Ubuntu";
+        private readonly PowerShellHost powerShellHost;
 
-      
+        /// <summary>
+        /// 初始化 OfflineInstaller 類別的新執行個體。
+        /// </summary>
+        /// <param name="powerShellHost">用於執行 PowerShell 命令的 PowerShellHost 實例。</param>
+        public OfflineInstaller(PowerShellHost powerShellHost)
+        {
+            this.powerShellHost = powerShellHost;
+        }
+
         /// <summary>
         /// 檢查 WSL Ubuntu 是否正在運行
         /// </summary>
         public bool IsUbuntuRunning()
         {
             string command = "wsl --list --verbose";
-            string output;
-            bool success = RunCommand(command, out output);
+            string output = powerShellHost.RunCommand(command);
 
-            if (success && output.Contains(DistroName))
+            if (output.Contains(DistroName))
             {
                 string[] lines = output.Split('\n');
                 foreach (string line in lines)
@@ -44,10 +52,9 @@ namespace DockerNginxManagerLib
             Console.WriteLine($"🔄 正在啟動 {DistroName} ...");
 
             string command = $"wsl -d {DistroName} -u root";
-            string output;
-            bool success = RunCommand(command, out output);
+            string output = powerShellHost.RunCommand(command);
 
-            if (success)
+            if (!string.IsNullOrEmpty(output))
             {
                 Console.WriteLine($"✅ {DistroName} 已以 root 身份啟動。");
 
@@ -62,8 +69,8 @@ namespace DockerNginxManagerLib
                         string createUserCmd = $"wsl -d {DistroName} -u root -- adduser {newUser}";
                         string addToSudoCmd = $"wsl -d {DistroName} -u root -- usermod -aG sudo {newUser}";
 
-                        RunCommand(createUserCmd, out output);
-                        RunCommand(addToSudoCmd, out output);
+                        powerShellHost.RunCommand(createUserCmd);
+                        powerShellHost.RunCommand(addToSudoCmd);
 
                         Console.WriteLine($"✅ 使用者 {newUser} 已建立並加入 sudo 群組！");
                         Console.WriteLine($"⚡ 請手動編輯 `/etc/wsl.conf` 設為預設使用者，然後 `wsl --shutdown` 重啟 WSL。");
@@ -75,7 +82,6 @@ namespace DockerNginxManagerLib
                 Console.WriteLine($"❌ {DistroName} 啟動失敗，錯誤訊息：\n{output}");
             }
         }
-
 
         /// <summary>
         /// 卸載 WSL Ubuntu
@@ -91,60 +97,12 @@ namespace DockerNginxManagerLib
             }
 
             string command = $"wsl --unregister {DistroName}";
-            string output;
-            bool success = RunCommand(command, out output);
+            string output = powerShellHost.RunCommand(command);
 
-            if (success)
+            if (!string.IsNullOrEmpty(output))
                 Console.WriteLine($"✅ {DistroName} 已成功卸載。");
             else
                 Console.WriteLine($"❌ 卸載失敗，錯誤訊息：\n{output}");
-        }
-
-        /// <summary>
-        /// 執行系統命令並回傳結果。
-        /// </summary>
-        private bool RunCommand(string command, out string output)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = "cmd.exe",
-                Arguments = $"/c {command}",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                StandardOutputEncoding = Encoding.Unicode,
-                StandardErrorEncoding = Encoding.Unicode
-            };
-
-            try
-            {
-                using (Process process = Process.Start(startInfo))
-                {
-                    string stdOutput = process.StandardOutput.ReadToEnd();
-                    string errorOutput = process.StandardError.ReadToEnd();
-                    process.WaitForExit();
-
-                    stdOutput = stdOutput.Replace("\0", "").Trim();
-                    errorOutput = errorOutput.Replace("\0", "").Trim();
-
-                    if (process.ExitCode == 0)
-                    {
-                        output = stdOutput;
-                        return true;
-                    }
-                    else
-                    {
-                        output = $"錯誤代碼：{process.ExitCode}\n錯誤訊息：{stdOutput}";
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                output = $"執行命令時發生錯誤：{ex.Message}";
-                return false;
-            }
         }
     }
 }

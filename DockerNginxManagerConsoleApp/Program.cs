@@ -3,11 +3,12 @@ using System.Diagnostics;
 using System.Security.Principal;
 using System.Text;
 using DockerNginxManagerLib;
-
+using System.Windows.Forms;
 namespace DockerNginxManagerConsoleApp
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8; // 設定主控台輸出 UTF-8
@@ -44,8 +45,13 @@ namespace DockerNginxManagerConsoleApp
                 return;
             }
 
-            InstallationChecker checker = new InstallationChecker();
-            OfflineInstaller installer = new OfflineInstaller();
+            // 創建 RichTextBox 控制項
+            RichTextBox outputBox = new RichTextBox();
+            // 初始化 PowerShellHost
+            PowerShellHost powerShellHost = new PowerShellHost(outputBox);
+            // 初始化 InstallationChecker
+            InstallationChecker checker = new InstallationChecker(powerShellHost);
+            OfflineInstaller installer = new OfflineInstaller(powerShellHost);
 
             Console.WriteLine("\n=== [1] Docker 檢查 ===");
             bool isDockerInstalled = checker.IsDockerInstalled();
@@ -69,8 +75,6 @@ namespace DockerNginxManagerConsoleApp
                 bool isUbuntuInstalled = checker.IsWslDistributionInstalled(distributionName);
                 Console.WriteLine($"✅ {distributionName} 已安裝：{isUbuntuInstalled}");
 
-
-
                 Console.WriteLine("\n=== [5] 檢查 Ubuntu 是否運行 ===");
                 if (!installer.IsUbuntuRunning())
                 {
@@ -87,7 +91,7 @@ namespace DockerNginxManagerConsoleApp
                 }
                 else
                 {
-                    //Console.WriteLine($"✅ {distributionName} 已在運行中。");
+                    Console.WriteLine($"✅ {distributionName} 已在運行中。");
                 }
             }
             else

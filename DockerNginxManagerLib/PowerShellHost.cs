@@ -24,6 +24,11 @@ public class PowerShellHost
     public Color BackgroundColor { get; set; } = Color.MidnightBlue; // 背景顏色
 
     /// <summary>
+    /// 命令完成事件，當命令執行完成時觸發。
+    /// </summary>
+    public event EventHandler<CommandCompletedEventArgs> CommandCompleted;
+
+    /// <summary>
     /// 初始化 PowerShellHost 類別的新執行個體。
     /// 設定 RichTextBox 的外觀和 PowerShell 環境。
     /// </summary>
@@ -31,17 +36,17 @@ public class PowerShellHost
     public PowerShellHost(RichTextBox outputBox)
     {
         this.outputBox = outputBox;
-        this.outputBox.KeyDown += OutputBox_KeyDown; // 註冊 KeyDown 事件處理程序
-        this.outputBox.BackColor = BackgroundColor; // 設定背景顏色
-        this.outputBox.Font = new Font("Consolas", 12); // 設定字體
-        psInstance = PowerShell.Create(); // 建立 PowerShell 執行個體
+        this.outputBox.KeyDown += OutputBox_KeyDown;
+        this.outputBox.BackColor = BackgroundColor;
+        this.outputBox.Font = new Font("Consolas", 12);
+        psInstance = PowerShell.Create();
         psInstance.AddScript("[Console]::OutputEncoding = [System.Text.Encoding]::Unicode").Invoke(); // 設定輸出編碼
         psInstance.AddScript("[Console]::InputEncoding = [System.Text.Encoding]::Unicode").Invoke(); // 設定輸入編碼
-        psInstance.AddScript($"Set-Location '{currentPath}'").Invoke(); // 設定初始路徑
-        AppendOutput("Windows PowerShell"); // 顯示 PowerShell 標題
-        AppendOutput($"PowerShell Ver: {GetPowerShellVersion()} "); // 顯示 PowerShell 版本
-        AppendOutput(""); // 顯示空行
-        UpdateCurrentPath(); // 更新當前路徑
+        psInstance.AddScript($"Set-Location '{currentPath}'").Invoke();
+        AppendOutput("Windows PowerShell");
+        AppendOutput($"PowerShell Ver: {GetPowerShellVersion()} ");
+        AppendOutput("");
+        UpdateCurrentPath();
     }
 
     /// <summary>
@@ -122,6 +127,7 @@ public class PowerShellHost
             AppendPrompt();
             isCommandRunning = false;
             outputBox.ReadOnly = false;
+            OnCommandCompleted(new CommandCompletedEventArgs(true, null));
             return;
         }
 
@@ -129,6 +135,8 @@ public class PowerShellHost
         psInstance.AddScript(command);
 
         var results = psInstance.Invoke();
+        bool isSuccess = true;
+        string errorMessage = null;
 
         foreach (var result in results)
         {
@@ -137,9 +145,11 @@ public class PowerShellHost
 
         if (psInstance.Streams.Error.Count > 0)
         {
+            isSuccess = false;
             foreach (var error in psInstance.Streams.Error)
             {
                 AppendErrorOutput("==>" + error.ToString());
+                errorMessage = error.ToString();
             }
             psInstance.Streams.Error.Clear();
         }
@@ -147,6 +157,37 @@ public class PowerShellHost
         UpdateCurrentPath();
         isCommandRunning = false;
         outputBox.ReadOnly = false;
+        OnCommandCompleted(new CommandCompletedEventArgs(isSuccess, errorMessage));
+    }
+
+    /// <summary>
+    /// 執行給定的 PowerShell 命令並回傳結果。
+    /// </summary>
+    /// <param name="command">要執行的命令。</param>
+    /// <returns>命令執行後的輸出。</returns>
+    public string RunCommand(string command)
+    {
+        psInstance.Commands.Clear();
+        psInstance.AddScript(command);
+
+        var results = psInstance.Invoke();
+        StringBuilder outputBuilder = new StringBuilder();
+
+        foreach (var result in results)
+        {
+            outputBuilder.AppendLine(result.ToString());
+        }
+
+        if (psInstance.Streams.Error.Count > 0)
+        {
+            foreach (var error in psInstance.Streams.Error)
+            {
+                outputBuilder.AppendLine("==>" + error.ToString());
+            }
+            psInstance.Streams.Error.Clear();
+        }
+
+        return outputBuilder.ToString().Trim();
     }
 
     /// <summary>
@@ -260,5 +301,29 @@ public class PowerShellHost
         }
 
         return utf8Decoded;
+    }
+
+    /// <summary>
+    /// 觸發 CommandCompleted 事件。
+    /// </summary>
+    /// <param name="e">事件參數。</param>
+    protected virtual void OnCommandCompleted(CommandCompletedEventArgs e)
+    {
+        CommandCompleted?.Invoke(this, e);
+    }
+}
+
+/// <summary>
+/// 命令完成事件的參數類別。
+/// </summary>
+public class CommandCompletedEventArgs : EventArgs
+{
+    public bool IsSuccess { get; }
+    public string ErrorMessage { get; }
+
+    public CommandCompletedEventArgs(bool isSuccess, string errorMessage)
+    {
+        IsSuccess = isSuccess;
+        ErrorMessage = errorMessage;
     }
 }
