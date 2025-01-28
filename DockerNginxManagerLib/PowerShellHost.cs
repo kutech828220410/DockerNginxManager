@@ -6,35 +6,47 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
+/// <summary>
+/// PowerShellHost 類別用於在 Windows Forms 應用程式中嵌入 PowerShell 主機。
+/// 這個類別允許使用者在應用程式中執行 PowerShell 命令並顯示結果。
+/// </summary>
 public class PowerShellHost
 {
-    private PowerShell psInstance;
-    private RichTextBox outputBox;
-    private int lastPromptIndex;
-    private string currentPath = @"C:\\Windows\\System32";
-    private bool isCommandRunning = false;
-    private List<string> commandHistory = new List<string>();
-    private int historyIndex = -1;
-    public Color ErrorTextColor { get; set; } = Color.Red;
-    public Color ResultTextColor { get; set; } = Color.LightGray;
-    public Color BackgroundColor { get; set; } = Color.MidnightBlue;
+    private PowerShell psInstance; // PowerShell 實例，用於執行 PowerShell 命令
+    private RichTextBox outputBox; // RichTextBox 控制項，用於顯示 PowerShell 的輸出
+    private int lastPromptIndex; // 記錄最後一次提示符的位置
+    private string currentPath = @"C:\\Windows\\System32"; // 當前的工作目錄
+    private bool isCommandRunning = false; // 標記是否有命令正在執行
+    private List<string> commandHistory = new List<string>(); // 儲存命令歷史記錄的列表
+    private int historyIndex = -1; // 命令歷史記錄的索引
+    public Color ErrorTextColor { get; set; } = Color.Red; // 錯誤文字顏色
+    public Color ResultTextColor { get; set; } = Color.LightGray; // 結果文字顏色
+    public Color BackgroundColor { get; set; } = Color.MidnightBlue; // 背景顏色
 
+    /// <summary>
+    /// 初始化 PowerShellHost 類別的新執行個體。
+    /// 設定 RichTextBox 的外觀和 PowerShell 環境。
+    /// </summary>
+    /// <param name="outputBox">顯示輸出結果的 RichTextBox 控制項。</param>
     public PowerShellHost(RichTextBox outputBox)
     {
         this.outputBox = outputBox;
-        this.outputBox.KeyDown += OutputBox_KeyDown;
-        this.outputBox.BackColor = BackgroundColor;
-        this.outputBox.Font = new Font("Consolas", 12);
-        psInstance = PowerShell.Create();
-        psInstance.AddScript("[Console]::OutputEncoding = [System.Text.Encoding]::Unicode").Invoke();
-        psInstance.AddScript("[Console]::InputEncoding = [System.Text.Encoding]::Unicode").Invoke();
-        psInstance.AddScript($"Set-Location '{currentPath}'").Invoke();
-        AppendOutput("Windows PowerShell");
-        AppendOutput($"PowerShell Ver: {GetPowerShellVersion()} ");
-        AppendOutput("");
-        UpdateCurrentPath();
+        this.outputBox.KeyDown += OutputBox_KeyDown; // 註冊 KeyDown 事件處理程序
+        this.outputBox.BackColor = BackgroundColor; // 設定背景顏色
+        this.outputBox.Font = new Font("Consolas", 12); // 設定字體
+        psInstance = PowerShell.Create(); // 建立 PowerShell 執行個體
+        psInstance.AddScript("[Console]::OutputEncoding = [System.Text.Encoding]::Unicode").Invoke(); // 設定輸出編碼
+        psInstance.AddScript("[Console]::InputEncoding = [System.Text.Encoding]::Unicode").Invoke(); // 設定輸入編碼
+        psInstance.AddScript($"Set-Location '{currentPath}'").Invoke(); // 設定初始路徑
+        AppendOutput("Windows PowerShell"); // 顯示 PowerShell 標題
+        AppendOutput($"PowerShell Ver: {GetPowerShellVersion()} "); // 顯示 PowerShell 版本
+        AppendOutput(""); // 顯示空行
+        UpdateCurrentPath(); // 更新當前路徑
     }
 
+    /// <summary>
+    /// 處理 RichTextBox 的 KeyDown 事件。
+    /// </summary>
     private void OutputBox_KeyDown(object sender, KeyEventArgs e)
     {
         if (isCommandRunning)
@@ -82,6 +94,9 @@ public class PowerShellHost
         }
     }
 
+    /// <summary>
+    /// 替換當前命令為歷史命令。
+    /// </summary>
     private void ReplaceCurrentCommand(string command)
     {
         outputBox.Select(lastPromptIndex, outputBox.Text.Length - lastPromptIndex);
@@ -89,6 +104,10 @@ public class PowerShellHost
         outputBox.SelectionStart = outputBox.Text.Length;
     }
 
+    /// <summary>
+    /// 執行給定的 PowerShell 命令。
+    /// </summary>
+    /// <param name="command">要執行的命令。</param>
     public void ExecuteCommand(string command)
     {
         isCommandRunning = true;
@@ -130,6 +149,9 @@ public class PowerShellHost
         outputBox.ReadOnly = false;
     }
 
+    /// <summary>
+    /// 更新當前工作目錄並顯示提示符。
+    /// </summary>
     private void UpdateCurrentPath()
     {
         psInstance.Commands.Clear();
@@ -146,6 +168,9 @@ public class PowerShellHost
         AppendPrompt();
     }
 
+    /// <summary>
+    /// 添加正常輸出到 RichTextBox。
+    /// </summary>
     private void AppendOutput(string text)
     {
         text = DetectEncodingAndConvert(text);
@@ -156,7 +181,6 @@ public class PowerShellHost
         }
         else
         {
-       
             outputBox.SelectionColor = ResultTextColor;
             outputBox.AppendText(text + Environment.NewLine);
 
@@ -166,6 +190,9 @@ public class PowerShellHost
         }
     }
 
+    /// <summary>
+    /// 添加錯誤輸出到 RichTextBox。
+    /// </summary>
     private void AppendErrorOutput(string text)
     {
         text = DetectEncodingAndConvert(text);
@@ -177,13 +204,16 @@ public class PowerShellHost
         else
         {
             outputBox.SelectionColor = ErrorTextColor;
-            outputBox.AppendText(text + Environment.NewLine);       
+            outputBox.AppendText(text + Environment.NewLine);
             outputBox.SelectionStart = outputBox.Text.Length;
             lastPromptIndex = outputBox.Text.Length;
             outputBox.ScrollToCaret();
         }
     }
 
+    /// <summary>
+    /// 添加提示符到 RichTextBox。
+    /// </summary>
     private void AppendPrompt()
     {
         if (outputBox.InvokeRequired)
@@ -200,6 +230,10 @@ public class PowerShellHost
         }
     }
 
+    /// <summary>
+    /// 獲取 PowerShell 版本。
+    /// </summary>
+    /// <returns>PowerShell 版本字串。</returns>
     private string GetPowerShellVersion()
     {
         psInstance.Commands.Clear();
@@ -207,9 +241,12 @@ public class PowerShellHost
         var results = psInstance.Invoke();
         return results.Count > 0 ? results[0].ToString().Trim() : "Unknown";
     }
+
     /// <summary>
-    /// 判斷 PowerShell 回傳的編碼，並自動轉換 UTF-8 或 Unicode
+    /// 判斷 PowerShell 回傳的編碼，並自動轉換 UTF-8 或 Unicode。
     /// </summary>
+    /// <param name="rawData">原始資料。</param>
+    /// <returns>轉換後的字串。</returns>
     private string DetectEncodingAndConvert(string rawData)
     {
         if (rawData == null) return "";
