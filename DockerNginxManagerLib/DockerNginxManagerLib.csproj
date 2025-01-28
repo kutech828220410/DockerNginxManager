@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DockerOperations.cs" />
     <Compile Include="InstallationChecker.cs" />
     <Compile Include="OfflineInstaller.cs" />
     <Compile Include="PowerShellHost.cs" />
