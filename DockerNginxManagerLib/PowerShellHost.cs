@@ -5,6 +5,9 @@ using System.Management.Automation.Runspaces;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.InteropServices;
+
 
 /// <summary>
 /// PowerShellHost 類別用於在 Windows Forms 應用程式中嵌入 PowerShell 主機。
@@ -12,6 +15,13 @@ using System.Drawing;
 /// </summary>
 public class PowerShellHost
 {
+    private const int WM_VSCROLL = 0x115;
+    private const int SB_BOTTOM = 7;
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+
+
     private PowerShell psInstance; // PowerShell 實例，用於執行 PowerShell 命令
     private RichTextBox outputBox; // RichTextBox 控制項，用於顯示 PowerShell 的輸出
     private int lastPromptIndex; // 記錄最後一次提示符的位置
@@ -27,6 +37,19 @@ public class PowerShellHost
     /// 命令完成事件，當命令執行完成時觸發。
     /// </summary>
     public event EventHandler<CommandCompletedEventArgs> CommandCompleted;
+
+    public PowerShellHost()
+    {
+        psInstance = PowerShell.Create();
+        psInstance.AddScript("[Console]::OutputEncoding = [System.Text.Encoding]::Unicode").Invoke(); // 設定輸出編碼
+        psInstance.AddScript("[Console]::InputEncoding = [System.Text.Encoding]::Unicode").Invoke(); // 設定輸入編碼
+        psInstance.AddScript($"Set-Location '{currentPath}'").Invoke();
+        AppendOutput("Windows PowerShell");
+        AppendOutput($"PowerShell Ver: {GetPowerShellVersion()} ");
+        AppendOutput("");
+        UpdateCurrentPath();
+       
+    }
 
     /// <summary>
     /// 初始化 PowerShellHost 類別的新執行個體。
@@ -104,19 +127,33 @@ public class PowerShellHost
     /// </summary>
     private void ReplaceCurrentCommand(string command)
     {
-        outputBox.Select(lastPromptIndex, outputBox.Text.Length - lastPromptIndex);
-        outputBox.SelectedText = command;
-        outputBox.SelectionStart = outputBox.Text.Length;
+        if (outputBox != null)
+        {
+            outputBox.Select(lastPromptIndex, outputBox.Text.Length - lastPromptIndex);
+            outputBox.SelectedText = command;
+            outputBox.SelectionStart = outputBox.Text.Length;
+        }
+ 
     }
 
     /// <summary>
     /// 執行給定的 PowerShell 命令。
     /// </summary>
     /// <param name="command">要執行的命令。</param>
-    public void ExecuteCommand(string command)
+    public (string result , string error) ExecuteCommand(string command)
     {
+        StringBuilder outputBuilder_result = new StringBuilder();
+        StringBuilder outputBuilder_error = new StringBuilder();
         isCommandRunning = true;
-        outputBox.ReadOnly = true;
+        if(outputBox != null)
+        {
+            outputBox.Invoke(new Action(delegate
+            {
+                outputBox.ReadOnly = true;
+            }));
+        }
+ 
+       
         AppendOutput("");
 
         if (command.StartsWith("cd "))
@@ -126,9 +163,16 @@ public class PowerShellHost
             psInstance.AddScript($"Set-Location '{currentPath}'").Invoke();
             AppendPrompt();
             isCommandRunning = false;
-            outputBox.ReadOnly = false;
+            if (outputBox != null)
+            {
+                outputBox.Invoke(new Action(delegate
+                {
+                    outputBox.ReadOnly = true;
+                }));
+            }
+          
             OnCommandCompleted(new CommandCompletedEventArgs(true, null));
-            return;
+            return (outputBuilder_result.ToString().Trim() , outputBuilder_error.ToString().Trim());
         }
 
         psInstance.Commands.Clear();
@@ -140,7 +184,7 @@ public class PowerShellHost
 
         foreach (var result in results)
         {
-            AppendOutput(result.ToString());
+            outputBuilder_result.AppendLine(AppendOutput(result.ToString()));
         }
 
         if (psInstance.Streams.Error.Count > 0)
@@ -148,7 +192,7 @@ public class PowerShellHost
             isSuccess = false;
             foreach (var error in psInstance.Streams.Error)
             {
-                AppendErrorOutput("==>" + error.ToString());
+                outputBuilder_error.AppendLine(AppendErrorOutput("==>" + error.ToString()));
                 errorMessage = error.ToString();
             }
             psInstance.Streams.Error.Clear();
@@ -156,40 +200,32 @@ public class PowerShellHost
 
         UpdateCurrentPath();
         isCommandRunning = false;
-        outputBox.ReadOnly = false;
+        if (outputBox != null)
+        {
+            outputBox.Invoke(new Action(delegate
+            {
+                outputBox.ReadOnly = true;
+            }));
+        }
+   
         OnCommandCompleted(new CommandCompletedEventArgs(isSuccess, errorMessage));
+        return (outputBuilder_result.ToString().Trim(), outputBuilder_error.ToString().Trim());
     }
 
     /// <summary>
-    /// 執行給定的 PowerShell 命令並回傳結果。
+    /// 添加新行並更新當前工作目錄。
     /// </summary>
-    /// <param name="command">要執行的命令。</param>
-    /// <returns>命令執行後的輸出。</returns>
-    public string RunCommand(string command)
+    public void AddNewLine()
     {
-        psInstance.Commands.Clear();
-        psInstance.AddScript(command);
-
-        var results = psInstance.Invoke();
-        StringBuilder outputBuilder = new StringBuilder();
-
-        foreach (var result in results)
+        if(outputBox != null)
         {
-            outputBuilder.AppendLine(result.ToString());
-        }
-
-        if (psInstance.Streams.Error.Count > 0)
-        {
-            foreach (var error in psInstance.Streams.Error)
+            outputBox.Invoke(new Action(delegate
             {
-                outputBuilder.AppendLine("==>" + error.ToString());
-            }
-            psInstance.Streams.Error.Clear();
+                OutputBox_KeyDown(null, new KeyEventArgs(Keys.Enter));
+            }));
         }
-
-        return outputBuilder.ToString().Trim();
+      
     }
-
     /// <summary>
     /// 更新當前工作目錄並顯示提示符。
     /// </summary>
@@ -212,44 +248,54 @@ public class PowerShellHost
     /// <summary>
     /// 添加正常輸出到 RichTextBox。
     /// </summary>
-    private void AppendOutput(string text)
+    private string AppendOutput(string text)
     {
         text = DetectEncodingAndConvert(text);
         text = text.Replace("\0", "");
-        if (outputBox.InvokeRequired)
+        if (outputBox != null)
         {
-            outputBox.Invoke(new Action(() => AppendOutput(text)));
-        }
-        else
-        {
-            outputBox.SelectionColor = ResultTextColor;
-            outputBox.AppendText(text + Environment.NewLine);
+            if (outputBox.InvokeRequired)
+            {
+                outputBox.Invoke(new Action(() => AppendOutput(text)));
+            }
+            else
+            {
+                outputBox.SelectionColor = ResultTextColor;
+                outputBox.AppendText(text + Environment.NewLine);
 
-            lastPromptIndex = outputBox.Text.Length;
-            outputBox.SelectionStart = lastPromptIndex;
-            outputBox.ScrollToCaret();
+                lastPromptIndex = outputBox.Text.Length;
+                outputBox.SelectionStart = lastPromptIndex;
+                ForceScrollToBottom();
+            }
         }
+        
+        return text;
     }
 
     /// <summary>
     /// 添加錯誤輸出到 RichTextBox。
     /// </summary>
-    private void AppendErrorOutput(string text)
+    private string AppendErrorOutput(string text)
     {
         text = DetectEncodingAndConvert(text);
         text = text.Replace("\0", "");
-        if (outputBox.InvokeRequired)
+        if (outputBox != null)
         {
-            outputBox.Invoke(new Action(() => AppendErrorOutput(text)));
+            if (outputBox.InvokeRequired)
+            {
+                outputBox.Invoke(new Action(() => AppendErrorOutput(text)));
+            }
+            else
+            {
+                outputBox.SelectionColor = ErrorTextColor;
+                outputBox.AppendText(text + Environment.NewLine);
+                outputBox.SelectionStart = outputBox.Text.Length;
+                lastPromptIndex = outputBox.Text.Length;
+                ForceScrollToBottom();
+            }
         }
-        else
-        {
-            outputBox.SelectionColor = ErrorTextColor;
-            outputBox.AppendText(text + Environment.NewLine);
-            outputBox.SelectionStart = outputBox.Text.Length;
-            lastPromptIndex = outputBox.Text.Length;
-            outputBox.ScrollToCaret();
-        }
+      
+        return text;
     }
 
     /// <summary>
@@ -257,18 +303,31 @@ public class PowerShellHost
     /// </summary>
     private void AppendPrompt()
     {
-        if (outputBox.InvokeRequired)
+        if (outputBox != null)
         {
-            outputBox.Invoke(new Action(() => AppendPrompt()));
+            if (outputBox.InvokeRequired)
+            {
+                outputBox.Invoke(new Action(() => AppendPrompt()));
+            }
+            else
+            {
+                outputBox.SelectionColor = Color.White;
+                outputBox.AppendText($"PS {currentPath}> ");
+                lastPromptIndex = outputBox.Text.Length;
+                outputBox.SelectionStart = outputBox.Text.Length;
+                //outputBox.ScrollToCaret();
+                ForceScrollToBottom();
+            }
         }
-        else
-        {
-            outputBox.SelectionColor = Color.White;
-            outputBox.AppendText($"PS {currentPath}> ");
-            lastPromptIndex = outputBox.Text.Length;
-            outputBox.SelectionStart = lastPromptIndex;
-            outputBox.ScrollToCaret();
-        }
+      
+    }
+
+    /// <summary>
+    /// 強制滾軸移動到最下方。
+    /// </summary>
+    private void ForceScrollToBottom()
+    {
+        SendMessage(outputBox.Handle, WM_VSCROLL, (IntPtr)SB_BOTTOM, IntPtr.Zero);
     }
 
     /// <summary>
@@ -310,6 +369,33 @@ public class PowerShellHost
     protected virtual void OnCommandCompleted(CommandCompletedEventArgs e)
     {
         CommandCompleted?.Invoke(this, e);
+    }
+    /// <summary>
+    /// 釋放 PowerShell 資源。
+    /// </summary>
+    public void Dispose()
+    {
+        if (psInstance != null)
+        {
+            psInstance.Dispose();
+            psInstance = null;
+        }
+    }
+
+    /// <summary>
+    /// 關閉 PowerShell 主機。
+    /// </summary>
+    public void Close()
+    {
+        Dispose();
+        if (outputBox != null)
+        {
+            outputBox.Invoke(new Action(delegate
+            {
+                outputBox.ReadOnly = true;
+                outputBox.AppendText("PowerShell Host 已關閉。" + Environment.NewLine);
+            }));
+        }
     }
 }
 

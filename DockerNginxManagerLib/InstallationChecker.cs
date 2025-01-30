@@ -47,7 +47,7 @@ namespace DockerNginxManagerLib
             {
                 string command = "wsl --list --verbose";
 
-                string output = RunCommand(command);
+                var (output, error) = powerShellHost.ExecuteCommand(command);
 
                 return output.IndexOf(distributionName, StringComparison.OrdinalIgnoreCase) >= 0;
             }
@@ -67,7 +67,9 @@ namespace DockerNginxManagerLib
             {
                 string command = "wsl --version";
 
-                return RunCommand(command);
+                var (output, error) = powerShellHost.ExecuteCommand(command);
+
+                return output;
             }
             catch (Exception ex)
             {
@@ -85,7 +87,7 @@ namespace DockerNginxManagerLib
             {
                 string command = "wsl --set-default-version 2";
 
-                string output = RunCommand(command);
+                var (output, error) = powerShellHost.ExecuteCommand(command);
 
                 return output.Contains("WSL 2");
             }
@@ -93,16 +95,6 @@ namespace DockerNginxManagerLib
             {
                 return false;
             }
-        }
-
-        /// <summary>
-        /// 執行系統命令並回傳結果。
-        /// </summary>
-        /// <param name="command">要執行的命令。</param>
-        /// <returns>命令執行後的輸出。</returns>
-        private string RunCommand(string command)
-        {
-            return powerShellHost.RunCommand(command);
         }
 
         /// <summary>
@@ -117,7 +109,7 @@ namespace DockerNginxManagerLib
             {
                 string command = $"{programName} {arguments}";
 
-                string output = RunCommand(command);
+                var (output, error) = powerShellHost.ExecuteCommand(command);
 
                 return !string.IsNullOrEmpty(output);
             }

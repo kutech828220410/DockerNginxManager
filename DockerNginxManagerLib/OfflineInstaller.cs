@@ -25,7 +25,7 @@ namespace DockerNginxManagerLib
         public bool IsUbuntuRunning()
         {
             string command = "wsl --list --verbose";
-            string output = powerShellHost.RunCommand(command);
+            var (output, error) = powerShellHost.ExecuteCommand(command);
 
             if (output.Contains(DistroName))
             {
@@ -52,7 +52,7 @@ namespace DockerNginxManagerLib
             Console.WriteLine($"🔄 正在啟動 {DistroName} ...");
 
             string command = $"wsl -d {DistroName} -u root";
-            string output = powerShellHost.RunCommand(command);
+            var (output, error) = powerShellHost.ExecuteCommand(command);
 
             if (!string.IsNullOrEmpty(output))
             {
@@ -69,8 +69,8 @@ namespace DockerNginxManagerLib
                         string createUserCmd = $"wsl -d {DistroName} -u root -- adduser {newUser}";
                         string addToSudoCmd = $"wsl -d {DistroName} -u root -- usermod -aG sudo {newUser}";
 
-                        powerShellHost.RunCommand(createUserCmd);
-                        powerShellHost.RunCommand(addToSudoCmd);
+                        powerShellHost.ExecuteCommand(createUserCmd);
+                        powerShellHost.ExecuteCommand(addToSudoCmd);
 
                         Console.WriteLine($"✅ 使用者 {newUser} 已建立並加入 sudo 群組！");
                         Console.WriteLine($"⚡ 請手動編輯 `/etc/wsl.conf` 設為預設使用者，然後 `wsl --shutdown` 重啟 WSL。");
@@ -79,7 +79,7 @@ namespace DockerNginxManagerLib
             }
             else
             {
-                Console.WriteLine($"❌ {DistroName} 啟動失敗，錯誤訊息：\n{output}");
+                Console.WriteLine($"❌ {DistroName} 啟動失敗，錯誤訊息：\n{error}");
             }
         }
 
@@ -97,12 +97,12 @@ namespace DockerNginxManagerLib
             }
 
             string command = $"wsl --unregister {DistroName}";
-            string output = powerShellHost.RunCommand(command);
+            var (output, error) = powerShellHost.ExecuteCommand(command);
 
             if (!string.IsNullOrEmpty(output))
                 Console.WriteLine($"✅ {DistroName} 已成功卸載。");
             else
-                Console.WriteLine($"❌ 卸載失敗，錯誤訊息：\n{output}");
+                Console.WriteLine($"❌ 卸載失敗，錯誤訊息：\n{error}");
         }
     }
 }
