@@ -48,12 +48,11 @@ namespace DockerTools
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.sqL_DataGridView_Docker_Containers = new SQLUI.SQL_DataGridView();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.rJ_Button1 = new MyUI.RJ_Button();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.rJ_Button2 = new MyUI.RJ_Button();
+            this.rJ_Button_docker_stop_container = new MyUI.RJ_Button();
+            this.rJ_Button_docker_restart_container = new MyUI.RJ_Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.rJ_Button_docker_add_container = new MyUI.RJ_Button();
-            this.rJ_Button4 = new MyUI.RJ_Button();
+            this.rJ_Button_docker_remove_container = new MyUI.RJ_Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -62,6 +61,9 @@ namespace DockerTools
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.rJ_Button_docker_run_container = new MyUI.RJ_Button();
             this.panel1.SuspendLayout();
             this.rJ_Pannel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -463,12 +465,14 @@ namespace DockerTools
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.rJ_Button1);
+            this.panel9.Controls.Add(this.rJ_Button_docker_run_container);
+            this.panel9.Controls.Add(this.panel12);
+            this.panel9.Controls.Add(this.rJ_Button_docker_stop_container);
             this.panel9.Controls.Add(this.panel10);
-            this.panel9.Controls.Add(this.rJ_Button2);
+            this.panel9.Controls.Add(this.rJ_Button_docker_restart_container);
             this.panel9.Controls.Add(this.panel11);
             this.panel9.Controls.Add(this.rJ_Button_docker_add_container);
-            this.panel9.Controls.Add(this.rJ_Button4);
+            this.panel9.Controls.Add(this.rJ_Button_docker_remove_container);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel9.Location = new System.Drawing.Point(3, 593);
             this.panel9.Name = "panel9";
@@ -476,81 +480,71 @@ namespace DockerTools
             this.panel9.Size = new System.Drawing.Size(633, 65);
             this.panel9.TabIndex = 6;
             // 
-            // rJ_Button1
+            // rJ_Button_docker_stop_container
             // 
-            this.rJ_Button1.AutoResetState = false;
-            this.rJ_Button1.BackColor = System.Drawing.Color.White;
-            this.rJ_Button1.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button1.BackgroundImage = global::DockerTools.Properties.Resources.uploads;
-            this.rJ_Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button1.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button1.BorderRadius = 40;
-            this.rJ_Button1.BorderSize = 1;
-            this.rJ_Button1.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button1.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button1.FlatAppearance.BorderSize = 0;
-            this.rJ_Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button1.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button1.GUID = "";
-            this.rJ_Button1.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rJ_Button1.Location = new System.Drawing.Point(438, 3);
-            this.rJ_Button1.Name = "rJ_Button1";
-            this.rJ_Button1.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button1.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button1.ProhibitionLineWidth = 4;
-            this.rJ_Button1.ProhibitionSymbolSize = 30;
-            this.rJ_Button1.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button1.ShadowSize = 0;
-            this.rJ_Button1.ShowLoadingForm = false;
-            this.rJ_Button1.Size = new System.Drawing.Size(61, 59);
-            this.rJ_Button1.State = false;
-            this.rJ_Button1.TabIndex = 158;
-            this.rJ_Button1.TextColor = System.Drawing.Color.White;
-            this.rJ_Button1.TextHeight = 0;
-            this.rJ_Button1.UseVisualStyleBackColor = false;
+            this.rJ_Button_docker_stop_container.AutoResetState = false;
+            this.rJ_Button_docker_stop_container.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_stop_container.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_stop_container.BackgroundImage = global::DockerTools.Properties.Resources.stop_button;
+            this.rJ_Button_docker_stop_container.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_stop_container.BorderRadius = 30;
+            this.rJ_Button_docker_stop_container.BorderSize = 1;
+            this.rJ_Button_docker_stop_container.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_stop_container.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_stop_container.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_docker_stop_container.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_stop_container.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_stop_container.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_stop_container.GUID = "";
+            this.rJ_Button_docker_stop_container.Image_padding = new System.Windows.Forms.Padding(8);
+            this.rJ_Button_docker_stop_container.Location = new System.Drawing.Point(438, 3);
+            this.rJ_Button_docker_stop_container.Name = "rJ_Button_docker_stop_container";
+            this.rJ_Button_docker_stop_container.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_docker_stop_container.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_stop_container.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_stop_container.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_stop_container.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_stop_container.ShadowSize = 0;
+            this.rJ_Button_docker_stop_container.ShowLoadingForm = false;
+            this.rJ_Button_docker_stop_container.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_stop_container.State = false;
+            this.rJ_Button_docker_stop_container.TabIndex = 158;
+            this.rJ_Button_docker_stop_container.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_stop_container.TextHeight = 0;
+            this.rJ_Button_docker_stop_container.UseVisualStyleBackColor = false;
             // 
-            // panel10
+            // rJ_Button_docker_restart_container
             // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(499, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(5, 59);
-            this.panel10.TabIndex = 157;
-            // 
-            // rJ_Button2
-            // 
-            this.rJ_Button2.AutoResetState = false;
-            this.rJ_Button2.BackColor = System.Drawing.Color.White;
-            this.rJ_Button2.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button2.BackgroundImage = global::DockerTools.Properties.Resources.downloads;
-            this.rJ_Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button2.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button2.BorderRadius = 40;
-            this.rJ_Button2.BorderSize = 1;
-            this.rJ_Button2.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button2.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button2.FlatAppearance.BorderSize = 0;
-            this.rJ_Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button2.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button2.GUID = "";
-            this.rJ_Button2.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rJ_Button2.Location = new System.Drawing.Point(504, 3);
-            this.rJ_Button2.Name = "rJ_Button2";
-            this.rJ_Button2.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button2.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button2.ProhibitionLineWidth = 4;
-            this.rJ_Button2.ProhibitionSymbolSize = 30;
-            this.rJ_Button2.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button2.ShadowSize = 0;
-            this.rJ_Button2.ShowLoadingForm = false;
-            this.rJ_Button2.Size = new System.Drawing.Size(61, 59);
-            this.rJ_Button2.State = false;
-            this.rJ_Button2.TabIndex = 156;
-            this.rJ_Button2.TextColor = System.Drawing.Color.White;
-            this.rJ_Button2.TextHeight = 0;
-            this.rJ_Button2.UseVisualStyleBackColor = false;
+            this.rJ_Button_docker_restart_container.AutoResetState = false;
+            this.rJ_Button_docker_restart_container.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_restart_container.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_restart_container.BackgroundImage = global::DockerTools.Properties.Resources.refresh;
+            this.rJ_Button_docker_restart_container.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_restart_container.BorderRadius = 30;
+            this.rJ_Button_docker_restart_container.BorderSize = 1;
+            this.rJ_Button_docker_restart_container.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_restart_container.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_restart_container.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_docker_restart_container.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_restart_container.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_restart_container.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_restart_container.GUID = "";
+            this.rJ_Button_docker_restart_container.Image_padding = new System.Windows.Forms.Padding(8);
+            this.rJ_Button_docker_restart_container.Location = new System.Drawing.Point(504, 3);
+            this.rJ_Button_docker_restart_container.Name = "rJ_Button_docker_restart_container";
+            this.rJ_Button_docker_restart_container.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_docker_restart_container.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_restart_container.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_restart_container.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_restart_container.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_restart_container.ShadowSize = 0;
+            this.rJ_Button_docker_restart_container.ShowLoadingForm = false;
+            this.rJ_Button_docker_restart_container.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_restart_container.State = false;
+            this.rJ_Button_docker_restart_container.TabIndex = 156;
+            this.rJ_Button_docker_restart_container.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_restart_container.TextHeight = 0;
+            this.rJ_Button_docker_restart_container.UseVisualStyleBackColor = false;
             // 
             // panel11
             // 
@@ -568,7 +562,7 @@ namespace DockerTools
             this.rJ_Button_docker_add_container.BackgroundImage = global::DockerTools.Properties.Resources.add_new_plus_512;
             this.rJ_Button_docker_add_container.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.rJ_Button_docker_add_container.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_docker_add_container.BorderRadius = 40;
+            this.rJ_Button_docker_add_container.BorderRadius = 30;
             this.rJ_Button_docker_add_container.BorderSize = 1;
             this.rJ_Button_docker_add_container.buttonType = MyUI.RJ_Button.ButtonType.Push;
             this.rJ_Button_docker_add_container.DisenableColor = System.Drawing.Color.Gray;
@@ -593,38 +587,38 @@ namespace DockerTools
             this.rJ_Button_docker_add_container.TextHeight = 0;
             this.rJ_Button_docker_add_container.UseVisualStyleBackColor = false;
             // 
-            // rJ_Button4
+            // rJ_Button_docker_remove_container
             // 
-            this.rJ_Button4.AutoResetState = false;
-            this.rJ_Button4.BackColor = System.Drawing.Color.White;
-            this.rJ_Button4.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button4.BackgroundImage = global::DockerTools.Properties.Resources.trash_512;
-            this.rJ_Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button4.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button4.BorderRadius = 40;
-            this.rJ_Button4.BorderSize = 1;
-            this.rJ_Button4.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button4.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button4.FlatAppearance.BorderSize = 0;
-            this.rJ_Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button4.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button4.GUID = "";
-            this.rJ_Button4.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rJ_Button4.Location = new System.Drawing.Point(570, 3);
-            this.rJ_Button4.Name = "rJ_Button4";
-            this.rJ_Button4.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button4.ProhibitionLineWidth = 4;
-            this.rJ_Button4.ProhibitionSymbolSize = 30;
-            this.rJ_Button4.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button4.ShadowSize = 0;
-            this.rJ_Button4.ShowLoadingForm = false;
-            this.rJ_Button4.Size = new System.Drawing.Size(61, 59);
-            this.rJ_Button4.State = false;
-            this.rJ_Button4.TabIndex = 153;
-            this.rJ_Button4.TextColor = System.Drawing.Color.White;
-            this.rJ_Button4.TextHeight = 0;
-            this.rJ_Button4.UseVisualStyleBackColor = false;
+            this.rJ_Button_docker_remove_container.AutoResetState = false;
+            this.rJ_Button_docker_remove_container.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_remove_container.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_remove_container.BackgroundImage = global::DockerTools.Properties.Resources.trash_512;
+            this.rJ_Button_docker_remove_container.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_docker_remove_container.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_remove_container.BorderRadius = 30;
+            this.rJ_Button_docker_remove_container.BorderSize = 1;
+            this.rJ_Button_docker_remove_container.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_remove_container.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_remove_container.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_docker_remove_container.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_remove_container.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_remove_container.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_remove_container.GUID = "";
+            this.rJ_Button_docker_remove_container.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rJ_Button_docker_remove_container.Location = new System.Drawing.Point(570, 3);
+            this.rJ_Button_docker_remove_container.Name = "rJ_Button_docker_remove_container";
+            this.rJ_Button_docker_remove_container.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_remove_container.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_remove_container.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_remove_container.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_remove_container.ShadowSize = 0;
+            this.rJ_Button_docker_remove_container.ShowLoadingForm = false;
+            this.rJ_Button_docker_remove_container.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_remove_container.State = false;
+            this.rJ_Button_docker_remove_container.TabIndex = 153;
+            this.rJ_Button_docker_remove_container.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_remove_container.TextHeight = 0;
+            this.rJ_Button_docker_remove_container.UseVisualStyleBackColor = false;
             // 
             // panel8
             // 
@@ -702,6 +696,55 @@ namespace DockerTools
             // 
             this.openFileDialog.FileName = "*.*";
             // 
+            // panel10
+            // 
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(499, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(5, 59);
+            this.panel10.TabIndex = 157;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel12.Location = new System.Drawing.Point(433, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(5, 59);
+            this.panel12.TabIndex = 160;
+            // 
+            // rJ_Button_docker_run_container
+            // 
+            this.rJ_Button_docker_run_container.AutoResetState = false;
+            this.rJ_Button_docker_run_container.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_run_container.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_run_container.BackgroundImage = global::DockerTools.Properties.Resources.play_button;
+            this.rJ_Button_docker_run_container.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_run_container.BorderRadius = 30;
+            this.rJ_Button_docker_run_container.BorderSize = 1;
+            this.rJ_Button_docker_run_container.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_run_container.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_run_container.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_docker_run_container.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_run_container.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_run_container.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_run_container.GUID = "";
+            this.rJ_Button_docker_run_container.Image_padding = new System.Windows.Forms.Padding(8);
+            this.rJ_Button_docker_run_container.Location = new System.Drawing.Point(372, 3);
+            this.rJ_Button_docker_run_container.Name = "rJ_Button_docker_run_container";
+            this.rJ_Button_docker_run_container.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_docker_run_container.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_run_container.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_run_container.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_run_container.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_run_container.ShadowSize = 0;
+            this.rJ_Button_docker_run_container.ShowLoadingForm = false;
+            this.rJ_Button_docker_run_container.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_run_container.State = false;
+            this.rJ_Button_docker_run_container.TabIndex = 161;
+            this.rJ_Button_docker_run_container.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_run_container.TextHeight = 0;
+            this.rJ_Button_docker_run_container.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -757,13 +800,15 @@ namespace DockerTools
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private SQLUI.SQL_DataGridView sqL_DataGridView_Docker_Containers;
         private System.Windows.Forms.Panel panel9;
-        private MyUI.RJ_Button rJ_Button1;
-        private System.Windows.Forms.Panel panel10;
-        private MyUI.RJ_Button rJ_Button2;
+        private MyUI.RJ_Button rJ_Button_docker_stop_container;
+        private MyUI.RJ_Button rJ_Button_docker_restart_container;
         private System.Windows.Forms.Panel panel11;
-        private MyUI.RJ_Button rJ_Button_docker_add_container;
-        private MyUI.RJ_Button rJ_Button4;
+        private MyUI.RJ_Button rJ_Button_docker_remove_container;
         private System.Windows.Forms.Panel panel8;
+        private MyUI.RJ_Button rJ_Button_docker_add_container;
+        private MyUI.RJ_Button rJ_Button_docker_run_container;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel10;
     }
 }
 

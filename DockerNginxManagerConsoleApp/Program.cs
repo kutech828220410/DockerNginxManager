@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Security.Principal;
 using System.Text;
-using DockerNginxManagerLib;
+using DockerManagerLib;
 using System.Windows.Forms;
 namespace DockerNginxManagerConsoleApp
 {

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DockerNginxManagerLib
+namespace DockerManagerLib
 {
     public class InstallationChecker
     {

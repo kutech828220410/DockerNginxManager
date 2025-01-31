@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Basic;
-using DockerNginxManagerLib;
+using DockerManagerLib;
+using NginxManagerLib;
 using MyUI;
 namespace DockerTools
 {
@@ -63,6 +64,11 @@ namespace DockerTools
 
 
             rJ_Button_docker_add_container.MouseDownEvent += RJ_Button_docker_add_container_MouseDownEvent;
+            rJ_Button_docker_remove_container.MouseDownEvent += RJ_Button_docker_remove_container_MouseDownEvent;
+            rJ_Button_docker_run_container.MouseDownEvent += RJ_Button_docker_run_container_MouseDownEvent;
+            rJ_Button_docker_stop_container.MouseDownEvent += RJ_Button_docker_stop_container_MouseDownEvent;
+            rJ_Button_docker_restart_container.MouseDownEvent += RJ_Button_docker_restart_container_MouseDownEvent;
+
 
             myThread_refreshDockerImages = new MyThread();
             myThread_refreshDockerImages.AutoRun(true);
@@ -94,15 +100,94 @@ namespace DockerTools
 
         }
 
+        private void RJ_Button_docker_restart_container_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues().Count == 0)
+            {
+                MyMessageBox.ShowDialog("請選擇容器");
+                return;
+            }
+            LoadingForm.ShowLoadingForm();
+            List<object[]> list_value = this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues();
+            foreach (var item in list_value)
+            {
+                string containerId = item[(int)DockerContainerInfo.DockerContainerAttributes.ContainerId].ObjectToString();
+                DockerOperations dockerOperations = new DockerOperations(psHost);
+                dockerOperations.RestartDockerContainer(containerId);
+            }
+            LoadingForm.CloseLoadingForm();
+        }
+
+        private void RJ_Button_docker_stop_container_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues().Count == 0)
+            {
+                MyMessageBox.ShowDialog("請選擇容器");
+                return;
+            }
+            LoadingForm.ShowLoadingForm();
+            List<object[]> list_value = this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues();
+            foreach (var item in list_value)
+            {
+                string containerId = item[(int)DockerContainerInfo.DockerContainerAttributes.ContainerId].ObjectToString();
+                DockerOperations dockerOperations = new DockerOperations(psHost);
+                dockerOperations.StopDockerContainer(containerId);
+            }
+            LoadingForm.CloseLoadingForm();
+        }
+        private void RJ_Button_docker_run_container_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues().Count == 0)
+            {
+                MyMessageBox.ShowDialog("請選擇容器");
+                return;
+            }
+            LoadingForm.ShowLoadingForm();
+            List<object[]> list_value = this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues();
+            foreach (var item in list_value)
+            {
+                string containerId = item[(int)DockerContainerInfo.DockerContainerAttributes.ContainerId].ObjectToString();
+                DockerOperations dockerOperations = new DockerOperations(psHost);
+                dockerOperations.StartDockerContainer(containerId);
+            }
+            LoadingForm.CloseLoadingForm();
+        }
+
+        private void RJ_Button_docker_remove_container_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if(this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues().Count == 0)
+            {
+                MyMessageBox.ShowDialog("請選擇要刪除的容器");
+                return;
+            }
+            DialogResult dialogResult = MyMessageBox.ShowDialog("確定要刪除選中的容器?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel);
+            if (dialogResult != DialogResult.Yes)
+            {
+                return;
+            }
+            LoadingForm.ShowLoadingForm();
+            List<object[]> list_value = this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues();
+            foreach (var item in list_value)
+            {
+                string containerId = item[(int)DockerContainerInfo.DockerContainerAttributes.ContainerId].ObjectToString();
+                DockerOperations dockerOperations = new DockerOperations(psHost);
+                dockerOperations.RemoveDockerContainer(containerId);
+            }
+            LoadingForm.CloseLoadingForm();
+        }
         private void RJ_Button_docker_add_container_MouseDownEvent(MouseEventArgs mevent)
         {
             Dialog_add_container dialog_Add_Container = new Dialog_add_container();
             dialog_Add_Container.ShowDialog();
+            System.Threading.Thread.Sleep(300);
             if (dialog_Add_Container.DialogResult != DialogResult.Yes)
             {
                 return;
             }
-           
+            LoadingForm.ShowLoadingForm();
+            DockerOperations dockerOperations = new DockerOperations(psHost);
+            dockerOperations.RunDockerContainer(dialog_Add_Container.Value);
+            LoadingForm.CloseLoadingForm();
         }
 
         private void RJ_Button_docker_upload_image_MouseDownEvent(MouseEventArgs mevent)
@@ -212,6 +297,9 @@ namespace DockerTools
 
         private void RJ_Button_檢查環境_MouseDownEvent(MouseEventArgs mevent)
         {
+            NginxParameters nginxParameters = new NginxParameters();
+            string str = nginxParameters.ToString();
+
             string msg = "";
             InstallationChecker installationChecker = new InstallationChecker(psHost);
             bool flag_IsDockerInstalled = installationChecker.IsDockerInstalled();

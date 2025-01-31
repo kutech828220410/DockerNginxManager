@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace DockerNginxManagerLib
+namespace DockerManagerLib
 {
     public class OfflineInstaller
     {

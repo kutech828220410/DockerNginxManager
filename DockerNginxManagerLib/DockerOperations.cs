@@ -5,221 +5,10 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using Basic;
 using System.Linq; // Add this using directive
+using System.IO;
 
-namespace DockerNginxManagerLib
+namespace DockerManagerLib
 {
-
- 
-
-
-
-    /// <summary>
-    /// 表示 Docker 映像的資訊。
-    /// </summary>
-    public class DockerImageInfo
-    {
-        /// <summary>
-        /// 表示 Docker 映像的屬性。
-        /// </summary>
-        [EnumDescription("DockerImageAttributes")]
-        public enum DockerImageAttributes
-        {
-            [Description("Repository,VARCHAR,100,INDEX")]
-            Repository,
-            [Description("Tag,VARCHAR,50,NONE")]
-            Tag,
-            [Description("ImageId,VARCHAR,64,NONE")]
-            ImageId,
-            [Description("Created,VARCHAR,50,NONE")]
-            Created,
-            [Description("Size,VARCHAR,20,NONE")]
-            Size,
-        }
-        /// <summary>
-        /// 獲取或設置 Docker 映像的儲存庫名稱。
-        /// </summary>
-        public string Repository { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 映像的標籤。
-        /// </summary>
-        public string Tag { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 映像的 ID。
-        /// </summary>
-        public string ImageId { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 映像的建立時間。
-        /// </summary>
-        public string Created { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 映像的大小。
-        /// </summary>
-        public string Size { get; set; }                
-    }
-
-    /// <summary>
-    /// 表示 Docker 容器的資訊。
-    /// </summary>
-    public class DockerContainerInfo
-    {
-        [EnumDescription("DockerContainerAttributes")]
-        public enum DockerContainerAttributes
-        {
-            [Description("Name,VARCHAR,100,NONE")]
-            Name,
-            [Description("ContainerId,VARCHAR,64,INDEX")]
-            ContainerId,      
-            [Description("Image,VARCHAR,100,NONE")]
-            Image,
-            [Description("Ports,VARCHAR,50,NONE")]
-            Ports,
-            [Description("Status,VARCHAR,50,NONE")]
-            Status,        
-        }
-        /// <summary>
-        /// 獲取或設置 Docker 容器的 ID。
-        /// </summary>
-        public string ContainerId { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 容器的名稱。
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 容器的映像。
-        /// </summary>
-        public string Image { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 容器的狀態。
-        /// </summary>
-        public string Status { get; set; }
-
-        /// <summary>
-        /// 獲取或設置 Docker 容器的埠。
-        /// </summary>
-        public string Ports { get; set; }
-    }
-
-    /// <summary>
-    /// 表示 Docker 容器運行參數。
-    /// </summary>
-    public class DockerRunParameters
-    {
-        /// <summary>
-        /// 獲取或設置 Docker 容器的網路模式。
-        /// </summary>
-        public string Network { get; set; }
-        /// <summary>
-        /// 獲取或設置是否以分離模式運行容器。
-        /// </summary>
-        public bool Detach { get; set; }
-        /// <summary>
-        /// 獲取或設置 Docker 容器的名稱。
-        /// </summary>
-        public string ContainerName { get; set; }
-        /// <summary>
-        /// 獲取或設置 Docker 容器的埠映射。
-        /// </summary>
-        public string PortForward { get; set; }
-        /// <summary>
-        /// 獲取或設置 Docker 容器的卷映射列表。
-        /// </summary>
-        public List<string> VolumeMappings { get; set; }
-        /// <summary>
-        /// 獲取或設置 Docker 映像的名稱。
-        /// </summary>
-        public string ImageName { get; set; }
-        /// <summary>
-        /// 獲取或設置 Docker 映像的標籤。
-        /// </summary>
-        public string ImageTag { get; set; }
-
-        /// <summary>
-        /// 初始化 DockerRunParameters 類別的新執行個體。
-        /// </summary>
-        public DockerRunParameters()
-        {
-            VolumeMappings = new List<string>();
-        }
-        public DockerRunParameters(string command)
-        {
-            VolumeMappings = new List<string>();
-            command = command.Replace("\r", "");
-            command = command.Replace("\n", "");
-            var parts = command.Replace("`", "").Split(' '); // 移除反引號
-
-            for (int i = 0; i < parts.Length; i++)
-            {
-                switch (parts[i])
-                {
-                    case "--network":
-                        this.Network = parts[++i];
-                        break;
-                    case "-d":
-                        this.Detach = true;
-                        break;
-                    case "--name":
-                        this.ContainerName = parts[++i];
-                        break;
-                    case "-p":
-                        this.PortForward = parts[++i];
-                        break;
-                    case "-v":
-                        this.VolumeMappings.Add(parts[++i]);
-                        break;
-                    default:
-                        if (parts[i].StartsWith("docker run"))
-                        {
-                            continue;
-                        }
-                        if (parts[i].Contains(":"))
-                        {
-                            var imageParts = parts[i].Split(':');
-                            this.ImageName = imageParts[0];
-                            this.ImageTag = imageParts.Length > 1 ? imageParts[1] : "latest";
-                        }
-                        break;
-                }
-            }
-        }
-        /// <summary>
-        /// 新增卷映射到 VolumeMappings 列表。
-        /// </summary>
-        /// <param name="windowsPath">Windows 路徑。</param>
-        /// <param name="linuxPath">Linux 路徑。</param>
-        public void AddVolumeMapping(string windowsPath, string linuxPath)
-        {
-            VolumeMappings.Add($"{windowsPath}:{linuxPath}");
-        }
-        /// <summary>
-        /// 生成 Docker 命令字串。
-        /// </summary>
-        /// <returns>Docker 命令字串。</returns>
-        public override string ToString()
-        {
-            var volumeMappings = string.Join(" ", VolumeMappings.Select(v => $"-v {v}"));
-            var networkOption = string.IsNullOrEmpty(Network) ? "" : $"--network {Network} ";
-            return $"docker run {networkOption}" +
-                   $"{(Detach ? "-d" : "")} " +
-                   $"--name {ContainerName} " +
-                   $"-p {PortForward} " +
-                   $"{volumeMappings} " +
-                   $"{ImageName}:{ImageTag}";
-        }
-
-        /// <summary>
-        /// 從 Docker 命令字串解析 DockerRunParameters。
-        /// </summary>
-        /// <param name="command">Docker 命令字串。</param>
-        /// <returns>DockerRunParameters 物件。</returns>
-  
-    }
 
     /// <summary>
     /// DockerOperations 類別提供了與 Docker 相關的操作方法。
@@ -410,10 +199,25 @@ namespace DockerNginxManagerLib
         }
 
         /// <summary>
+        /// 刪除 Docker 容器。
+        /// </summary>
+        /// <param name="containerId">容器 ID。</param>
+        public void RemoveDockerContainer(string containerId)
+        {
+            string command = $"docker rm -f {containerId}";
+            var (result, error) = powerShellHost.ExecuteCommand(command);
+            Console.WriteLine(result);
+            if (!string.IsNullOrEmpty(error))
+            {
+                Console.WriteLine($"Error: {error}");
+            }
+        }
+
+        /// <summary>
         /// 執行 Docker 容器。
         /// </summary>
         /// <param name="parameters">Docker 容器運行參數。</param>
-        public void RunDockerContainer(DockerRunParameters parameters)
+        public void RunDockerContainer(DockerContainerParameters parameters)
         {
             string command = parameters.ToString();
 
@@ -424,8 +228,51 @@ namespace DockerNginxManagerLib
                 Console.WriteLine($"Error: {error}");
             }
         }
+        /// <summary>
+        /// 停止 Docker 容器。
+        /// </summary>
+        /// <param name="containerId">容器 ID。</param>
+        public void StopDockerContainer(string containerId)
+        {
+            string command = $"docker stop {containerId}";
+            var (result, error) = powerShellHost.ExecuteCommand(command);
+            Console.WriteLine(result);
+            if (!string.IsNullOrEmpty(error))
+            {
+                Console.WriteLine($"Error: {error}");
+            }
+        }
+        /// <summary>
+        /// 重新啟動 Docker 容器。
+        /// </summary>
+        /// <param name="containerId">容器 ID。</param>
+        public void RestartDockerContainer(string containerId)
+        {
+            string command = $"docker restart {containerId}";
+            var (result, error) = powerShellHost.ExecuteCommand(command);
+            Console.WriteLine(result);
+            if (!string.IsNullOrEmpty(error))
+            {
+                Console.WriteLine($"Error: {error}");
+            }
+        }
+        /// <summary>
+        /// 啟動 Docker 容器。
+        /// </summary>
+        /// <param name="containerId">容器 ID。</param>
+        public void StartDockerContainer(string containerId)
+        {
+            string command = $"docker start {containerId}";
+            var (result, error) = powerShellHost.ExecuteCommand(command);
+            Console.WriteLine(result);
+            if (!string.IsNullOrEmpty(error))
+            {
+                Console.WriteLine($"Error: {error}");
+            }
+        }
 
     }
+
 
     
   

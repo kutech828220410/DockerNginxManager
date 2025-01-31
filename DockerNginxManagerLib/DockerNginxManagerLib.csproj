@@ -89,8 +89,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DockerContainerInfo.cs" />
+    <Compile Include="DockerContainerParameters.cs" />
+    <Compile Include="DockerImageInfo.cs" />
     <Compile Include="DockerOperations.cs" />
     <Compile Include="InstallationChecker.cs" />
+    <Compile Include="NginxParameters.cs" />
     <Compile Include="OfflineInstaller.cs" />
     <Compile Include="PowerShellHost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
