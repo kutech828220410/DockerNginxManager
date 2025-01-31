@@ -298,6 +298,7 @@ namespace DockerTools
         private void RJ_Button_檢查環境_MouseDownEvent(MouseEventArgs mevent)
         {
             NginxParameters nginxParameters = new NginxParameters();
+            nginxParameters.UseHttp = false;
             string str = nginxParameters.ToString();
 
             string msg = "";

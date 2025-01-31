@@ -20,6 +20,45 @@ namespace NginxManagerLib
     /// </summary>
     public class NginxParameters
     {
+        /// <summary>
+        /// SSL 加密套件枚舉。
+        /// </summary>
+        public enum SslCiphersEnum
+        {
+            EECDH_AESGCM_EECDH_CHACHA20_EDH_AESGCM,
+            EECDH_AES128GCM_SHA256_EECDH_CHACHA20,
+            TLS_AES_256_GCM_SHA384_EECDH_AESGCM,
+            DHE_RSA_AES256_SHA_DHE_RSA_AES128_SHA
+        }
+        /// <summary>
+        /// 大客戶端標頭緩衝區枚舉。
+        /// </summary>
+        public enum LargeClientHeaderBuffersEnum
+        {
+            Small,
+            Medium,
+            Large
+        }
+        /// <summary>
+        /// SSL 緩衝區大小枚舉。
+        /// </summary>
+        public enum SslBufferSizeEnum
+        {
+            Tiny,
+            Small,
+            Medium,
+            Large
+        }
+        public enum SslSessionTimeoutEnum
+        {
+            Tiny,
+            Small,
+            Medium,
+            Large
+        }
+        /// <summary>是否使用 HTTP 無 SSL 連線。</summary>
+        public bool UseHttp { get; set; } = false;
+
         /// <summary>監聽的端口號。</summary>
         public int ListenPort { get; set; } = 4443;
 
@@ -45,7 +84,7 @@ namespace NginxManagerLib
         public bool SslProtocolTls13 { get; set; } = true;
 
         /// <summary>SSL 使用的加密套件。</summary>
-        public string SslCiphers { get; set; } = "EECDH+AESGCM:EECDH+CHACHA20:EDH+AESGCM";
+        public SslCiphersEnum SslCiphers { get; set; } = SslCiphersEnum.EECDH_AESGCM_EECDH_CHACHA20_EDH_AESGCM;
 
         /// <summary>是否優先使用伺服器端的加密套件。</summary>
         public bool SslPreferServerCiphers { get; set; } = true;
@@ -54,13 +93,13 @@ namespace NginxManagerLib
         public string SslSessionCache { get; set; } = "shared:SSL:200m";
 
         /// <summary>SSL 會話超時時間。</summary>
-        public string SslSessionTimeout { get; set; } = "4h";
+        public SslSessionTimeoutEnum SslSessionTimeout { get; set; } = SslSessionTimeoutEnum.Small;
 
         /// <summary>是否啟用 SSL 會話票據。</summary>
         public bool SslSessionTickets { get; set; } = true;
 
         /// <summary>SSL buffer 大小。</summary>
-        public string SslBufferSize { get; set; } = "16k";
+        public SslBufferSizeEnum SslBufferSize { get; set; } = SslBufferSizeEnum.Medium;
 
         /// <summary>是否啟用 OCSP Stapling。</summary>
         public bool SslStapling { get; set; } = true;
@@ -69,10 +108,10 @@ namespace NginxManagerLib
         public bool SslStaplingVerify { get; set; } = true;
 
         /// <summary>DNS 解析器地址列表。</summary>
-        public List<string> Resolver { get; set; } = new List<string> { "8.8.8.8", "1.1.1.1" };
+        public List<string> DNS { get; set; } = new List<string> { "8.8.8.8", "1.1.1.1" };
 
         /// <summary>DNS 解析超時時間。</summary>
-        public string ResolverTimeout { get; set; } = "5s";
+        public string DNSResolverTimeout { get; set; } = "5s";
 
         /// <summary>HTTP 嚴格傳輸安全策略（HSTS）。</summary>
         public string StrictTransportSecurity { get; set; } = "max-age=31536000; includeSubDomains; preload";
@@ -111,7 +150,7 @@ namespace NginxManagerLib
         public string ClientHeaderTimeout { get; set; } = "10s";
 
         /// <summary>大請求標頭 buffer 設置。</summary>
-        public string LargeClientHeaderBuffers { get; set; } = "4 32k";
+        public LargeClientHeaderBuffersEnum LargeClientHeaderBuffers { get; set; } = LargeClientHeaderBuffersEnum.Large;
 
         /// <summary>是否啟用 Gzip 壓縮。</summary>
         public bool Gzip { get; set; } = true;
@@ -150,7 +189,7 @@ namespace NginxManagerLib
                         ProxySetHeaderUpgrade = "$http_upgrade",
                         ProxySetHeaderXForwardedHost = "$host",
                         ProxyCacheBypass = "$http_upgrade",
-                        ProxyRedirect = "off",
+                        ProxyRedirect = "default",
                         ProxyBuffering = false,
                         ProxyBuffers = "32 16k",
                         ProxyBufferSize = "64k",
@@ -160,14 +199,14 @@ namespace NginxManagerLib
                     },
                     new Location
                     {
-                        Path = "/",
+                        Path = "~ ^/",
                         ProxyPass = "https://127.0.0.1:450",
                         ProxyHttpVersion = "1.1",
                         ProxySetHeaderConnection = "",
                         ProxySetHeaderUpgrade = "$http_upgrade",
                         ProxySetHeaderXForwardedHost = "$host",
                         ProxyCacheBypass = "$http_upgrade",
-                        ProxyRedirect = "off",
+                        ProxyRedirect = "default",
                         ProxyBuffering = false,
                         ProxyBuffers = "32 16k",
                         ProxyBufferSize = "64k",
@@ -183,23 +222,34 @@ namespace NginxManagerLib
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine("server {");
-            sb.AppendLine($"    listen {ListenPort} {(Ssl ? "ssl" : "")} {(Http2 ? "http2" : "")};");
-            sb.AppendLine($"    server_name {ServerName};");
+            if(UseHttp)
+            {
+                sb.AppendLine("server {");
+                sb.AppendLine($"    listen {ListenPort};");
+                sb.AppendLine($"    server_name {ServerName};");
+            }
+            else
+            {
+                sb.AppendLine("server {");
+                sb.AppendLine($"    listen {ListenPort} {(Ssl ? "ssl" : "")} {(Http2 ? "http2" : "")};");
+                sb.AppendLine($"    server_name {ServerName};");
 
-            AppendIfNotEmpty(sb, "ssl_certificate", SslCertificate);
-            AppendIfNotEmpty(sb, "ssl_certificate_key", SslCertificateKey);
-            AppendIfNotEmpty(sb, "ssl_protocols", GetSslProtocols());
-            AppendIfNotEmpty(sb, "ssl_ciphers", SslCiphers);
-            AppendIfNotEmpty(sb, "ssl_prefer_server_ciphers", SslPreferServerCiphers ? "on" : "off");
-            AppendIfNotEmpty(sb, "ssl_session_cache", SslSessionCache);
-            AppendIfNotEmpty(sb, "ssl_session_timeout", SslSessionTimeout);
-            AppendIfNotEmpty(sb, "ssl_session_tickets", SslSessionTickets ? "on" : "off");
-            AppendIfNotEmpty(sb, "ssl_buffer_size", SslBufferSize);
-            AppendIfNotEmpty(sb, "ssl_stapling", SslStapling ? "on" : "off");
-            AppendIfNotEmpty(sb, "ssl_stapling_verify", SslStaplingVerify ? "on" : "off");
-            AppendIfNotEmpty(sb, "resolver", string.Join(" ", Resolver));
-            AppendIfNotEmpty(sb, "resolver_timeout", ResolverTimeout);
+                AppendIfNotEmpty(sb, "ssl_certificate", SslCertificate);
+                AppendIfNotEmpty(sb, "ssl_certificate_key", SslCertificateKey);
+                AppendIfNotEmpty(sb, "ssl_protocols", GetSslProtocols());
+                AppendIfNotEmpty(sb, "ssl_ciphers", GetSslCiphersString());
+                AppendIfNotEmpty(sb, "ssl_prefer_server_ciphers", SslPreferServerCiphers ? "on" : "off");
+                AppendIfNotEmpty(sb, "ssl_session_cache", SslSessionCache);
+                AppendIfNotEmpty(sb, "ssl_session_timeout", GetSslSessionTimeoutString());
+                AppendIfNotEmpty(sb, "ssl_session_tickets", SslSessionTickets ? "on" : "off");
+                AppendIfNotEmpty(sb, "ssl_buffer_size", GetSslBufferSizeString());
+                AppendIfNotEmpty(sb, "ssl_stapling", SslStapling ? "on" : "off");
+                AppendIfNotEmpty(sb, "ssl_stapling_verify", SslStaplingVerify ? "on" : "off");
+            }
+           
+
+            AppendIfNotEmpty(sb, "resolver", string.Join(" ", DNS));
+            AppendIfNotEmpty(sb, "resolver_timeout", DNSResolverTimeout);
             AppendIfNotEmpty(sb, "add_header Strict-Transport-Security", $"\"{StrictTransportSecurity}\" always");
 
             foreach (var header in ProxyHeaders)
@@ -215,7 +265,7 @@ namespace NginxManagerLib
             AppendIfNotEmpty(sb, "client_max_body_size", ClientMaxBodySize);
             AppendIfNotEmpty(sb, "client_body_timeout", ClientBodyTimeout);
             AppendIfNotEmpty(sb, "client_header_timeout", ClientHeaderTimeout);
-            AppendIfNotEmpty(sb, "large_client_header_buffers", LargeClientHeaderBuffers);
+            AppendIfNotEmpty(sb, "large_client_header_buffers", GetLargeClientHeaderBuffersString());
             AppendIfNotEmpty(sb, "gzip", Gzip ? "on" : "off");
             AppendIfNotEmpty(sb, "gzip_types", string.Join(" ", GzipTypes));
             AppendIfNotEmpty(sb, "gzip_comp_level", GzipCompLevel.ToString());
@@ -232,7 +282,80 @@ namespace NginxManagerLib
             sb.AppendLine("}");
             return sb.ToString();
         }
-
+        /// <summary>
+        /// 獲取 SSL 會話超時時間字串。
+        /// </summary>
+        private string GetSslSessionTimeoutString()
+        {
+            switch (SslSessionTimeout)
+            {
+                case SslSessionTimeoutEnum.Tiny:
+                    return "10m";
+                case SslSessionTimeoutEnum.Small:
+                    return "1h";
+                case SslSessionTimeoutEnum.Medium:
+                    return "4h";
+                case SslSessionTimeoutEnum.Large:
+                    return "1d";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        /// <summary>
+        /// 獲取 SSL buffer 大小字串。
+        /// </summary>
+        private string GetSslBufferSizeString()
+        {
+            switch (SslBufferSize)
+            {
+                case SslBufferSizeEnum.Tiny:
+                    return "4k";
+                case SslBufferSizeEnum.Small:
+                    return "8k";
+                case SslBufferSizeEnum.Medium:
+                    return "16k";
+                case SslBufferSizeEnum.Large:
+                    return "32k";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        /// <summary>
+        /// 獲取大請求標頭 buffer 設置字串。
+        /// </summary>
+        private string GetLargeClientHeaderBuffersString()
+        {
+            switch (LargeClientHeaderBuffers)
+            {
+                case LargeClientHeaderBuffersEnum.Small:
+                    return "4 8k";
+                case LargeClientHeaderBuffersEnum.Medium:
+                    return "8 32k";
+                case LargeClientHeaderBuffersEnum.Large:
+                    return "8 64k";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        /// <summary>
+        /// 獲取 SSL 加密套件字串。
+        /// </summary>
+        private string GetSslCiphersString()
+        {
+            switch (SslCiphers)
+            {
+                case SslCiphersEnum.EECDH_AESGCM_EECDH_CHACHA20_EDH_AESGCM:
+                    return "EECDH+AESGCM:EECDH+CHACHA20:EDH+AESGCM";
+                case SslCiphersEnum.EECDH_AES128GCM_SHA256_EECDH_CHACHA20:
+                    return "EECDH+AES128GCM-SHA256:EECDH+CHACHA20";
+                case SslCiphersEnum.TLS_AES_256_GCM_SHA384_EECDH_AESGCM:
+                    return "TLS_AES_256_GCM_SHA384:EECDH+AESGCM";
+                case SslCiphersEnum.DHE_RSA_AES256_SHA_DHE_RSA_AES128_SHA:
+                    return "DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
         /// <summary>
         /// 如果值不是空白，則加入 NGINX 配置行。
         /// </summary>
@@ -274,35 +397,36 @@ namespace NginxManagerLib
         public string ProxySetHeaderConnection { get; set; }
 
         /// <summary>代理升級設置（如 `$http_upgrade`）。</summary>
-        public string ProxySetHeaderUpgrade { get; set; }
+        public string ProxySetHeaderUpgrade { get; set; } = "$http_upgrade";
 
         /// <summary>代理 X-Forwarded-Host 設置（如 `$host`）。</summary>
         public string ProxySetHeaderXForwardedHost { get; set; }
 
         /// <summary>代理快取繞過設置（如 `$http_upgrade`）。</summary>
-        public string ProxyCacheBypass { get; set; }
+        public string ProxyCacheBypass { get; set; } = "$http_upgrade";
 
         /// <summary>代理重定向設置（如 `off`）。</summary>
-        public string ProxyRedirect { get; set; }
+        public string ProxyRedirect { get; set; } = "default";
 
         /// <summary>是否啟用代理緩衝（`true`/`false`）。</summary>
         public bool ProxyBuffering { get; set; } = false;
 
         /// <summary>代理緩衝設置（如 `32 16k`）。</summary>
-        public string ProxyBuffers { get; set; }
+        public string ProxyBuffers { get; set; } = "32 16k";
 
         /// <summary>代理緩衝大小（如 `64k`）。</summary>
-        public string ProxyBufferSize { get; set; }
+        public string ProxyBufferSize { get; set; } = "64k";
 
         /// <summary>代理連接超時（如 `15s`）。</summary>
-        public string ProxyConnectTimeout { get; set; }
+        public string ProxyConnectTimeout { get; set; } = "15s";
 
         /// <summary>代理傳送超時（如 `15s`）。</summary>
-        public string ProxySendTimeout { get; set; }
+        public string ProxySendTimeout { get; set; } = "15s";
 
         /// <summary>代理讀取超時（如 `30s`）。</summary>
-        public string ProxyReadTimeout { get; set; }
+        public string ProxyReadTimeout { get; set; } = "30s";
 
+        public string ProxyMaxTempFileSize { get; set; } = "100m";
         /// <summary>
         /// 轉換為 NGINX 配置格式的字串，並排除空值。
         /// </summary>
@@ -326,6 +450,7 @@ namespace NginxManagerLib
             AppendIfNotEmpty(sb, "proxy_connect_timeout", ProxyConnectTimeout);
             AppendIfNotEmpty(sb, "proxy_send_timeout", ProxySendTimeout);
             AppendIfNotEmpty(sb, "proxy_read_timeout", ProxyReadTimeout);
+            AppendIfNotEmpty(sb, "proxy_max_temp_file_size ", ProxyMaxTempFileSize);
 
             sb.AppendLine("    }");
             return sb.ToString();
