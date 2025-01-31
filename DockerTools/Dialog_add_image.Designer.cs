@@ -31,10 +31,13 @@
             this.rJ_TextBox_image_name = new MyUI.RJ_TextBox();
             this.rJ_TextBox_version_tag = new MyUI.RJ_TextBox();
             this.rJ_TextBox_filepath = new MyUI.RJ_TextBox();
-            this.rJ_Button_browse_folder = new MyUI.RJ_Button();
             this.rJ_Button_creat = new MyUI.RJ_Button();
-            this.rJ_Button_cancel = new MyUI.RJ_Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rJ_Button_cancel = new MyUI.RJ_Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rJ_Button_browse_folder = new MyUI.RJ_Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rJ_TextBox_image_name
@@ -112,10 +115,96 @@
             this.rJ_TextBox_filepath.Texts = "";
             this.rJ_TextBox_filepath.UnderlineStyle = true;
             // 
+            // rJ_Button_creat
+            // 
+            this.rJ_Button_creat.AutoResetState = false;
+            this.rJ_Button_creat.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_creat.BackgroundColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_creat.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rJ_Button_creat.BorderRadius = 22;
+            this.rJ_Button_creat.BorderSize = 0;
+            this.rJ_Button_creat.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_creat.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_creat.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_creat.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_creat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_creat.Font = new System.Drawing.Font("Cascadia Code", 12F);
+            this.rJ_Button_creat.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_creat.GUID = "";
+            this.rJ_Button_creat.Image_padding = new System.Windows.Forms.Padding(0);
+            this.rJ_Button_creat.Location = new System.Drawing.Point(457, 0);
+            this.rJ_Button_creat.Name = "rJ_Button_creat";
+            this.rJ_Button_creat.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_creat.ProhibitionLineWidth = 4;
+            this.rJ_Button_creat.ProhibitionSymbolSize = 30;
+            this.rJ_Button_creat.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_creat.ShadowSize = 0;
+            this.rJ_Button_creat.ShowLoadingForm = false;
+            this.rJ_Button_creat.Size = new System.Drawing.Size(126, 44);
+            this.rJ_Button_creat.State = false;
+            this.rJ_Button_creat.TabIndex = 155;
+            this.rJ_Button_creat.Text = "Creat";
+            this.rJ_Button_creat.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_creat.TextHeight = 0;
+            this.rJ_Button_creat.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rJ_Button_cancel);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.rJ_Button_creat);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(4, 280);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 5);
+            this.panel1.Size = new System.Drawing.Size(593, 49);
+            this.panel1.TabIndex = 157;
+            // 
+            // rJ_Button_cancel
+            // 
+            this.rJ_Button_cancel.AutoResetState = false;
+            this.rJ_Button_cancel.BackColor = System.Drawing.Color.Transparent;
+            this.rJ_Button_cancel.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_cancel.BorderColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_cancel.BorderRadius = 22;
+            this.rJ_Button_cancel.BorderSize = 1;
+            this.rJ_Button_cancel.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_cancel.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_cancel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_cancel.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_cancel.Font = new System.Drawing.Font("Cascadia Code", 12F);
+            this.rJ_Button_cancel.ForeColor = System.Drawing.Color.Black;
+            this.rJ_Button_cancel.GUID = "";
+            this.rJ_Button_cancel.Image_padding = new System.Windows.Forms.Padding(0);
+            this.rJ_Button_cancel.Location = new System.Drawing.Point(318, 0);
+            this.rJ_Button_cancel.Name = "rJ_Button_cancel";
+            this.rJ_Button_cancel.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_cancel.ProhibitionLineWidth = 4;
+            this.rJ_Button_cancel.ProhibitionSymbolSize = 30;
+            this.rJ_Button_cancel.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_cancel.ShadowSize = 0;
+            this.rJ_Button_cancel.ShowLoadingForm = false;
+            this.rJ_Button_cancel.Size = new System.Drawing.Size(126, 44);
+            this.rJ_Button_cancel.State = false;
+            this.rJ_Button_cancel.TabIndex = 158;
+            this.rJ_Button_cancel.Text = "Cancel";
+            this.rJ_Button_cancel.TextColor = System.Drawing.Color.Black;
+            this.rJ_Button_cancel.TextHeight = 0;
+            this.rJ_Button_cancel.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(444, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(13, 44);
+            this.panel2.TabIndex = 157;
+            // 
             // rJ_Button_browse_folder
             // 
             this.rJ_Button_browse_folder.AutoResetState = false;
-            this.rJ_Button_browse_folder.BackColor = System.Drawing.Color.Transparent;
+            this.rJ_Button_browse_folder.BackColor = System.Drawing.Color.White;
             this.rJ_Button_browse_folder.BackgroundColor = System.Drawing.Color.White;
             this.rJ_Button_browse_folder.BackgroundImage = global::DockerTools.Properties.Resources.folder;
             this.rJ_Button_browse_folder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -144,78 +233,13 @@
             this.rJ_Button_browse_folder.TextHeight = 0;
             this.rJ_Button_browse_folder.UseVisualStyleBackColor = false;
             // 
-            // rJ_Button_creat
-            // 
-            this.rJ_Button_creat.AutoResetState = false;
-            this.rJ_Button_creat.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_creat.BackgroundColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_creat.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rJ_Button_creat.BorderRadius = 30;
-            this.rJ_Button_creat.BorderSize = 0;
-            this.rJ_Button_creat.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_creat.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_creat.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_creat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_creat.Font = new System.Drawing.Font("Cascadia Code", 12F);
-            this.rJ_Button_creat.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_creat.GUID = "";
-            this.rJ_Button_creat.Image_padding = new System.Windows.Forms.Padding(0);
-            this.rJ_Button_creat.Location = new System.Drawing.Point(458, 275);
-            this.rJ_Button_creat.Name = "rJ_Button_creat";
-            this.rJ_Button_creat.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_creat.ProhibitionLineWidth = 4;
-            this.rJ_Button_creat.ProhibitionSymbolSize = 30;
-            this.rJ_Button_creat.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_creat.ShadowSize = 0;
-            this.rJ_Button_creat.ShowLoadingForm = false;
-            this.rJ_Button_creat.Size = new System.Drawing.Size(126, 40);
-            this.rJ_Button_creat.State = false;
-            this.rJ_Button_creat.TabIndex = 155;
-            this.rJ_Button_creat.Text = "Creat";
-            this.rJ_Button_creat.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_creat.TextHeight = 0;
-            this.rJ_Button_creat.UseVisualStyleBackColor = false;
-            // 
-            // rJ_Button_cancel
-            // 
-            this.rJ_Button_cancel.AutoResetState = false;
-            this.rJ_Button_cancel.BackColor = System.Drawing.Color.Transparent;
-            this.rJ_Button_cancel.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button_cancel.BorderColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_cancel.BorderRadius = 30;
-            this.rJ_Button_cancel.BorderSize = 1;
-            this.rJ_Button_cancel.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_cancel.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_cancel.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_cancel.Font = new System.Drawing.Font("Cascadia Code", 12F);
-            this.rJ_Button_cancel.ForeColor = System.Drawing.Color.Black;
-            this.rJ_Button_cancel.GUID = "";
-            this.rJ_Button_cancel.Image_padding = new System.Windows.Forms.Padding(0);
-            this.rJ_Button_cancel.Location = new System.Drawing.Point(326, 275);
-            this.rJ_Button_cancel.Name = "rJ_Button_cancel";
-            this.rJ_Button_cancel.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_cancel.ProhibitionLineWidth = 4;
-            this.rJ_Button_cancel.ProhibitionSymbolSize = 30;
-            this.rJ_Button_cancel.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_cancel.ShadowSize = 0;
-            this.rJ_Button_cancel.ShowLoadingForm = false;
-            this.rJ_Button_cancel.Size = new System.Drawing.Size(126, 40);
-            this.rJ_Button_cancel.State = false;
-            this.rJ_Button_cancel.TabIndex = 156;
-            this.rJ_Button_cancel.Text = "Cancel";
-            this.rJ_Button_cancel.TextColor = System.Drawing.Color.Black;
-            this.rJ_Button_cancel.TextHeight = 0;
-            this.rJ_Button_cancel.UseVisualStyleBackColor = false;
-            // 
             // Dialog_add_image
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(601, 333);
-            this.Controls.Add(this.rJ_Button_cancel);
-            this.Controls.Add(this.rJ_Button_creat);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.rJ_Button_browse_folder);
             this.Controls.Add(this.rJ_TextBox_filepath);
             this.Controls.Add(this.rJ_TextBox_version_tag);
@@ -223,6 +247,7 @@
             this.MaximizeBox = false;
             this.Name = "Dialog_add_image";
             this.Text = "Add Image";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -234,7 +259,9 @@
         private MyUI.RJ_TextBox rJ_TextBox_filepath;
         private MyUI.RJ_Button rJ_Button_browse_folder;
         private MyUI.RJ_Button rJ_Button_creat;
-        private MyUI.RJ_Button rJ_Button_cancel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.Panel panel1;
+        private MyUI.RJ_Button rJ_Button_cancel;
+        private System.Windows.Forms.Panel panel2;
     }
 }
