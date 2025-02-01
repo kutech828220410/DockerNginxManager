@@ -52,6 +52,8 @@ namespace DockerTools
             ToolStripMenuItem_檢查環境.Click += ToolStripMenuItem_檢查環境_Click;
             ToolStripMenuItem_nginx配置生成.Click += ToolStripMenuItem_nginx配置生成_Click;
 
+            ToolStripMenuItem_PFX_to_PEM.Click += ToolStripMenuItem_PFX_to_PEM_Click;
+
             rJ_Button_docker_add_image.MouseDownEvent += RJ_Button_docker_add_image_MouseDownEvent;
             rJ_Button_docker_delete_image.MouseDownEvent += RJ_Button_docker_delete_image_MouseDownEvent;
             rJ_Button_docker_download_image.MouseDownEvent += RJ_Button_docker_download_image_MouseDownEvent;
@@ -95,6 +97,11 @@ namespace DockerTools
 
         }
 
+        private void ToolStripMenuItem_PFX_to_PEM_Click(object sender, EventArgs e)
+        {
+            Dialog_PFX_to_PEM dialog_PFX_To_PEM = new Dialog_PFX_to_PEM();
+            dialog_PFX_To_PEM.ShowDialog();
+        }
         private void ToolStripMenuItem_nginx配置生成_Click(object sender, EventArgs e)
         {
            Dialog_set_naginx_conf dialog_Set_Naginx_Conf = new Dialog_set_naginx_conf();
@@ -215,20 +222,7 @@ namespace DockerTools
         {
             this.Invoke(new Action(delegate
             {
-                List<object[]> list_value = this.sqL_DataGridView_Docker_Images.Get_All_Select_RowsValues();
-                if (list_value.Count == 0)
-                {
-                    MyMessageBox.ShowDialog("請選擇要上傳的映像");
-                    return;
-                }
-                string imageName = "";
-                string tag = "";
-                foreach (var item in list_value)
-                {
-                    imageName = item[0].ToString();
-                    tag = item[1].ToString();
-
-                }
+              
                 if (openFileDialog.ShowDialog() != DialogResult.OK)
                 {
                     return;

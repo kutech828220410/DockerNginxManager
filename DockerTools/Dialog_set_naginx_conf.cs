@@ -66,6 +66,8 @@ namespace DockerTools
             rJ_Button_location_delete.MouseDownEvent += RJ_Button_location_delete_MouseDownEvent;
             rJ_Button_loaction_edit.MouseDownEvent += RJ_Button_loaction_edit_MouseDownEvent;
 
+            
+
             List<object[]> list_location = nginxParameters.Locations.ClassToSQL<Location , LocationAttributes>();
             this.sqL_DataGridView_location.RefreshGrid(list_location);
 
@@ -134,8 +136,33 @@ namespace DockerTools
 
         private void RJ_Button_nginx_conf_generate_MouseDownEvent(MouseEventArgs mevent)
         {
-            Dialog_nginx_conf dialog_Nginx_Conf = new Dialog_nginx_conf(nginxParameters);
-            dialog_Nginx_Conf.ShowDialog();
+            this.Invoke(new Action(() =>
+            {
+                if (rJ_RatioButton_https.Checked)
+                {
+                    nginxParameters.UseHttp = false;
+                }
+                else
+                {
+                    nginxParameters.UseHttp = true;
+                }
+                nginxParameters.ServerName = rJ_TextBox_ServerName.Text;
+                nginxParameters.ListenPort = int.Parse(rJ_TextBox_ListenPort.Text);
+                nginxParameters.ClientMaxBodySize = rJ_TextBox_ClientMaxBodySize.Text;
+                nginxParameters.SslCiphers = (NginxParameters.SslCiphersEnum)comboBox_SslCiphers.SelectedIndex;
+                nginxParameters.SslBufferSize = (NginxParameters.SslBufferSizeEnum)comboBox_SslBufferSize.SelectedIndex;
+                nginxParameters.SslSessionTimeout = (NginxParameters.SslSessionTimeoutEnum)comboBox_SslSessionTimeout.SelectedIndex;
+                nginxParameters.LargeClientHeaderBuffers = (NginxParameters.LargeClientHeaderBuffersEnum)comboBox_LargeClientHeaderBuffers.SelectedIndex;
+                nginxParameters.DNS.Clear();
+                for (int i = 0; i < listBox_DNS.Items.Count; i++)
+                {
+                    nginxParameters.DNS.Add(listBox_DNS.Items[i].ToString());
+                }
+
+                Dialog_nginx_conf dialog_Nginx_Conf = new Dialog_nginx_conf(nginxParameters);
+                dialog_Nginx_Conf.ShowDialog();
+            }));
+            
         }
         private void RJ_Button_DNS_delete_MouseDownEvent(MouseEventArgs mevent)
         {

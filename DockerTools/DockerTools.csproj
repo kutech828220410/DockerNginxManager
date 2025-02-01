@@ -36,12 +36,21 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>docker-tools-removebg-preview.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Basic">
       <HintPath>..\0.DLL\Basic.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.5.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="CallBackUI">
       <HintPath>..\0.DLL\CallBackUI.dll</HintPath>
+    </Reference>
+    <Reference Include="CertificateConverterLib">
+      <HintPath>..\0.DLL\CertificateConverterLib.dll</HintPath>
     </Reference>
     <Reference Include="CSkin">
       <HintPath>..\0.DLL\CSkin.dll</HintPath>
@@ -213,6 +222,12 @@
     <Compile Include="Dialog_nginx_conf.Designer.cs">
       <DependentUpon>Dialog_nginx_conf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog_PFX_to_PEM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_PFX_to_PEM.Designer.cs">
+      <DependentUpon>Dialog_PFX_to_PEM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog_set_naginx_conf.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog_nginx_conf.resx">
       <DependentUpon>Dialog_nginx_conf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog_PFX_to_PEM.resx">
+      <DependentUpon>Dialog_PFX_to_PEM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog_set_naginx_conf.resx">
       <DependentUpon>Dialog_set_naginx_conf.cs</DependentUpon>
@@ -328,6 +346,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="docker-tools-removebg-preview.ico" />
+    <Content Include="docker-tools.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

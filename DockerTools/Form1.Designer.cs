@@ -29,6 +29,7 @@ namespace DockerTools
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.rJ_Pannel1 = new MyUI.RJ_Pannel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -36,24 +37,15 @@ namespace DockerTools
             this.panel4 = new System.Windows.Forms.Panel();
             this.sqL_DataGridView_Docker_Images = new SQLUI.SQL_DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.rJ_Button_docker_upload_image = new MyUI.RJ_Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.rJ_Button_docker_download_image = new MyUI.RJ_Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.rJ_Button_docker_add_image = new MyUI.RJ_Button();
-            this.rJ_Button_docker_delete_image = new MyUI.RJ_Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.sqL_DataGridView_Docker_Containers = new SQLUI.SQL_DataGridView();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.rJ_Button_docker_run_container = new MyUI.RJ_Button();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.rJ_Button_docker_stop_container = new MyUI.RJ_Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.rJ_Button_docker_restart_container = new MyUI.RJ_Button();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.rJ_Button_docker_add_container = new MyUI.RJ_Button();
-            this.rJ_Button_docker_remove_container = new MyUI.RJ_Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.richTextBox_powershell = new System.Windows.Forms.RichTextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -65,6 +57,19 @@ namespace DockerTools
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_檢查環境 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_nginx配置生成 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pem憑證產生ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_PFX_to_PEM = new System.Windows.Forms.ToolStripMenuItem();
+            this.cERCRTCAToPFXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cERCRTCAToPEMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rJ_Button_docker_upload_image = new MyUI.RJ_Button();
+            this.rJ_Button_docker_download_image = new MyUI.RJ_Button();
+            this.rJ_Button_docker_add_image = new MyUI.RJ_Button();
+            this.rJ_Button_docker_delete_image = new MyUI.RJ_Button();
+            this.rJ_Button_docker_run_container = new MyUI.RJ_Button();
+            this.rJ_Button_docker_stop_container = new MyUI.RJ_Button();
+            this.rJ_Button_docker_restart_container = new MyUI.RJ_Button();
+            this.rJ_Button_docker_add_container = new MyUI.RJ_Button();
+            this.rJ_Button_docker_remove_container = new MyUI.RJ_Button();
             this.panel1.SuspendLayout();
             this.rJ_Pannel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -213,40 +218,6 @@ namespace DockerTools
             this.panel5.Size = new System.Drawing.Size(661, 65);
             this.panel5.TabIndex = 5;
             // 
-            // rJ_Button_docker_upload_image
-            // 
-            this.rJ_Button_docker_upload_image.AutoResetState = false;
-            this.rJ_Button_docker_upload_image.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_upload_image.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_upload_image.BackgroundImage = global::DockerTools.Properties.Resources.uploads;
-            this.rJ_Button_docker_upload_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_docker_upload_image.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_docker_upload_image.BorderRadius = 40;
-            this.rJ_Button_docker_upload_image.BorderSize = 1;
-            this.rJ_Button_docker_upload_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_docker_upload_image.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_docker_upload_image.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_docker_upload_image.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_docker_upload_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_docker_upload_image.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_upload_image.GUID = "";
-            this.rJ_Button_docker_upload_image.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rJ_Button_docker_upload_image.Location = new System.Drawing.Point(466, 3);
-            this.rJ_Button_docker_upload_image.Name = "rJ_Button_docker_upload_image";
-            this.rJ_Button_docker_upload_image.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_docker_upload_image.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_docker_upload_image.ProhibitionLineWidth = 4;
-            this.rJ_Button_docker_upload_image.ProhibitionSymbolSize = 30;
-            this.rJ_Button_docker_upload_image.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_docker_upload_image.ShadowSize = 0;
-            this.rJ_Button_docker_upload_image.ShowLoadingForm = false;
-            this.rJ_Button_docker_upload_image.Size = new System.Drawing.Size(61, 59);
-            this.rJ_Button_docker_upload_image.State = false;
-            this.rJ_Button_docker_upload_image.TabIndex = 158;
-            this.rJ_Button_docker_upload_image.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_upload_image.TextHeight = 0;
-            this.rJ_Button_docker_upload_image.UseVisualStyleBackColor = false;
-            // 
             // panel7
             // 
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
@@ -255,40 +226,6 @@ namespace DockerTools
             this.panel7.Size = new System.Drawing.Size(5, 59);
             this.panel7.TabIndex = 157;
             // 
-            // rJ_Button_docker_download_image
-            // 
-            this.rJ_Button_docker_download_image.AutoResetState = false;
-            this.rJ_Button_docker_download_image.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_download_image.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_download_image.BackgroundImage = global::DockerTools.Properties.Resources.downloads;
-            this.rJ_Button_docker_download_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_docker_download_image.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_docker_download_image.BorderRadius = 40;
-            this.rJ_Button_docker_download_image.BorderSize = 1;
-            this.rJ_Button_docker_download_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_docker_download_image.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_docker_download_image.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_docker_download_image.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_docker_download_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_docker_download_image.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_download_image.GUID = "";
-            this.rJ_Button_docker_download_image.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rJ_Button_docker_download_image.Location = new System.Drawing.Point(532, 3);
-            this.rJ_Button_docker_download_image.Name = "rJ_Button_docker_download_image";
-            this.rJ_Button_docker_download_image.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_docker_download_image.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_docker_download_image.ProhibitionLineWidth = 4;
-            this.rJ_Button_docker_download_image.ProhibitionSymbolSize = 30;
-            this.rJ_Button_docker_download_image.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_docker_download_image.ShadowSize = 0;
-            this.rJ_Button_docker_download_image.ShowLoadingForm = false;
-            this.rJ_Button_docker_download_image.Size = new System.Drawing.Size(61, 59);
-            this.rJ_Button_docker_download_image.State = false;
-            this.rJ_Button_docker_download_image.TabIndex = 156;
-            this.rJ_Button_docker_download_image.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_download_image.TextHeight = 0;
-            this.rJ_Button_docker_download_image.UseVisualStyleBackColor = false;
-            // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
@@ -296,72 +233,6 @@ namespace DockerTools
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(5, 59);
             this.panel6.TabIndex = 155;
-            // 
-            // rJ_Button_docker_add_image
-            // 
-            this.rJ_Button_docker_add_image.AutoResetState = false;
-            this.rJ_Button_docker_add_image.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_add_image.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_add_image.BackgroundImage = global::DockerTools.Properties.Resources.add_new_plus_512;
-            this.rJ_Button_docker_add_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_docker_add_image.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_docker_add_image.BorderRadius = 40;
-            this.rJ_Button_docker_add_image.BorderSize = 1;
-            this.rJ_Button_docker_add_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_docker_add_image.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_docker_add_image.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rJ_Button_docker_add_image.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_docker_add_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_docker_add_image.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_add_image.GUID = "";
-            this.rJ_Button_docker_add_image.Image_padding = new System.Windows.Forms.Padding(8);
-            this.rJ_Button_docker_add_image.Location = new System.Drawing.Point(2, 3);
-            this.rJ_Button_docker_add_image.Name = "rJ_Button_docker_add_image";
-            this.rJ_Button_docker_add_image.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_docker_add_image.ProhibitionLineWidth = 4;
-            this.rJ_Button_docker_add_image.ProhibitionSymbolSize = 30;
-            this.rJ_Button_docker_add_image.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_docker_add_image.ShadowSize = 0;
-            this.rJ_Button_docker_add_image.ShowLoadingForm = false;
-            this.rJ_Button_docker_add_image.Size = new System.Drawing.Size(61, 59);
-            this.rJ_Button_docker_add_image.State = false;
-            this.rJ_Button_docker_add_image.TabIndex = 154;
-            this.rJ_Button_docker_add_image.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_add_image.TextHeight = 0;
-            this.rJ_Button_docker_add_image.UseVisualStyleBackColor = false;
-            // 
-            // rJ_Button_docker_delete_image
-            // 
-            this.rJ_Button_docker_delete_image.AutoResetState = false;
-            this.rJ_Button_docker_delete_image.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_delete_image.BackgroundColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_delete_image.BackgroundImage = global::DockerTools.Properties.Resources.trash_512;
-            this.rJ_Button_docker_delete_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_docker_delete_image.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_docker_delete_image.BorderRadius = 40;
-            this.rJ_Button_docker_delete_image.BorderSize = 1;
-            this.rJ_Button_docker_delete_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_docker_delete_image.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_docker_delete_image.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_docker_delete_image.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_docker_delete_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_docker_delete_image.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_delete_image.GUID = "";
-            this.rJ_Button_docker_delete_image.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rJ_Button_docker_delete_image.Location = new System.Drawing.Point(598, 3);
-            this.rJ_Button_docker_delete_image.Name = "rJ_Button_docker_delete_image";
-            this.rJ_Button_docker_delete_image.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_docker_delete_image.ProhibitionLineWidth = 4;
-            this.rJ_Button_docker_delete_image.ProhibitionSymbolSize = 30;
-            this.rJ_Button_docker_delete_image.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_docker_delete_image.ShadowSize = 0;
-            this.rJ_Button_docker_delete_image.ShowLoadingForm = false;
-            this.rJ_Button_docker_delete_image.Size = new System.Drawing.Size(61, 59);
-            this.rJ_Button_docker_delete_image.State = false;
-            this.rJ_Button_docker_delete_image.TabIndex = 153;
-            this.rJ_Button_docker_delete_image.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_docker_delete_image.TextHeight = 0;
-            this.rJ_Button_docker_delete_image.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -458,6 +329,264 @@ namespace DockerTools
             this.panel9.Size = new System.Drawing.Size(661, 65);
             this.panel9.TabIndex = 6;
             // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel12.Location = new System.Drawing.Point(461, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(5, 59);
+            this.panel12.TabIndex = 160;
+            // 
+            // panel10
+            // 
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(527, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(5, 59);
+            this.panel10.TabIndex = 157;
+            // 
+            // panel11
+            // 
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel11.Location = new System.Drawing.Point(593, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(5, 59);
+            this.panel11.TabIndex = 155;
+            // 
+            // panel8
+            // 
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(3, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(661, 11);
+            this.panel8.TabIndex = 4;
+            // 
+            // richTextBox_powershell
+            // 
+            this.richTextBox_powershell.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.richTextBox_powershell.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox_powershell.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox_powershell.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.richTextBox_powershell.ForeColor = System.Drawing.Color.White;
+            this.richTextBox_powershell.Location = new System.Drawing.Point(707, 24);
+            this.richTextBox_powershell.Name = "richTextBox_powershell";
+            this.richTextBox_powershell.Size = new System.Drawing.Size(777, 837);
+            this.richTextBox_powershell.TabIndex = 2;
+            this.richTextBox_powershell.Text = "";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "*.*";
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.檔案ToolStripMenuItem,
+            this.工具ToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1484, 24);
+            this.menuStrip.TabIndex = 3;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // 檔案ToolStripMenuItem
+            // 
+            this.檔案ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.離開ToolStripMenuItem});
+            this.檔案ToolStripMenuItem.Name = "檔案ToolStripMenuItem";
+            this.檔案ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.檔案ToolStripMenuItem.Text = "檔案";
+            // 
+            // 離開ToolStripMenuItem
+            // 
+            this.離開ToolStripMenuItem.Name = "離開ToolStripMenuItem";
+            this.離開ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.離開ToolStripMenuItem.Text = "結束";
+            // 
+            // 工具ToolStripMenuItem
+            // 
+            this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_檢查環境,
+            this.ToolStripMenuItem_nginx配置生成,
+            this.pem憑證產生ToolStripMenuItem});
+            this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.工具ToolStripMenuItem.Text = "工具";
+            // 
+            // ToolStripMenuItem_檢查環境
+            // 
+            this.ToolStripMenuItem_檢查環境.Name = "ToolStripMenuItem_檢查環境";
+            this.ToolStripMenuItem_檢查環境.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_檢查環境.Text = "檢查環境";
+            // 
+            // ToolStripMenuItem_nginx配置生成
+            // 
+            this.ToolStripMenuItem_nginx配置生成.Name = "ToolStripMenuItem_nginx配置生成";
+            this.ToolStripMenuItem_nginx配置生成.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_nginx配置生成.Text = "Nginx配置生成";
+            // 
+            // pem憑證產生ToolStripMenuItem
+            // 
+            this.pem憑證產生ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_PFX_to_PEM,
+            this.cERCRTCAToPFXToolStripMenuItem,
+            this.cERCRTCAToPEMToolStripMenuItem});
+            this.pem憑證產生ToolStripMenuItem.Name = "pem憑證產生ToolStripMenuItem";
+            this.pem憑證產生ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pem憑證產生ToolStripMenuItem.Text = "憑證...";
+            // 
+            // ToolStripMenuItem_PFX_to_PEM
+            // 
+            this.ToolStripMenuItem_PFX_to_PEM.Name = "ToolStripMenuItem_PFX_to_PEM";
+            this.ToolStripMenuItem_PFX_to_PEM.Size = new System.Drawing.Size(190, 22);
+            this.ToolStripMenuItem_PFX_to_PEM.Text = "PFX to PEM";
+            // 
+            // cERCRTCAToPFXToolStripMenuItem
+            // 
+            this.cERCRTCAToPFXToolStripMenuItem.Name = "cERCRTCAToPFXToolStripMenuItem";
+            this.cERCRTCAToPFXToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.cERCRTCAToPFXToolStripMenuItem.Text = "CER/CRT/CA to PFX";
+            // 
+            // cERCRTCAToPEMToolStripMenuItem
+            // 
+            this.cERCRTCAToPEMToolStripMenuItem.Name = "cERCRTCAToPEMToolStripMenuItem";
+            this.cERCRTCAToPEMToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.cERCRTCAToPEMToolStripMenuItem.Text = "CER/CRT/CA to PEM";
+            // 
+            // rJ_Button_docker_upload_image
+            // 
+            this.rJ_Button_docker_upload_image.AutoResetState = false;
+            this.rJ_Button_docker_upload_image.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_upload_image.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_upload_image.BackgroundImage = global::DockerTools.Properties.Resources.uploads;
+            this.rJ_Button_docker_upload_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_docker_upload_image.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_upload_image.BorderRadius = 40;
+            this.rJ_Button_docker_upload_image.BorderSize = 1;
+            this.rJ_Button_docker_upload_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_upload_image.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_upload_image.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_docker_upload_image.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_upload_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_upload_image.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_upload_image.GUID = "";
+            this.rJ_Button_docker_upload_image.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rJ_Button_docker_upload_image.Location = new System.Drawing.Point(466, 3);
+            this.rJ_Button_docker_upload_image.Name = "rJ_Button_docker_upload_image";
+            this.rJ_Button_docker_upload_image.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_docker_upload_image.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_upload_image.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_upload_image.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_upload_image.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_upload_image.ShadowSize = 0;
+            this.rJ_Button_docker_upload_image.ShowLoadingForm = false;
+            this.rJ_Button_docker_upload_image.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_upload_image.State = false;
+            this.rJ_Button_docker_upload_image.TabIndex = 158;
+            this.rJ_Button_docker_upload_image.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_upload_image.TextHeight = 0;
+            this.rJ_Button_docker_upload_image.UseVisualStyleBackColor = false;
+            // 
+            // rJ_Button_docker_download_image
+            // 
+            this.rJ_Button_docker_download_image.AutoResetState = false;
+            this.rJ_Button_docker_download_image.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_download_image.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_download_image.BackgroundImage = global::DockerTools.Properties.Resources.downloads;
+            this.rJ_Button_docker_download_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_docker_download_image.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_download_image.BorderRadius = 40;
+            this.rJ_Button_docker_download_image.BorderSize = 1;
+            this.rJ_Button_docker_download_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_download_image.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_download_image.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_docker_download_image.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_download_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_download_image.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_download_image.GUID = "";
+            this.rJ_Button_docker_download_image.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rJ_Button_docker_download_image.Location = new System.Drawing.Point(532, 3);
+            this.rJ_Button_docker_download_image.Name = "rJ_Button_docker_download_image";
+            this.rJ_Button_docker_download_image.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_docker_download_image.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_download_image.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_download_image.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_download_image.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_download_image.ShadowSize = 0;
+            this.rJ_Button_docker_download_image.ShowLoadingForm = false;
+            this.rJ_Button_docker_download_image.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_download_image.State = false;
+            this.rJ_Button_docker_download_image.TabIndex = 156;
+            this.rJ_Button_docker_download_image.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_download_image.TextHeight = 0;
+            this.rJ_Button_docker_download_image.UseVisualStyleBackColor = false;
+            // 
+            // rJ_Button_docker_add_image
+            // 
+            this.rJ_Button_docker_add_image.AutoResetState = false;
+            this.rJ_Button_docker_add_image.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_add_image.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_add_image.BackgroundImage = global::DockerTools.Properties.Resources.add_new_plus_512;
+            this.rJ_Button_docker_add_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_docker_add_image.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_add_image.BorderRadius = 40;
+            this.rJ_Button_docker_add_image.BorderSize = 1;
+            this.rJ_Button_docker_add_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_add_image.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_add_image.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rJ_Button_docker_add_image.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_add_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_add_image.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_add_image.GUID = "";
+            this.rJ_Button_docker_add_image.Image_padding = new System.Windows.Forms.Padding(8);
+            this.rJ_Button_docker_add_image.Location = new System.Drawing.Point(2, 3);
+            this.rJ_Button_docker_add_image.Name = "rJ_Button_docker_add_image";
+            this.rJ_Button_docker_add_image.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_add_image.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_add_image.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_add_image.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_add_image.ShadowSize = 0;
+            this.rJ_Button_docker_add_image.ShowLoadingForm = false;
+            this.rJ_Button_docker_add_image.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_add_image.State = false;
+            this.rJ_Button_docker_add_image.TabIndex = 154;
+            this.rJ_Button_docker_add_image.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_add_image.TextHeight = 0;
+            this.rJ_Button_docker_add_image.UseVisualStyleBackColor = false;
+            // 
+            // rJ_Button_docker_delete_image
+            // 
+            this.rJ_Button_docker_delete_image.AutoResetState = false;
+            this.rJ_Button_docker_delete_image.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_delete_image.BackgroundColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_delete_image.BackgroundImage = global::DockerTools.Properties.Resources.trash_512;
+            this.rJ_Button_docker_delete_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_docker_delete_image.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_docker_delete_image.BorderRadius = 40;
+            this.rJ_Button_docker_delete_image.BorderSize = 1;
+            this.rJ_Button_docker_delete_image.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_docker_delete_image.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_docker_delete_image.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_docker_delete_image.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_docker_delete_image.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_docker_delete_image.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_delete_image.GUID = "";
+            this.rJ_Button_docker_delete_image.Image_padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rJ_Button_docker_delete_image.Location = new System.Drawing.Point(598, 3);
+            this.rJ_Button_docker_delete_image.Name = "rJ_Button_docker_delete_image";
+            this.rJ_Button_docker_delete_image.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_docker_delete_image.ProhibitionLineWidth = 4;
+            this.rJ_Button_docker_delete_image.ProhibitionSymbolSize = 30;
+            this.rJ_Button_docker_delete_image.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_docker_delete_image.ShadowSize = 0;
+            this.rJ_Button_docker_delete_image.ShowLoadingForm = false;
+            this.rJ_Button_docker_delete_image.Size = new System.Drawing.Size(61, 59);
+            this.rJ_Button_docker_delete_image.State = false;
+            this.rJ_Button_docker_delete_image.TabIndex = 153;
+            this.rJ_Button_docker_delete_image.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_docker_delete_image.TextHeight = 0;
+            this.rJ_Button_docker_delete_image.UseVisualStyleBackColor = false;
+            // 
             // rJ_Button_docker_run_container
             // 
             this.rJ_Button_docker_run_container.AutoResetState = false;
@@ -490,14 +619,6 @@ namespace DockerTools
             this.rJ_Button_docker_run_container.TextColor = System.Drawing.Color.White;
             this.rJ_Button_docker_run_container.TextHeight = 0;
             this.rJ_Button_docker_run_container.UseVisualStyleBackColor = false;
-            // 
-            // panel12
-            // 
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(461, 3);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(5, 59);
-            this.panel12.TabIndex = 160;
             // 
             // rJ_Button_docker_stop_container
             // 
@@ -532,14 +653,6 @@ namespace DockerTools
             this.rJ_Button_docker_stop_container.TextHeight = 0;
             this.rJ_Button_docker_stop_container.UseVisualStyleBackColor = false;
             // 
-            // panel10
-            // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(527, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(5, 59);
-            this.panel10.TabIndex = 157;
-            // 
             // rJ_Button_docker_restart_container
             // 
             this.rJ_Button_docker_restart_container.AutoResetState = false;
@@ -572,14 +685,6 @@ namespace DockerTools
             this.rJ_Button_docker_restart_container.TextColor = System.Drawing.Color.White;
             this.rJ_Button_docker_restart_container.TextHeight = 0;
             this.rJ_Button_docker_restart_container.UseVisualStyleBackColor = false;
-            // 
-            // panel11
-            // 
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel11.Location = new System.Drawing.Point(593, 3);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(5, 59);
-            this.panel11.TabIndex = 155;
             // 
             // rJ_Button_docker_add_container
             // 
@@ -647,77 +752,6 @@ namespace DockerTools
             this.rJ_Button_docker_remove_container.TextHeight = 0;
             this.rJ_Button_docker_remove_container.UseVisualStyleBackColor = false;
             // 
-            // panel8
-            // 
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(3, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(661, 11);
-            this.panel8.TabIndex = 4;
-            // 
-            // richTextBox_powershell
-            // 
-            this.richTextBox_powershell.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.richTextBox_powershell.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox_powershell.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox_powershell.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.richTextBox_powershell.ForeColor = System.Drawing.Color.White;
-            this.richTextBox_powershell.Location = new System.Drawing.Point(707, 24);
-            this.richTextBox_powershell.Name = "richTextBox_powershell";
-            this.richTextBox_powershell.Size = new System.Drawing.Size(777, 837);
-            this.richTextBox_powershell.TabIndex = 2;
-            this.richTextBox_powershell.Text = "";
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "*.*";
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.檔案ToolStripMenuItem,
-            this.工具ToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1484, 24);
-            this.menuStrip.TabIndex = 3;
-            this.menuStrip.Text = "menuStrip1";
-            // 
-            // 檔案ToolStripMenuItem
-            // 
-            this.檔案ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.離開ToolStripMenuItem});
-            this.檔案ToolStripMenuItem.Name = "檔案ToolStripMenuItem";
-            this.檔案ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.檔案ToolStripMenuItem.Text = "檔案";
-            // 
-            // 離開ToolStripMenuItem
-            // 
-            this.離開ToolStripMenuItem.Name = "離開ToolStripMenuItem";
-            this.離開ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.離開ToolStripMenuItem.Text = "結束";
-            // 
-            // 工具ToolStripMenuItem
-            // 
-            this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_檢查環境,
-            this.ToolStripMenuItem_nginx配置生成});
-            this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.工具ToolStripMenuItem.Text = "工具";
-            // 
-            // ToolStripMenuItem_檢查環境
-            // 
-            this.ToolStripMenuItem_檢查環境.Name = "ToolStripMenuItem_檢查環境";
-            this.ToolStripMenuItem_檢查環境.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_檢查環境.Text = "檢查環境";
-            // 
-            // ToolStripMenuItem_nginx配置生成
-            // 
-            this.ToolStripMenuItem_nginx配置生成.Name = "ToolStripMenuItem_nginx配置生成";
-            this.ToolStripMenuItem_nginx配置生成.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_nginx配置生成.Text = "Nginx配置生成";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -727,9 +761,10 @@ namespace DockerTools
             this.Controls.Add(this.richTextBox_powershell);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip);
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Form1";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DockerTools";
             this.panel1.ResumeLayout(false);
@@ -785,6 +820,10 @@ namespace DockerTools
         private System.Windows.Forms.ToolStripMenuItem 離開ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_檢查環境;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_nginx配置生成;
+        private System.Windows.Forms.ToolStripMenuItem pem憑證產生ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_PFX_to_PEM;
+        private System.Windows.Forms.ToolStripMenuItem cERCRTCAToPFXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cERCRTCAToPEMToolStripMenuItem;
     }
 }
 
