@@ -49,21 +49,21 @@
             this.rJ_Pannel1 = new MyUI.RJ_Pannel();
             this.sqL_DataGridView_VolumeMappings = new SQLUI.SQL_DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.rJ_Button_VolumeMappings_edit = new MyUI.RJ_Button();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.rJ_Button_VolumeMappings_delete = new MyUI.RJ_Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.rJ_Button_VolumeMappings_add = new MyUI.RJ_Button();
             this.rJ_Pannel2 = new MyUI.RJ_Pannel();
+            this.rJ_Button_generate = new MyUI.RJ_Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.rJ_TextBox_docker_command = new MyUI.RJ_TextBox();
-            this.comboBox_template = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.rJ_Button_refresh_docker_command = new MyUI.RJ_Button();
-            this.rJ_Button_generate = new MyUI.RJ_Button();
-            this.rJ_Button_VolumeMappings_edit = new MyUI.RJ_Button();
-            this.rJ_Button_VolumeMappings_delete = new MyUI.RJ_Button();
-            this.rJ_Button_VolumeMappings_add = new MyUI.RJ_Button();
             this.rJ_Button_load_template = new MyUI.RJ_Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox_template = new System.Windows.Forms.ComboBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.rJ_Button_refresh_docker_command = new MyUI.RJ_Button();
+            this.rJ_TextBox_docker_command = new MyUI.RJ_TextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -442,189 +442,6 @@
             this.panel8.Size = new System.Drawing.Size(666, 48);
             this.panel8.TabIndex = 0;
             // 
-            // panel10
-            // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(554, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(10, 45);
-            this.panel10.TabIndex = 176;
-            // 
-            // panel9
-            // 
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(610, 3);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(10, 45);
-            this.panel9.TabIndex = 174;
-            // 
-            // rJ_Pannel2
-            // 
-            this.rJ_Pannel2.BackColor = System.Drawing.Color.White;
-            this.rJ_Pannel2.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.rJ_Pannel2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.rJ_Pannel2.BorderRadius = 40;
-            this.rJ_Pannel2.BorderSize = 2;
-            this.rJ_Pannel2.Controls.Add(this.rJ_Button_generate);
-            this.rJ_Pannel2.Controls.Add(this.checkBox_Detach);
-            this.rJ_Pannel2.Controls.Add(this.panel4);
-            this.rJ_Pannel2.Controls.Add(this.panel5);
-            this.rJ_Pannel2.Controls.Add(this.rJ_Pannel1);
-            this.rJ_Pannel2.Controls.Add(this.panel6);
-            this.rJ_Pannel2.Controls.Add(this.panel7);
-            this.rJ_Pannel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rJ_Pannel2.ForeColor = System.Drawing.Color.White;
-            this.rJ_Pannel2.IsSelected = false;
-            this.rJ_Pannel2.Location = new System.Drawing.Point(7, 109);
-            this.rJ_Pannel2.Margin = new System.Windows.Forms.Padding(10);
-            this.rJ_Pannel2.Name = "rJ_Pannel2";
-            this.rJ_Pannel2.Padding = new System.Windows.Forms.Padding(10, 10, 15, 15);
-            this.rJ_Pannel2.ShadowColor = System.Drawing.Color.Gainsboro;
-            this.rJ_Pannel2.ShadowSize = 3;
-            this.rJ_Pannel2.Size = new System.Drawing.Size(1238, 447);
-            this.rJ_Pannel2.TabIndex = 174;
-            // 
-            // panel11
-            // 
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel11.Location = new System.Drawing.Point(7, 556);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1238, 12);
-            this.panel11.TabIndex = 175;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.rJ_Button_load_template);
-            this.panel12.Controls.Add(this.label5);
-            this.panel12.Controls.Add(this.comboBox_template);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel12.Location = new System.Drawing.Point(7, 47);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(1238, 62);
-            this.panel12.TabIndex = 178;
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.rJ_Button_refresh_docker_command);
-            this.panel13.Controls.Add(this.rJ_TextBox_docker_command);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(7, 568);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1238, 274);
-            this.panel13.TabIndex = 179;
-            // 
-            // rJ_TextBox_docker_command
-            // 
-            this.rJ_TextBox_docker_command.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rJ_TextBox_docker_command.BorderColor = System.Drawing.Color.DimGray;
-            this.rJ_TextBox_docker_command.BorderFocusColor = System.Drawing.Color.Blue;
-            this.rJ_TextBox_docker_command.BorderRadius = 10;
-            this.rJ_TextBox_docker_command.BorderSize = 1;
-            this.rJ_TextBox_docker_command.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rJ_TextBox_docker_command.Font = new System.Drawing.Font("Cascadia Code", 14.25F);
-            this.rJ_TextBox_docker_command.ForeColor = System.Drawing.Color.DimGray;
-            this.rJ_TextBox_docker_command.GUID = "";
-            this.rJ_TextBox_docker_command.Location = new System.Drawing.Point(0, 0);
-            this.rJ_TextBox_docker_command.Multiline = true;
-            this.rJ_TextBox_docker_command.Name = "rJ_TextBox_docker_command";
-            this.rJ_TextBox_docker_command.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rJ_TextBox_docker_command.PassWordChar = false;
-            this.rJ_TextBox_docker_command.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rJ_TextBox_docker_command.PlaceholderText = "enter docker command...";
-            this.rJ_TextBox_docker_command.ShowTouchPannel = false;
-            this.rJ_TextBox_docker_command.Size = new System.Drawing.Size(1238, 274);
-            this.rJ_TextBox_docker_command.TabIndex = 178;
-            this.rJ_TextBox_docker_command.TextAlgin = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rJ_TextBox_docker_command.Texts = "";
-            this.rJ_TextBox_docker_command.UnderlineStyle = false;
-            // 
-            // comboBox_template
-            // 
-            this.comboBox_template.BackColor = System.Drawing.Color.White;
-            this.comboBox_template.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox_template.FormattingEnabled = true;
-            this.comboBox_template.Location = new System.Drawing.Point(132, 10);
-            this.comboBox_template.Name = "comboBox_template";
-            this.comboBox_template.Size = new System.Drawing.Size(362, 33);
-            this.comboBox_template.TabIndex = 171;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label5.Location = new System.Drawing.Point(26, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 25);
-            this.label5.TabIndex = 172;
-            this.label5.Text = "Template";
-            // 
-            // rJ_Button_refresh_docker_command
-            // 
-            this.rJ_Button_refresh_docker_command.AutoResetState = false;
-            this.rJ_Button_refresh_docker_command.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rJ_Button_refresh_docker_command.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.rJ_Button_refresh_docker_command.BackgroundImage = global::DockerTools.Properties.Resources._568370;
-            this.rJ_Button_refresh_docker_command.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_refresh_docker_command.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_refresh_docker_command.BorderRadius = 30;
-            this.rJ_Button_refresh_docker_command.BorderSize = 1;
-            this.rJ_Button_refresh_docker_command.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_refresh_docker_command.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_refresh_docker_command.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_refresh_docker_command.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_refresh_docker_command.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_refresh_docker_command.GUID = "";
-            this.rJ_Button_refresh_docker_command.Image_padding = new System.Windows.Forms.Padding(8, 5, 5, 5);
-            this.rJ_Button_refresh_docker_command.Location = new System.Drawing.Point(1186, 6);
-            this.rJ_Button_refresh_docker_command.Name = "rJ_Button_refresh_docker_command";
-            this.rJ_Button_refresh_docker_command.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_refresh_docker_command.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_refresh_docker_command.ProhibitionLineWidth = 4;
-            this.rJ_Button_refresh_docker_command.ProhibitionSymbolSize = 30;
-            this.rJ_Button_refresh_docker_command.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_refresh_docker_command.ShadowSize = 0;
-            this.rJ_Button_refresh_docker_command.ShowLoadingForm = false;
-            this.rJ_Button_refresh_docker_command.Size = new System.Drawing.Size(46, 45);
-            this.rJ_Button_refresh_docker_command.State = false;
-            this.rJ_Button_refresh_docker_command.TabIndex = 179;
-            this.rJ_Button_refresh_docker_command.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_refresh_docker_command.TextHeight = 0;
-            this.rJ_Button_refresh_docker_command.UseVisualStyleBackColor = false;
-            // 
-            // rJ_Button_generate
-            // 
-            this.rJ_Button_generate.AutoResetState = false;
-            this.rJ_Button_generate.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.rJ_Button_generate.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.rJ_Button_generate.BackgroundImage = global::DockerTools.Properties.Resources.message;
-            this.rJ_Button_generate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_generate.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_generate.BorderRadius = 30;
-            this.rJ_Button_generate.BorderSize = 1;
-            this.rJ_Button_generate.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_generate.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_generate.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_generate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_generate.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_generate.GUID = "";
-            this.rJ_Button_generate.Image_padding = new System.Windows.Forms.Padding(8, 5, 5, 5);
-            this.rJ_Button_generate.Location = new System.Drawing.Point(1165, 390);
-            this.rJ_Button_generate.Name = "rJ_Button_generate";
-            this.rJ_Button_generate.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_generate.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_generate.ProhibitionLineWidth = 4;
-            this.rJ_Button_generate.ProhibitionSymbolSize = 30;
-            this.rJ_Button_generate.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_generate.ShadowSize = 0;
-            this.rJ_Button_generate.ShowLoadingForm = false;
-            this.rJ_Button_generate.Size = new System.Drawing.Size(46, 45);
-            this.rJ_Button_generate.State = false;
-            this.rJ_Button_generate.TabIndex = 178;
-            this.rJ_Button_generate.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_generate.TextHeight = 0;
-            this.rJ_Button_generate.UseVisualStyleBackColor = false;
-            // 
             // rJ_Button_VolumeMappings_edit
             // 
             this.rJ_Button_VolumeMappings_edit.AutoResetState = false;
@@ -658,6 +475,14 @@
             this.rJ_Button_VolumeMappings_edit.TextColor = System.Drawing.Color.White;
             this.rJ_Button_VolumeMappings_edit.TextHeight = 0;
             this.rJ_Button_VolumeMappings_edit.UseVisualStyleBackColor = false;
+            // 
+            // panel10
+            // 
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(554, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(10, 45);
+            this.panel10.TabIndex = 176;
             // 
             // rJ_Button_VolumeMappings_delete
             // 
@@ -693,6 +518,14 @@
             this.rJ_Button_VolumeMappings_delete.TextHeight = 0;
             this.rJ_Button_VolumeMappings_delete.UseVisualStyleBackColor = false;
             // 
+            // panel9
+            // 
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(610, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(10, 45);
+            this.panel9.TabIndex = 174;
+            // 
             // rJ_Button_VolumeMappings_add
             // 
             this.rJ_Button_VolumeMappings_add.AutoResetState = false;
@@ -727,6 +560,84 @@
             this.rJ_Button_VolumeMappings_add.TextHeight = 0;
             this.rJ_Button_VolumeMappings_add.UseVisualStyleBackColor = false;
             // 
+            // rJ_Pannel2
+            // 
+            this.rJ_Pannel2.BackColor = System.Drawing.Color.White;
+            this.rJ_Pannel2.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.rJ_Pannel2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.rJ_Pannel2.BorderRadius = 40;
+            this.rJ_Pannel2.BorderSize = 2;
+            this.rJ_Pannel2.Controls.Add(this.rJ_Button_generate);
+            this.rJ_Pannel2.Controls.Add(this.checkBox_Detach);
+            this.rJ_Pannel2.Controls.Add(this.panel4);
+            this.rJ_Pannel2.Controls.Add(this.panel5);
+            this.rJ_Pannel2.Controls.Add(this.rJ_Pannel1);
+            this.rJ_Pannel2.Controls.Add(this.panel6);
+            this.rJ_Pannel2.Controls.Add(this.panel7);
+            this.rJ_Pannel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rJ_Pannel2.ForeColor = System.Drawing.Color.White;
+            this.rJ_Pannel2.IsSelected = false;
+            this.rJ_Pannel2.Location = new System.Drawing.Point(7, 109);
+            this.rJ_Pannel2.Margin = new System.Windows.Forms.Padding(10);
+            this.rJ_Pannel2.Name = "rJ_Pannel2";
+            this.rJ_Pannel2.Padding = new System.Windows.Forms.Padding(10, 10, 15, 15);
+            this.rJ_Pannel2.ShadowColor = System.Drawing.Color.Gainsboro;
+            this.rJ_Pannel2.ShadowSize = 3;
+            this.rJ_Pannel2.Size = new System.Drawing.Size(1238, 447);
+            this.rJ_Pannel2.TabIndex = 174;
+            // 
+            // rJ_Button_generate
+            // 
+            this.rJ_Button_generate.AutoResetState = false;
+            this.rJ_Button_generate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rJ_Button_generate.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.rJ_Button_generate.BackgroundImage = global::DockerTools.Properties.Resources.message;
+            this.rJ_Button_generate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_generate.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_generate.BorderRadius = 30;
+            this.rJ_Button_generate.BorderSize = 1;
+            this.rJ_Button_generate.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_generate.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_generate.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_generate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_generate.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_generate.GUID = "";
+            this.rJ_Button_generate.Image_padding = new System.Windows.Forms.Padding(8, 5, 5, 5);
+            this.rJ_Button_generate.Location = new System.Drawing.Point(1165, 390);
+            this.rJ_Button_generate.Name = "rJ_Button_generate";
+            this.rJ_Button_generate.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_generate.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_generate.ProhibitionLineWidth = 4;
+            this.rJ_Button_generate.ProhibitionSymbolSize = 30;
+            this.rJ_Button_generate.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_generate.ShadowSize = 0;
+            this.rJ_Button_generate.ShowLoadingForm = false;
+            this.rJ_Button_generate.Size = new System.Drawing.Size(46, 45);
+            this.rJ_Button_generate.State = false;
+            this.rJ_Button_generate.TabIndex = 178;
+            this.rJ_Button_generate.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_generate.TextHeight = 0;
+            this.rJ_Button_generate.UseVisualStyleBackColor = false;
+            // 
+            // panel11
+            // 
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(7, 556);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1238, 12);
+            this.panel11.TabIndex = 175;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.rJ_Button_load_template);
+            this.panel12.Controls.Add(this.label5);
+            this.panel12.Controls.Add(this.comboBox_template);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(7, 47);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(1238, 62);
+            this.panel12.TabIndex = 178;
+            // 
             // rJ_Button_load_template
             // 
             this.rJ_Button_load_template.AutoResetState = false;
@@ -759,6 +670,95 @@
             this.rJ_Button_load_template.TextColor = System.Drawing.Color.White;
             this.rJ_Button_load_template.TextHeight = 0;
             this.rJ_Button_load_template.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label5.Location = new System.Drawing.Point(26, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 25);
+            this.label5.TabIndex = 172;
+            this.label5.Text = "Template";
+            // 
+            // comboBox_template
+            // 
+            this.comboBox_template.BackColor = System.Drawing.Color.White;
+            this.comboBox_template.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_template.FormattingEnabled = true;
+            this.comboBox_template.Location = new System.Drawing.Point(132, 9);
+            this.comboBox_template.Name = "comboBox_template";
+            this.comboBox_template.Size = new System.Drawing.Size(362, 33);
+            this.comboBox_template.TabIndex = 171;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.rJ_Button_refresh_docker_command);
+            this.panel13.Controls.Add(this.rJ_TextBox_docker_command);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(7, 568);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(1238, 274);
+            this.panel13.TabIndex = 179;
+            // 
+            // rJ_Button_refresh_docker_command
+            // 
+            this.rJ_Button_refresh_docker_command.AutoResetState = false;
+            this.rJ_Button_refresh_docker_command.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.rJ_Button_refresh_docker_command.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.rJ_Button_refresh_docker_command.BackgroundImage = global::DockerTools.Properties.Resources._568370;
+            this.rJ_Button_refresh_docker_command.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_refresh_docker_command.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_refresh_docker_command.BorderRadius = 30;
+            this.rJ_Button_refresh_docker_command.BorderSize = 1;
+            this.rJ_Button_refresh_docker_command.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_refresh_docker_command.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_refresh_docker_command.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_refresh_docker_command.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_refresh_docker_command.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_refresh_docker_command.GUID = "";
+            this.rJ_Button_refresh_docker_command.Image_padding = new System.Windows.Forms.Padding(8, 5, 5, 5);
+            this.rJ_Button_refresh_docker_command.Location = new System.Drawing.Point(1186, 6);
+            this.rJ_Button_refresh_docker_command.Name = "rJ_Button_refresh_docker_command";
+            this.rJ_Button_refresh_docker_command.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_refresh_docker_command.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_refresh_docker_command.ProhibitionLineWidth = 4;
+            this.rJ_Button_refresh_docker_command.ProhibitionSymbolSize = 30;
+            this.rJ_Button_refresh_docker_command.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_refresh_docker_command.ShadowSize = 0;
+            this.rJ_Button_refresh_docker_command.ShowLoadingForm = false;
+            this.rJ_Button_refresh_docker_command.Size = new System.Drawing.Size(46, 45);
+            this.rJ_Button_refresh_docker_command.State = false;
+            this.rJ_Button_refresh_docker_command.TabIndex = 179;
+            this.rJ_Button_refresh_docker_command.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_refresh_docker_command.TextHeight = 0;
+            this.rJ_Button_refresh_docker_command.UseVisualStyleBackColor = false;
+            // 
+            // rJ_TextBox_docker_command
+            // 
+            this.rJ_TextBox_docker_command.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.rJ_TextBox_docker_command.BorderColor = System.Drawing.Color.DimGray;
+            this.rJ_TextBox_docker_command.BorderFocusColor = System.Drawing.Color.Blue;
+            this.rJ_TextBox_docker_command.BorderRadius = 10;
+            this.rJ_TextBox_docker_command.BorderSize = 1;
+            this.rJ_TextBox_docker_command.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rJ_TextBox_docker_command.Font = new System.Drawing.Font("Cascadia Code", 14.25F);
+            this.rJ_TextBox_docker_command.ForeColor = System.Drawing.Color.DimGray;
+            this.rJ_TextBox_docker_command.GUID = "";
+            this.rJ_TextBox_docker_command.Location = new System.Drawing.Point(0, 0);
+            this.rJ_TextBox_docker_command.Multiline = true;
+            this.rJ_TextBox_docker_command.Name = "rJ_TextBox_docker_command";
+            this.rJ_TextBox_docker_command.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rJ_TextBox_docker_command.PassWordChar = false;
+            this.rJ_TextBox_docker_command.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.rJ_TextBox_docker_command.PlaceholderText = "enter docker command...";
+            this.rJ_TextBox_docker_command.ShowTouchPannel = false;
+            this.rJ_TextBox_docker_command.Size = new System.Drawing.Size(1238, 274);
+            this.rJ_TextBox_docker_command.TabIndex = 178;
+            this.rJ_TextBox_docker_command.TextAlgin = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rJ_TextBox_docker_command.Texts = "";
+            this.rJ_TextBox_docker_command.UnderlineStyle = false;
             // 
             // Dialog_add_container
             // 

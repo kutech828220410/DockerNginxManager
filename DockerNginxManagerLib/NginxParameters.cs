@@ -14,6 +14,7 @@ namespace NginxManagerLib
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using static NginxManagerLib.NginxParameters;
 
     /// <summary>
     /// 表示 NGINX 伺服器的配置參數。
@@ -190,12 +191,13 @@ namespace NginxManagerLib
                         ProxySetHeaderXForwardedHost = "$host",
                         ProxyCacheBypass = "$http_upgrade",
                         ProxyRedirect = "default",
-                        ProxyBuffering = false,
+                        ProxyBuffering = "off",
                         ProxyBuffers = "32 16k",
                         ProxyBufferSize = "64k",
                         ProxyConnectTimeout = "15s",
                         ProxySendTimeout = "15s",
-                        ProxyReadTimeout = "30s"
+                        ProxyReadTimeout = "30s",
+                        ProxyMaxTempFileSize = "100M"
                     },
                     new Location
                     {
@@ -207,12 +209,13 @@ namespace NginxManagerLib
                         ProxySetHeaderXForwardedHost = "$host",
                         ProxyCacheBypass = "$http_upgrade",
                         ProxyRedirect = "default",
-                        ProxyBuffering = false,
+                        ProxyBuffering = "off",
                         ProxyBuffers = "32 16k",
                         ProxyBufferSize = "64k",
                         ProxyConnectTimeout = "15s",
                         ProxySendTimeout = "15s",
-                        ProxyReadTimeout = "30s"
+                        ProxyReadTimeout = "30s",
+                        ProxyMaxTempFileSize = "100M"
                     }
                 };
 
@@ -377,6 +380,316 @@ namespace NginxManagerLib
             if (SslProtocolTls13) protocols.Add("TLSv1.3");
             return string.Join(" ", protocols);
         }
+
+        public static NginxParameters FromString(string config)
+        {
+            var parameters = new NginxParameters();
+            parameters.Locations.Clear();
+            var lines = config.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            Location currentLocation = null;
+
+            foreach (var line in lines)
+            {
+                var trimmedLine = line.Trim();
+
+                if (trimmedLine.StartsWith("listen"))
+                {
+                    parameters.ListenPort = int.Parse(trimmedLine.Split(' ')[1]);
+                    parameters.Ssl = trimmedLine.Contains("ssl");
+                    parameters.Http2 = trimmedLine.Contains("http2");
+                }
+                else if (trimmedLine.StartsWith("server_name"))
+                {
+                    parameters.ServerName = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("ssl_certificate "))
+                {
+                    parameters.SslCertificate = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("ssl_certificate_key"))
+                {
+                    parameters.SslCertificateKey = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("ssl_protocols"))
+                {
+                    var protocols = trimmedLine.Split(' ').Skip(1).Select(p => p.TrimEnd(';')).ToList();
+                    parameters.SslProtocolTls12 = protocols.Contains("TLSv1.2");
+                    parameters.SslProtocolTls13 = protocols.Contains("TLSv1.3");
+                }
+                else if (trimmedLine.StartsWith("ssl_ciphers"))
+                {
+                    var cipher = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    switch (cipher)
+                    {
+                        case "EECDH+AESGCM:EECDH+CHACHA20:EDH+AESGCM":
+                            parameters.SslCiphers = SslCiphersEnum.EECDH_AESGCM_EECDH_CHACHA20_EDH_AESGCM;
+                            break;
+                        case "EECDH+AES128GCM-SHA256:EECDH+CHACHA20":
+                            parameters.SslCiphers = SslCiphersEnum.EECDH_AES128GCM_SHA256_EECDH_CHACHA20;
+                            break;
+                        case "TLS_AES_256_GCM_SHA384:EECDH+AESGCM":
+                            parameters.SslCiphers = SslCiphersEnum.TLS_AES_256_GCM_SHA384_EECDH_AESGCM;
+                            break;
+                        case "DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA":
+                            parameters.SslCiphers = SslCiphersEnum.DHE_RSA_AES256_SHA_DHE_RSA_AES128_SHA;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+                else if (trimmedLine.StartsWith("ssl_prefer_server_ciphers"))
+                {
+                    parameters.SslPreferServerCiphers = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("ssl_session_cache"))
+                {
+                    parameters.SslSessionCache = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("ssl_session_timeout"))
+                {
+                    var timeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    switch (timeout)
+                    {
+                        case "10m":
+                            parameters.SslSessionTimeout = SslSessionTimeoutEnum.Tiny;
+                            break;
+                        case "1h":
+                            parameters.SslSessionTimeout = SslSessionTimeoutEnum.Small;
+                            break;
+                        case "4h":
+                            parameters.SslSessionTimeout = SslSessionTimeoutEnum.Medium;
+                            break;
+                        case "1d":
+                            parameters.SslSessionTimeout = SslSessionTimeoutEnum.Large;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+                else if (trimmedLine.StartsWith("ssl_session_tickets"))
+                {
+                    parameters.SslSessionTickets = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("ssl_buffer_size"))
+                {
+                    var bufferSize = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    switch (bufferSize)
+                    {
+                        case "4k":
+                            parameters.SslBufferSize = SslBufferSizeEnum.Tiny;
+                            break;
+                        case "8k":
+                            parameters.SslBufferSize = SslBufferSizeEnum.Small;
+                            break;
+                        case "16k":
+                            parameters.SslBufferSize = SslBufferSizeEnum.Medium;
+                            break;
+                        case "32k":
+                            parameters.SslBufferSize = SslBufferSizeEnum.Large;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+                else if (trimmedLine.StartsWith("ssl_stapling"))
+                {
+                    parameters.SslStapling = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("ssl_stapling_verify"))
+                {
+                    parameters.SslStaplingVerify = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("resolver "))
+                {
+                    List<string> strings = trimmedLine.Split(' ').Skip(1).Select(d => d.TrimEnd(';')).ToList();
+                    strings = (from s in strings where s.Check_IP_Adress() select s).ToList();
+                    parameters.DNS = strings;
+                }
+                else if (trimmedLine.StartsWith("resolver_timeout"))
+                {
+                    parameters.DNSResolverTimeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("add_header Strict-Transport-Security"))
+                {
+                    parameters.StrictTransportSecurity = trimmedLine.Split(' ')[2].Trim('"', ';');
+                }
+                else if (trimmedLine.StartsWith("proxy_set_header"))
+                {
+                    var parts = trimmedLine.Split(' ');
+                    parameters.ProxyHeaders[parts[1]] = parts[2].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("keepalive_timeout"))
+                {
+                    parameters.KeepaliveTimeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("sendfile"))
+                {
+                    parameters.Sendfile = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("tcp_nodelay"))
+                {
+                    parameters.TcpNodelay = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("tcp_nopush"))
+                {
+                    parameters.TcpNopush = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("fastcgi_keep_conn"))
+                {
+                    parameters.FastcgiKeepConn = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("client_max_body_size"))
+                {
+                    parameters.ClientMaxBodySize = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("client_body_timeout"))
+                {
+                    parameters.ClientBodyTimeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("client_header_timeout"))
+                {
+                    parameters.ClientHeaderTimeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("large_client_header_buffers"))
+                {
+                    var bufferParts = trimmedLine.Split(' ');
+                    switch (bufferParts[1])
+                    {
+                        case "4" when bufferParts[2] == "8k;":
+                            parameters.LargeClientHeaderBuffers = LargeClientHeaderBuffersEnum.Small;
+                            break;
+                        case "8" when bufferParts[2] == "32k;":
+                            parameters.LargeClientHeaderBuffers = LargeClientHeaderBuffersEnum.Medium;
+                            break;
+                        case "8" when bufferParts[2] == "64k;":
+                            parameters.LargeClientHeaderBuffers = LargeClientHeaderBuffersEnum.Large;
+                            break;
+                        default:
+                            parameters.LargeClientHeaderBuffers = LargeClientHeaderBuffersEnum.Medium;
+                            break;
+                    }
+                }
+                else if (trimmedLine.StartsWith("gzip "))
+                {
+                    parameters.Gzip = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("gzip_types"))
+                {
+                    parameters.GzipTypes = trimmedLine.Split(' ').Skip(1).Select(t => t.TrimEnd(';')).ToList();
+                }
+                else if (trimmedLine.StartsWith("gzip_comp_level"))
+                {
+                    parameters.GzipCompLevel = int.Parse(trimmedLine.Split(' ')[1].TrimEnd(';'));
+                }
+                else if (trimmedLine.StartsWith("gzip_min_length"))
+                {
+                    parameters.GzipMinLength = int.Parse(trimmedLine.Split(' ')[1].TrimEnd(';'));
+                }
+                else if (trimmedLine.StartsWith("gzip_proxied"))
+                {
+                    parameters.GzipProxied = trimmedLine.Split(' ')[1].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("gzip_buffers"))
+                {
+                    parameters.GzipBuffers = trimmedLine.Split(' ')[1] + " " + trimmedLine.Split(' ')[2].TrimEnd(';');
+                }
+                else if (trimmedLine.StartsWith("gzip_vary"))
+                {
+                    parameters.GzipVary = trimmedLine.Split(' ')[1].TrimEnd(';') == "on";
+                }
+                else if (trimmedLine.StartsWith("location "))
+                {
+                    if (currentLocation != null)
+                    {
+                        parameters.Locations.Add(currentLocation);
+                    }
+                    currentLocation = new Location();
+                    currentLocation.Path = trimmedLine.Substring(trimmedLine.IndexOf(" ")).TrimEnd('{').Trim();
+                }
+                else if (currentLocation != null)
+                {
+                    if (trimmedLine.StartsWith("proxy_pass"))
+                    {
+                        currentLocation.ProxyPass = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_http_version"))
+                    {
+                        currentLocation.ProxyHttpVersion = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_set_header Connection"))
+                    {
+                        currentLocation.ProxySetHeaderConnection = trimmedLine.Split(' ')[2].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_set_header Upgrade"))
+                    {
+                        currentLocation.ProxySetHeaderUpgrade = trimmedLine.Split(' ')[2].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_set_header X-Forwarded-Host"))
+                    {
+                        currentLocation.ProxySetHeaderXForwardedHost = trimmedLine.Split(' ')[2].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_cache_bypass"))
+                    {
+                        currentLocation.ProxyCacheBypass = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_redirect"))
+                    {
+                        currentLocation.ProxyRedirect = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_buffering"))
+                    {
+                        currentLocation.ProxyBuffering = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_buffers"))
+                    {
+                        currentLocation.ProxyBuffers = trimmedLine.Split(' ')[1] + " " + trimmedLine.Split(' ')[2].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_buffer_size"))
+                    {
+                        currentLocation.ProxyBufferSize = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_connect_timeout"))
+                    {
+                        currentLocation.ProxyConnectTimeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_send_timeout"))
+                    {
+                        currentLocation.ProxySendTimeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_read_timeout"))
+                    {
+                        currentLocation.ProxyReadTimeout = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }
+                    else if (trimmedLine.StartsWith("proxy_max_temp_file_size"))
+                    {
+                        currentLocation.ProxyMaxTempFileSize = trimmedLine.Split(' ')[1].TrimEnd(';');
+                    }                
+                    else if (trimmedLine.StartsWith("}"))
+                    {
+                        parameters.Locations.Add(currentLocation);
+                        currentLocation = null;
+                    }
+                }
+            }
+
+            if (currentLocation != null)
+            {
+                parameters.Locations.Add(currentLocation);
+            }
+
+            return parameters;
+        }
+        /// <summary>
+        /// 根據 GUID 移除 Location。
+        /// </summary>
+        /// <param name="guid">要移除的 Location 的 GUID。</param>
+        public void RemoveLocationsByGUID(string guid)
+        {
+            Locations.RemoveAll(location => location.GUID == guid);
+        }
+
+
+
     }
 
     /// <summary>
@@ -384,11 +697,12 @@ namespace NginxManagerLib
     /// </summary>
     public class Location
     {
+        public string GUID { get; set; } = Guid.NewGuid().ToString();
         /// <summary>路徑匹配規則（如 `/api` 或 `~ ^/(api|swagger)`）。</summary>
-        public string Path { get; set; }
+        public string Path { get; set; } = "~ ^/";
 
         /// <summary>代理轉發的目標地址（如 `http://127.0.0.1:4433`）。</summary>
-        public string ProxyPass { get; set; }
+        public string ProxyPass { get; set; } = "https://";
 
         /// <summary>代理的 HTTP 版本（如 `1.1`）。</summary>
         public string ProxyHttpVersion { get; set; } = "1.1";
@@ -400,7 +714,7 @@ namespace NginxManagerLib
         public string ProxySetHeaderUpgrade { get; set; } = "$http_upgrade";
 
         /// <summary>代理 X-Forwarded-Host 設置（如 `$host`）。</summary>
-        public string ProxySetHeaderXForwardedHost { get; set; }
+        public string ProxySetHeaderXForwardedHost { get; set; } = "$host";
 
         /// <summary>代理快取繞過設置（如 `$http_upgrade`）。</summary>
         public string ProxyCacheBypass { get; set; } = "$http_upgrade";
@@ -408,8 +722,8 @@ namespace NginxManagerLib
         /// <summary>代理重定向設置（如 `off`）。</summary>
         public string ProxyRedirect { get; set; } = "default";
 
-        /// <summary>是否啟用代理緩衝（`true`/`false`）。</summary>
-        public bool ProxyBuffering { get; set; } = false;
+        /// <summary>是否啟用代理緩衝（`on`/`off`）。</summary>
+        public string ProxyBuffering { get; set; } = "off";
 
         /// <summary>代理緩衝設置（如 `32 16k`）。</summary>
         public string ProxyBuffers { get; set; } = "32 16k";
@@ -426,7 +740,7 @@ namespace NginxManagerLib
         /// <summary>代理讀取超時（如 `30s`）。</summary>
         public string ProxyReadTimeout { get; set; } = "30s";
 
-        public string ProxyMaxTempFileSize { get; set; } = "100m";
+        public string ProxyMaxTempFileSize { get; set; } = "100M";
         /// <summary>
         /// 轉換為 NGINX 配置格式的字串，並排除空值。
         /// </summary>
@@ -443,14 +757,14 @@ namespace NginxManagerLib
             AppendIfNotEmpty(sb, "proxy_cache_bypass", ProxyCacheBypass);
             AppendIfNotEmpty(sb, "proxy_redirect", ProxyRedirect);
 
-            sb.AppendLine($"        proxy_buffering {(ProxyBuffering ? "on" : "off")};");
+            sb.AppendLine($"        proxy_buffering {ProxyBuffering};");
 
             AppendIfNotEmpty(sb, "proxy_buffers", ProxyBuffers);
             AppendIfNotEmpty(sb, "proxy_buffer_size", ProxyBufferSize);
             AppendIfNotEmpty(sb, "proxy_connect_timeout", ProxyConnectTimeout);
             AppendIfNotEmpty(sb, "proxy_send_timeout", ProxySendTimeout);
             AppendIfNotEmpty(sb, "proxy_read_timeout", ProxyReadTimeout);
-            AppendIfNotEmpty(sb, "proxy_max_temp_file_size ", ProxyMaxTempFileSize);
+            AppendIfNotEmpty(sb, "proxy_max_temp_file_size", ProxyMaxTempFileSize);
 
             sb.AppendLine("    }");
             return sb.ToString();
@@ -466,6 +780,44 @@ namespace NginxManagerLib
                 sb.AppendLine($"        {key} {value};");
             }
         }
+
+        
+    }
+    [EnumDescription("LocationAttributes")]
+    public enum LocationAttributes
+    {
+        [Description("GUID,VARCHAR,255,INDEX")]
+        GUID,
+        [Description("Path,VARCHAR,255,INDEX")]
+        Path,
+        [Description("ProxyPass,VARCHAR,255,NONE")]
+        ProxyPass,
+        [Description("ProxyHttpVersion,VARCHAR,10,NONE")]
+        ProxyHttpVersion,
+        [Description("ProxySetHeaderConnection,VARCHAR,255,NONE")]
+        ProxySetHeaderConnection,
+        [Description("ProxySetHeaderUpgrade,VARCHAR,255,NONE")]
+        ProxySetHeaderUpgrade,
+        [Description("ProxySetHeaderXForwardedHost,VARCHAR,255,NONE")]
+        ProxySetHeaderXForwardedHost,
+        [Description("ProxyCacheBypass,VARCHAR,255,NONE")]
+        ProxyCacheBypass,
+        [Description("ProxyRedirect,VARCHAR,255,NONE")]
+        ProxyRedirect,
+        [Description("ProxyBuffering,VARCHAR,255,NONE")]
+        ProxyBuffering,
+        [Description("ProxyBuffers,VARCHAR,255,NONE")]
+        ProxyBuffers,
+        [Description("ProxyBufferSize,VARCHAR,255,NONE")]
+        ProxyBufferSize,
+        [Description("ProxyConnectTimeout,VARCHAR,255,NONE")]
+        ProxyConnectTimeout,
+        [Description("ProxySendTimeout,VARCHAR,255,NONE")]
+        ProxySendTimeout,
+        [Description("ProxyReadTimeout,VARCHAR,255,NONE")]
+        ProxyReadTimeout,
+        [Description("ProxyMaxTempFileSize,VARCHAR,255,NONE")]
+        ProxyMaxTempFileSize
     }
 
 

@@ -23,7 +23,6 @@ namespace DockerTools
             saveFileDialog.DefaultExt = "tar";
             openFileDialog.Filter = "Tar files (*.tar)|*.tar";
             openFileDialog.DefaultExt = "tar";
-            this.rJ_Button_檢查環境.MouseDownEvent += RJ_Button_檢查環境_MouseDownEvent;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,12 +40,6 @@ namespace DockerTools
             this.sqL_DataGridView_Docker_Images.Set_ColumnWidth(100, DataGridViewContentAlignment.MiddleCenter, DockerImageInfo.DockerImageAttributes.Size);
             this.sqL_DataGridView_Docker_Images.Set_ColumnVisible(false, DockerImageInfo.DockerImageAttributes.Size);
 
-            this.sqL_DataGridView_Docker_Containers.Invoke(new Action(delegate
-            {
-                
-
-            }));
-
             this.sqL_DataGridView_Docker_Containers.RowsHeight = 50;
             this.sqL_DataGridView_Docker_Containers.Init(new SQLUI.Table(new DockerContainerInfo.DockerContainerAttributes()));
             this.sqL_DataGridView_Docker_Containers.Set_ColumnWidth(200, DataGridViewContentAlignment.MiddleCenter, DockerContainerInfo.DockerContainerAttributes.ContainerId);
@@ -56,6 +49,8 @@ namespace DockerTools
             this.sqL_DataGridView_Docker_Containers.Set_ColumnWidth(200, DataGridViewContentAlignment.MiddleCenter, DockerContainerInfo.DockerContainerAttributes.Status);
             this.sqL_DataGridView_Docker_Containers.Set_ColumnVisible(false, DockerContainerInfo.DockerContainerAttributes.ContainerId);
 
+            ToolStripMenuItem_檢查環境.Click += ToolStripMenuItem_檢查環境_Click;
+            ToolStripMenuItem_nginx配置生成.Click += ToolStripMenuItem_nginx配置生成_Click;
 
             rJ_Button_docker_add_image.MouseDownEvent += RJ_Button_docker_add_image_MouseDownEvent;
             rJ_Button_docker_delete_image.MouseDownEvent += RJ_Button_docker_delete_image_MouseDownEvent;
@@ -100,6 +95,30 @@ namespace DockerTools
 
         }
 
+        private void ToolStripMenuItem_nginx配置生成_Click(object sender, EventArgs e)
+        {
+           Dialog_set_naginx_conf dialog_Set_Naginx_Conf = new Dialog_set_naginx_conf();
+            dialog_Set_Naginx_Conf.ShowDialog();
+        }
+        private void ToolStripMenuItem_檢查環境_Click(object sender, EventArgs e)
+        {
+            NginxParameters nginxParameters = new NginxParameters();
+            nginxParameters.UseHttp = false;
+            string str = nginxParameters.ToString();
+
+            string msg = "";
+            InstallationChecker installationChecker = new InstallationChecker(psHost);
+            bool flag_IsDockerInstalled = installationChecker.IsDockerInstalled();
+            bool flag_IsWslInstalled = installationChecker.IsWslInstalled();
+            bool flag_IsUbuntuInstalled = installationChecker.IsWslDistributionInstalled("Ubuntu");
+            installationChecker.GetWslVersion();
+            msg += $"{(flag_IsDockerInstalled ? " Docker 已安裝" : "Docker 未安裝")}\n";
+            msg += $"{(flag_IsWslInstalled ? " WSL 已安裝" : "WSL 未安裝")}\n";
+            msg += $"{(flag_IsUbuntuInstalled ? " Ubuntu 已安裝" : "Ubuntu 未安裝")}\n";
+
+            MyMessageBox.ShowDialog(msg);
+        }
+
         private void RJ_Button_docker_restart_container_MouseDownEvent(MouseEventArgs mevent)
         {
             if (this.sqL_DataGridView_Docker_Containers.Get_All_Select_RowsValues().Count == 0)
@@ -113,6 +132,7 @@ namespace DockerTools
             {
                 string containerId = item[(int)DockerContainerInfo.DockerContainerAttributes.ContainerId].ObjectToString();
                 DockerOperations dockerOperations = new DockerOperations(psHost);
+                dockerOperations.SetContainerAutoStart(containerId);
                 dockerOperations.RestartDockerContainer(containerId);
             }
             LoadingForm.CloseLoadingForm();
@@ -148,6 +168,7 @@ namespace DockerTools
             {
                 string containerId = item[(int)DockerContainerInfo.DockerContainerAttributes.ContainerId].ObjectToString();
                 DockerOperations dockerOperations = new DockerOperations(psHost);
+                dockerOperations.SetContainerAutoStart(containerId);
                 dockerOperations.StartDockerContainer(containerId);
             }
             LoadingForm.CloseLoadingForm();
@@ -295,24 +316,7 @@ namespace DockerTools
             LoadingForm.CloseLoadingForm();
         }
 
-        private void RJ_Button_檢查環境_MouseDownEvent(MouseEventArgs mevent)
-        {
-            NginxParameters nginxParameters = new NginxParameters();
-            nginxParameters.UseHttp = false;
-            string str = nginxParameters.ToString();
-
-            string msg = "";
-            InstallationChecker installationChecker = new InstallationChecker(psHost);
-            bool flag_IsDockerInstalled = installationChecker.IsDockerInstalled();
-            bool flag_IsWslInstalled = installationChecker.IsWslInstalled();
-            bool flag_IsUbuntuInstalled = installationChecker.IsWslDistributionInstalled("Ubuntu");
-            installationChecker.GetWslVersion();
-            msg += $"{(flag_IsDockerInstalled ? " Docker 已安裝" : "Docker 未安裝")}\n";
-            msg += $"{(flag_IsWslInstalled ? " WSL 已安裝" : "WSL 未安裝")}\n";
-            msg += $"{(flag_IsUbuntuInstalled ? " Ubuntu 已安裝" : "Ubuntu 未安裝")}\n";
-
-            MyMessageBox.ShowDialog(msg);
-        }
+  
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);

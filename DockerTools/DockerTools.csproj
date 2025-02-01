@@ -189,11 +189,35 @@
     <Compile Include="Dialog_add_image.Designer.cs">
       <DependentUpon>Dialog_add_image.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog_add_ipAdress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_add_ipAdress.Designer.cs">
+      <DependentUpon>Dialog_add_ipAdress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog_add_location.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_add_location.Designer.cs">
+      <DependentUpon>Dialog_add_location.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog_add_volume_path.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialog_add_volume_path.Designer.cs">
       <DependentUpon>Dialog_add_volume_path.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog_nginx_conf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_nginx_conf.Designer.cs">
+      <DependentUpon>Dialog_nginx_conf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog_set_naginx_conf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog_set_naginx_conf.Designer.cs">
+      <DependentUpon>Dialog_set_naginx_conf.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -209,8 +233,20 @@
     <EmbeddedResource Include="Dialog_add_image.resx">
       <DependentUpon>Dialog_add_image.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialog_add_ipAdress.resx">
+      <DependentUpon>Dialog_add_ipAdress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog_add_location.resx">
+      <DependentUpon>Dialog_add_location.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog_add_volume_path.resx">
       <DependentUpon>Dialog_add_volume_path.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog_nginx_conf.resx">
+      <DependentUpon>Dialog_nginx_conf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog_set_naginx_conf.resx">
+      <DependentUpon>Dialog_set_naginx_conf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -286,6 +322,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\stop-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Defult-Doc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

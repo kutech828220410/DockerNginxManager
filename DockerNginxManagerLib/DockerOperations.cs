@@ -273,6 +273,20 @@ namespace DockerManagerLib
                 Console.WriteLine($"Error: {error}");
             }
         }
+        /// <summary>
+        /// 設定 Docker 容器開機自動啟動。
+        /// </summary>
+        /// <param name="containerId">容器 ID。</param>
+        public void SetContainerAutoStart(string containerId)
+        {
+            string command = $"docker update --restart always {containerId}";
+            var (result, error) = powerShellHost.ExecuteCommand(command);
+            Console.WriteLine(result);
+            if (!string.IsNullOrEmpty(error))
+            {
+                Console.WriteLine($"Error: {error}");
+            }
+        }
 
     }
 
