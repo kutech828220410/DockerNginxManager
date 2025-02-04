@@ -19,6 +19,8 @@ namespace DockerManagerLib
         [EnumDescription("DockerImageAttributes")]
         public enum DockerImageAttributes
         {
+            [Description("GUID,VARCHAR,100,INDEX")]
+            GUID,
             [Description("Repository,VARCHAR,100,INDEX")]
             Repository,
             [Description("Tag,VARCHAR,50,NONE")]
@@ -30,6 +32,10 @@ namespace DockerManagerLib
             [Description("Size,VARCHAR,20,NONE")]
             Size,
         }
+        /// <summary>
+        /// 獲取或設置 Docker 映像的儲存庫名稱。
+        /// </summary>
+        public string GUID { get; set; }
         /// <summary>
         /// 獲取或設置 Docker 映像的儲存庫名稱。
         /// </summary>

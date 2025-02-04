@@ -38,6 +38,7 @@ namespace DockerTools
             this.sqL_DataGridView_Docker_Images.Set_ColumnWidth(150, DataGridViewContentAlignment.MiddleCenter, DockerImageInfo.DockerImageAttributes.ImageId);
             this.sqL_DataGridView_Docker_Images.Set_ColumnWidth(150, DataGridViewContentAlignment.MiddleCenter, DockerImageInfo.DockerImageAttributes.Created);
             this.sqL_DataGridView_Docker_Images.Set_ColumnWidth(100, DataGridViewContentAlignment.MiddleCenter, DockerImageInfo.DockerImageAttributes.Size);
+            this.sqL_DataGridView_Docker_Images.Set_ColumnVisible(false, DockerImageInfo.DockerImageAttributes.GUID);
             this.sqL_DataGridView_Docker_Images.Set_ColumnVisible(false, DockerImageInfo.DockerImageAttributes.Size);
 
             this.sqL_DataGridView_Docker_Containers.RowsHeight = 50;

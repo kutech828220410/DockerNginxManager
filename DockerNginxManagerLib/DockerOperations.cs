@@ -131,12 +131,13 @@ namespace DockerManagerLib
                 {
                     images.Add(new DockerImageInfo
                     {
+                        GUID = $"{parts[0]}:{parts[1]}",
                         Repository = parts[0],
                         Tag = parts[1],
                         ImageId = parts[2],
                         Created = parts[3],
                         Size = parts[4]
-                    });
+                    }); 
                 }
             }
 
