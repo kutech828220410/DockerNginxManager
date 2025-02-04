@@ -279,8 +279,8 @@ namespace DockerTools
             string tag = "";
             foreach (var item in list_value)
             {
-                imageName = item[0].ToString();
-                tag = item[1].ToString();
+                imageName = item[(int)DockerImageInfo.DockerImageAttributes.Repository].ToString();
+                tag = item[(int)DockerImageInfo.DockerImageAttributes.Tag].ToString();
 
             }
             DialogResult dialogResult = MyMessageBox.ShowDialog($"確定要刪除選中的映像 [{imageName}:{tag}] ?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel);
