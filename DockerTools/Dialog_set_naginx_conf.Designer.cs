@@ -75,19 +75,19 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.listBox_DNS = new System.Windows.Forms.ListBox();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.rJ_Button_DNS_delete = new MyUI.RJ_Button();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.rJ_Button_DNS_add = new MyUI.RJ_Button();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.rJ_Button_loaction_edit = new MyUI.RJ_Button();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.rJ_Button_location_delete = new MyUI.RJ_Button();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.rJ_Button_location_add = new MyUI.RJ_Button();
             this.sqL_DataGridView_location = new SQLUI.SQL_DataGridView();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.panel24 = new System.Windows.Forms.Panel();
             this.rJ_Button_nginx_conf_generate = new MyUI.RJ_Button();
-            this.rJ_Button_loaction_edit = new MyUI.RJ_Button();
-            this.rJ_Button_location_delete = new MyUI.RJ_Button();
-            this.rJ_Button_location_add = new MyUI.RJ_Button();
-            this.rJ_Button_DNS_delete = new MyUI.RJ_Button();
-            this.rJ_Button_DNS_add = new MyUI.RJ_Button();
+            this.panel22 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.alignedPanel1.SuspendLayout();
@@ -672,6 +672,40 @@
             this.panel18.Size = new System.Drawing.Size(637, 48);
             this.panel18.TabIndex = 0;
             // 
+            // rJ_Button_DNS_delete
+            // 
+            this.rJ_Button_DNS_delete.AutoResetState = false;
+            this.rJ_Button_DNS_delete.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_DNS_delete.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.rJ_Button_DNS_delete.BackgroundImage = global::DockerTools.Properties.Resources.minus;
+            this.rJ_Button_DNS_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_DNS_delete.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_DNS_delete.BorderRadius = 30;
+            this.rJ_Button_DNS_delete.BorderSize = 1;
+            this.rJ_Button_DNS_delete.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_DNS_delete.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_DNS_delete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_DNS_delete.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_DNS_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_DNS_delete.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_DNS_delete.GUID = "";
+            this.rJ_Button_DNS_delete.Image_padding = new System.Windows.Forms.Padding(5);
+            this.rJ_Button_DNS_delete.Location = new System.Drawing.Point(532, 0);
+            this.rJ_Button_DNS_delete.Name = "rJ_Button_DNS_delete";
+            this.rJ_Button_DNS_delete.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_DNS_delete.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_DNS_delete.ProhibitionLineWidth = 4;
+            this.rJ_Button_DNS_delete.ProhibitionSymbolSize = 30;
+            this.rJ_Button_DNS_delete.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_DNS_delete.ShadowSize = 0;
+            this.rJ_Button_DNS_delete.ShowLoadingForm = false;
+            this.rJ_Button_DNS_delete.Size = new System.Drawing.Size(46, 45);
+            this.rJ_Button_DNS_delete.State = false;
+            this.rJ_Button_DNS_delete.TabIndex = 178;
+            this.rJ_Button_DNS_delete.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_DNS_delete.TextHeight = 0;
+            this.rJ_Button_DNS_delete.UseVisualStyleBackColor = false;
+            // 
             // panel19
             // 
             this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
@@ -679,6 +713,40 @@
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(10, 45);
             this.panel19.TabIndex = 177;
+            // 
+            // rJ_Button_DNS_add
+            // 
+            this.rJ_Button_DNS_add.AutoResetState = false;
+            this.rJ_Button_DNS_add.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_DNS_add.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.rJ_Button_DNS_add.BackgroundImage = global::DockerTools.Properties.Resources.plus;
+            this.rJ_Button_DNS_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_DNS_add.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_DNS_add.BorderRadius = 30;
+            this.rJ_Button_DNS_add.BorderSize = 1;
+            this.rJ_Button_DNS_add.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_DNS_add.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_DNS_add.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_DNS_add.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_DNS_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_DNS_add.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_DNS_add.GUID = "";
+            this.rJ_Button_DNS_add.Image_padding = new System.Windows.Forms.Padding(5);
+            this.rJ_Button_DNS_add.Location = new System.Drawing.Point(588, 0);
+            this.rJ_Button_DNS_add.Name = "rJ_Button_DNS_add";
+            this.rJ_Button_DNS_add.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_DNS_add.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_DNS_add.ProhibitionLineWidth = 4;
+            this.rJ_Button_DNS_add.ProhibitionSymbolSize = 30;
+            this.rJ_Button_DNS_add.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_DNS_add.ShadowSize = 0;
+            this.rJ_Button_DNS_add.ShowLoadingForm = false;
+            this.rJ_Button_DNS_add.Size = new System.Drawing.Size(46, 45);
+            this.rJ_Button_DNS_add.State = false;
+            this.rJ_Button_DNS_add.TabIndex = 176;
+            this.rJ_Button_DNS_add.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_DNS_add.TextHeight = 0;
+            this.rJ_Button_DNS_add.UseVisualStyleBackColor = false;
             // 
             // panel20
             // 
@@ -692,6 +760,124 @@
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(1393, 49);
             this.panel20.TabIndex = 184;
+            // 
+            // rJ_Button_loaction_edit
+            // 
+            this.rJ_Button_loaction_edit.AutoResetState = false;
+            this.rJ_Button_loaction_edit.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_loaction_edit.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.rJ_Button_loaction_edit.BackgroundImage = global::DockerTools.Properties.Resources.write;
+            this.rJ_Button_loaction_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_loaction_edit.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_loaction_edit.BorderRadius = 30;
+            this.rJ_Button_loaction_edit.BorderSize = 1;
+            this.rJ_Button_loaction_edit.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_loaction_edit.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_loaction_edit.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_loaction_edit.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_loaction_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_loaction_edit.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_loaction_edit.GUID = "";
+            this.rJ_Button_loaction_edit.Image_padding = new System.Windows.Forms.Padding(8);
+            this.rJ_Button_loaction_edit.Location = new System.Drawing.Point(1235, 0);
+            this.rJ_Button_loaction_edit.Name = "rJ_Button_loaction_edit";
+            this.rJ_Button_loaction_edit.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_loaction_edit.ProhibitionBorderLineWidth = 0;
+            this.rJ_Button_loaction_edit.ProhibitionLineWidth = 0;
+            this.rJ_Button_loaction_edit.ProhibitionSymbolSize = 0;
+            this.rJ_Button_loaction_edit.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_loaction_edit.ShadowSize = 0;
+            this.rJ_Button_loaction_edit.ShowLoadingForm = false;
+            this.rJ_Button_loaction_edit.Size = new System.Drawing.Size(46, 49);
+            this.rJ_Button_loaction_edit.State = false;
+            this.rJ_Button_loaction_edit.TabIndex = 182;
+            this.rJ_Button_loaction_edit.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_loaction_edit.TextHeight = 0;
+            this.rJ_Button_loaction_edit.UseVisualStyleBackColor = false;
+            // 
+            // panel23
+            // 
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel23.Location = new System.Drawing.Point(1281, 0);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(10, 49);
+            this.panel23.TabIndex = 181;
+            // 
+            // rJ_Button_location_delete
+            // 
+            this.rJ_Button_location_delete.AutoResetState = false;
+            this.rJ_Button_location_delete.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_location_delete.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.rJ_Button_location_delete.BackgroundImage = global::DockerTools.Properties.Resources.minus;
+            this.rJ_Button_location_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_location_delete.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_location_delete.BorderRadius = 30;
+            this.rJ_Button_location_delete.BorderSize = 1;
+            this.rJ_Button_location_delete.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_location_delete.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_location_delete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_location_delete.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_location_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_location_delete.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_location_delete.GUID = "";
+            this.rJ_Button_location_delete.Image_padding = new System.Windows.Forms.Padding(5);
+            this.rJ_Button_location_delete.Location = new System.Drawing.Point(1291, 0);
+            this.rJ_Button_location_delete.Name = "rJ_Button_location_delete";
+            this.rJ_Button_location_delete.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_location_delete.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_location_delete.ProhibitionLineWidth = 4;
+            this.rJ_Button_location_delete.ProhibitionSymbolSize = 30;
+            this.rJ_Button_location_delete.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_location_delete.ShadowSize = 0;
+            this.rJ_Button_location_delete.ShowLoadingForm = false;
+            this.rJ_Button_location_delete.Size = new System.Drawing.Size(46, 49);
+            this.rJ_Button_location_delete.State = false;
+            this.rJ_Button_location_delete.TabIndex = 180;
+            this.rJ_Button_location_delete.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_location_delete.TextHeight = 0;
+            this.rJ_Button_location_delete.UseVisualStyleBackColor = false;
+            // 
+            // panel24
+            // 
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel24.Location = new System.Drawing.Point(1337, 0);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(10, 49);
+            this.panel24.TabIndex = 179;
+            // 
+            // rJ_Button_location_add
+            // 
+            this.rJ_Button_location_add.AutoResetState = false;
+            this.rJ_Button_location_add.BackColor = System.Drawing.Color.White;
+            this.rJ_Button_location_add.BackgroundColor = System.Drawing.SystemColors.MenuBar;
+            this.rJ_Button_location_add.BackgroundImage = global::DockerTools.Properties.Resources.plus;
+            this.rJ_Button_location_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rJ_Button_location_add.BorderColor = System.Drawing.Color.Black;
+            this.rJ_Button_location_add.BorderRadius = 30;
+            this.rJ_Button_location_add.BorderSize = 1;
+            this.rJ_Button_location_add.buttonType = MyUI.RJ_Button.ButtonType.Push;
+            this.rJ_Button_location_add.DisenableColor = System.Drawing.Color.Gray;
+            this.rJ_Button_location_add.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rJ_Button_location_add.FlatAppearance.BorderSize = 0;
+            this.rJ_Button_location_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rJ_Button_location_add.ForeColor = System.Drawing.Color.White;
+            this.rJ_Button_location_add.GUID = "";
+            this.rJ_Button_location_add.Image_padding = new System.Windows.Forms.Padding(5);
+            this.rJ_Button_location_add.Location = new System.Drawing.Point(1347, 0);
+            this.rJ_Button_location_add.Name = "rJ_Button_location_add";
+            this.rJ_Button_location_add.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_location_add.ProhibitionBorderLineWidth = 1;
+            this.rJ_Button_location_add.ProhibitionLineWidth = 4;
+            this.rJ_Button_location_add.ProhibitionSymbolSize = 30;
+            this.rJ_Button_location_add.ShadowColor = System.Drawing.Color.DimGray;
+            this.rJ_Button_location_add.ShadowSize = 0;
+            this.rJ_Button_location_add.ShowLoadingForm = false;
+            this.rJ_Button_location_add.Size = new System.Drawing.Size(46, 49);
+            this.rJ_Button_location_add.State = false;
+            this.rJ_Button_location_add.TabIndex = 178;
+            this.rJ_Button_location_add.TextColor = System.Drawing.Color.White;
+            this.rJ_Button_location_add.TextHeight = 0;
+            this.rJ_Button_location_add.UseVisualStyleBackColor = false;
             // 
             // sqL_DataGridView_location
             // 
@@ -760,30 +946,6 @@
             this.panel21.Size = new System.Drawing.Size(1393, 50);
             this.panel21.TabIndex = 186;
             // 
-            // panel22
-            // 
-            this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel22.Location = new System.Drawing.Point(0, 0);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(11, 50);
-            this.panel22.TabIndex = 0;
-            // 
-            // panel23
-            // 
-            this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel23.Location = new System.Drawing.Point(1281, 0);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(10, 49);
-            this.panel23.TabIndex = 181;
-            // 
-            // panel24
-            // 
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel24.Location = new System.Drawing.Point(1337, 0);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(10, 49);
-            this.panel24.TabIndex = 179;
-            // 
             // rJ_Button_nginx_conf_generate
             // 
             this.rJ_Button_nginx_conf_generate.AutoResetState = false;
@@ -818,175 +980,13 @@
             this.rJ_Button_nginx_conf_generate.TextHeight = 0;
             this.rJ_Button_nginx_conf_generate.UseVisualStyleBackColor = false;
             // 
-            // rJ_Button_loaction_edit
+            // panel22
             // 
-            this.rJ_Button_loaction_edit.AutoResetState = false;
-            this.rJ_Button_loaction_edit.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_loaction_edit.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.rJ_Button_loaction_edit.BackgroundImage = global::DockerTools.Properties.Resources.write;
-            this.rJ_Button_loaction_edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_loaction_edit.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_loaction_edit.BorderRadius = 30;
-            this.rJ_Button_loaction_edit.BorderSize = 1;
-            this.rJ_Button_loaction_edit.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_loaction_edit.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_loaction_edit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_loaction_edit.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_loaction_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_loaction_edit.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_loaction_edit.GUID = "";
-            this.rJ_Button_loaction_edit.Image_padding = new System.Windows.Forms.Padding(8);
-            this.rJ_Button_loaction_edit.Location = new System.Drawing.Point(1235, 0);
-            this.rJ_Button_loaction_edit.Name = "rJ_Button_loaction_edit";
-            this.rJ_Button_loaction_edit.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_loaction_edit.ProhibitionBorderLineWidth = 0;
-            this.rJ_Button_loaction_edit.ProhibitionLineWidth = 0;
-            this.rJ_Button_loaction_edit.ProhibitionSymbolSize = 0;
-            this.rJ_Button_loaction_edit.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_loaction_edit.ShadowSize = 0;
-            this.rJ_Button_loaction_edit.ShowLoadingForm = false;
-            this.rJ_Button_loaction_edit.Size = new System.Drawing.Size(46, 49);
-            this.rJ_Button_loaction_edit.State = false;
-            this.rJ_Button_loaction_edit.TabIndex = 182;
-            this.rJ_Button_loaction_edit.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_loaction_edit.TextHeight = 0;
-            this.rJ_Button_loaction_edit.UseVisualStyleBackColor = false;
-            // 
-            // rJ_Button_location_delete
-            // 
-            this.rJ_Button_location_delete.AutoResetState = false;
-            this.rJ_Button_location_delete.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_location_delete.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.rJ_Button_location_delete.BackgroundImage = global::DockerTools.Properties.Resources.minus;
-            this.rJ_Button_location_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_location_delete.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_location_delete.BorderRadius = 30;
-            this.rJ_Button_location_delete.BorderSize = 1;
-            this.rJ_Button_location_delete.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_location_delete.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_location_delete.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_location_delete.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_location_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_location_delete.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_location_delete.GUID = "";
-            this.rJ_Button_location_delete.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_location_delete.Location = new System.Drawing.Point(1291, 0);
-            this.rJ_Button_location_delete.Name = "rJ_Button_location_delete";
-            this.rJ_Button_location_delete.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_location_delete.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_location_delete.ProhibitionLineWidth = 4;
-            this.rJ_Button_location_delete.ProhibitionSymbolSize = 30;
-            this.rJ_Button_location_delete.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_location_delete.ShadowSize = 0;
-            this.rJ_Button_location_delete.ShowLoadingForm = false;
-            this.rJ_Button_location_delete.Size = new System.Drawing.Size(46, 49);
-            this.rJ_Button_location_delete.State = false;
-            this.rJ_Button_location_delete.TabIndex = 180;
-            this.rJ_Button_location_delete.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_location_delete.TextHeight = 0;
-            this.rJ_Button_location_delete.UseVisualStyleBackColor = false;
-            // 
-            // rJ_Button_location_add
-            // 
-            this.rJ_Button_location_add.AutoResetState = false;
-            this.rJ_Button_location_add.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_location_add.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.rJ_Button_location_add.BackgroundImage = global::DockerTools.Properties.Resources.plus;
-            this.rJ_Button_location_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_location_add.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_location_add.BorderRadius = 30;
-            this.rJ_Button_location_add.BorderSize = 1;
-            this.rJ_Button_location_add.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_location_add.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_location_add.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_location_add.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_location_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_location_add.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_location_add.GUID = "";
-            this.rJ_Button_location_add.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_location_add.Location = new System.Drawing.Point(1347, 0);
-            this.rJ_Button_location_add.Name = "rJ_Button_location_add";
-            this.rJ_Button_location_add.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_location_add.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_location_add.ProhibitionLineWidth = 4;
-            this.rJ_Button_location_add.ProhibitionSymbolSize = 30;
-            this.rJ_Button_location_add.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_location_add.ShadowSize = 0;
-            this.rJ_Button_location_add.ShowLoadingForm = false;
-            this.rJ_Button_location_add.Size = new System.Drawing.Size(46, 49);
-            this.rJ_Button_location_add.State = false;
-            this.rJ_Button_location_add.TabIndex = 178;
-            this.rJ_Button_location_add.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_location_add.TextHeight = 0;
-            this.rJ_Button_location_add.UseVisualStyleBackColor = false;
-            // 
-            // rJ_Button_DNS_delete
-            // 
-            this.rJ_Button_DNS_delete.AutoResetState = false;
-            this.rJ_Button_DNS_delete.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_DNS_delete.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.rJ_Button_DNS_delete.BackgroundImage = global::DockerTools.Properties.Resources.minus;
-            this.rJ_Button_DNS_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_DNS_delete.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_DNS_delete.BorderRadius = 30;
-            this.rJ_Button_DNS_delete.BorderSize = 1;
-            this.rJ_Button_DNS_delete.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_DNS_delete.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_DNS_delete.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_DNS_delete.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_DNS_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_DNS_delete.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_DNS_delete.GUID = "";
-            this.rJ_Button_DNS_delete.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_DNS_delete.Location = new System.Drawing.Point(532, 0);
-            this.rJ_Button_DNS_delete.Name = "rJ_Button_DNS_delete";
-            this.rJ_Button_DNS_delete.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_DNS_delete.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_DNS_delete.ProhibitionLineWidth = 4;
-            this.rJ_Button_DNS_delete.ProhibitionSymbolSize = 30;
-            this.rJ_Button_DNS_delete.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_DNS_delete.ShadowSize = 0;
-            this.rJ_Button_DNS_delete.ShowLoadingForm = false;
-            this.rJ_Button_DNS_delete.Size = new System.Drawing.Size(46, 45);
-            this.rJ_Button_DNS_delete.State = false;
-            this.rJ_Button_DNS_delete.TabIndex = 178;
-            this.rJ_Button_DNS_delete.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_DNS_delete.TextHeight = 0;
-            this.rJ_Button_DNS_delete.UseVisualStyleBackColor = false;
-            // 
-            // rJ_Button_DNS_add
-            // 
-            this.rJ_Button_DNS_add.AutoResetState = false;
-            this.rJ_Button_DNS_add.BackColor = System.Drawing.Color.White;
-            this.rJ_Button_DNS_add.BackgroundColor = System.Drawing.SystemColors.MenuBar;
-            this.rJ_Button_DNS_add.BackgroundImage = global::DockerTools.Properties.Resources.plus;
-            this.rJ_Button_DNS_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.rJ_Button_DNS_add.BorderColor = System.Drawing.Color.Black;
-            this.rJ_Button_DNS_add.BorderRadius = 30;
-            this.rJ_Button_DNS_add.BorderSize = 1;
-            this.rJ_Button_DNS_add.buttonType = MyUI.RJ_Button.ButtonType.Push;
-            this.rJ_Button_DNS_add.DisenableColor = System.Drawing.Color.Gray;
-            this.rJ_Button_DNS_add.Dock = System.Windows.Forms.DockStyle.Right;
-            this.rJ_Button_DNS_add.FlatAppearance.BorderSize = 0;
-            this.rJ_Button_DNS_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rJ_Button_DNS_add.ForeColor = System.Drawing.Color.White;
-            this.rJ_Button_DNS_add.GUID = "";
-            this.rJ_Button_DNS_add.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_DNS_add.Location = new System.Drawing.Point(588, 0);
-            this.rJ_Button_DNS_add.Name = "rJ_Button_DNS_add";
-            this.rJ_Button_DNS_add.Padding = new System.Windows.Forms.Padding(2);
-            this.rJ_Button_DNS_add.ProhibitionBorderLineWidth = 1;
-            this.rJ_Button_DNS_add.ProhibitionLineWidth = 4;
-            this.rJ_Button_DNS_add.ProhibitionSymbolSize = 30;
-            this.rJ_Button_DNS_add.ShadowColor = System.Drawing.Color.DimGray;
-            this.rJ_Button_DNS_add.ShadowSize = 0;
-            this.rJ_Button_DNS_add.ShowLoadingForm = false;
-            this.rJ_Button_DNS_add.Size = new System.Drawing.Size(46, 45);
-            this.rJ_Button_DNS_add.State = false;
-            this.rJ_Button_DNS_add.TabIndex = 176;
-            this.rJ_Button_DNS_add.TextColor = System.Drawing.Color.White;
-            this.rJ_Button_DNS_add.TextHeight = 0;
-            this.rJ_Button_DNS_add.UseVisualStyleBackColor = false;
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel22.Location = new System.Drawing.Point(0, 0);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(11, 50);
+            this.panel22.TabIndex = 0;
             // 
             // Dialog_set_naginx_conf
             // 
