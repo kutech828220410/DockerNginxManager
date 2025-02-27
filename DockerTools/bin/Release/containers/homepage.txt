@@ -1,0 +1,2 @@
+docker run -d --name homepage_v0 -p 8080:80 -v /C/HS_homepage/:/usr/local/apache2/htdocs/
+ homepage:v0

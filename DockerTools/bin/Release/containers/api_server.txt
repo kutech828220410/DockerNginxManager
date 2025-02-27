@@ -1,0 +1,4 @@
+docker run --network host -d --name api_server_v0 -p 4450 `
+-v /C/API_Server/:/app `
+-v /C/:/update_program `
+api_server:v0

@@ -125,9 +125,10 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Left;
             this.label5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label5.Location = new System.Drawing.Point(2, 2);
+            this.label5.Location = new System.Drawing.Point(3, 3);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 48);
+            this.label5.Size = new System.Drawing.Size(226, 72);
             this.label5.TabIndex = 173;
             this.label5.Text = "ServerName";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,19 +137,21 @@
             // 
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(25, 171);
+            this.panel1.Location = new System.Drawing.Point(38, 256);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(2);
-            this.panel1.Size = new System.Drawing.Size(653, 52);
+            this.panel1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel1.Size = new System.Drawing.Size(980, 78);
             this.panel1.TabIndex = 174;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.alignedPanel1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(153, 2);
+            this.panel4.Location = new System.Drawing.Point(229, 3);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(498, 48);
+            this.panel4.Size = new System.Drawing.Size(748, 72);
             this.panel4.TabIndex = 174;
             // 
             // alignedPanel1
@@ -157,8 +160,9 @@
             this.alignedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignedPanel1.FillWidth = true;
             this.alignedPanel1.Location = new System.Drawing.Point(0, 0);
+            this.alignedPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alignedPanel1.Name = "alignedPanel1";
-            this.alignedPanel1.Size = new System.Drawing.Size(498, 48);
+            this.alignedPanel1.Size = new System.Drawing.Size(748, 72);
             this.alignedPanel1.TabIndex = 176;
             // 
             // rJ_TextBox_ServerName
@@ -172,15 +176,16 @@
             this.rJ_TextBox_ServerName.Font = new System.Drawing.Font("Cascadia Code ExtraLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rJ_TextBox_ServerName.ForeColor = System.Drawing.Color.Black;
             this.rJ_TextBox_ServerName.GUID = "";
-            this.rJ_TextBox_ServerName.Location = new System.Drawing.Point(0, 4);
+            this.rJ_TextBox_ServerName.Location = new System.Drawing.Point(0, 6);
+            this.rJ_TextBox_ServerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_TextBox_ServerName.Multiline = false;
             this.rJ_TextBox_ServerName.Name = "rJ_TextBox_ServerName";
-            this.rJ_TextBox_ServerName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rJ_TextBox_ServerName.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.rJ_TextBox_ServerName.PassWordChar = false;
             this.rJ_TextBox_ServerName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rJ_TextBox_ServerName.PlaceholderText = "";
             this.rJ_TextBox_ServerName.ShowTouchPannel = false;
-            this.rJ_TextBox_ServerName.Size = new System.Drawing.Size(498, 40);
+            this.rJ_TextBox_ServerName.Size = new System.Drawing.Size(748, 60);
             this.rJ_TextBox_ServerName.TabIndex = 187;
             this.rJ_TextBox_ServerName.TextAlgin = System.Windows.Forms.HorizontalAlignment.Left;
             this.rJ_TextBox_ServerName.Texts = "127.0.0.1";
@@ -191,19 +196,21 @@
             this.panel5.Controls.Add(this.rJ_RatioButton_http);
             this.panel5.Controls.Add(this.rJ_RatioButton_https);
             this.panel5.Font = new System.Drawing.Font("Cascadia Code", 14.25F);
-            this.panel5.Location = new System.Drawing.Point(25, 100);
+            this.panel5.Location = new System.Drawing.Point(38, 150);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(230, 49);
+            this.panel5.Size = new System.Drawing.Size(345, 74);
             this.panel5.TabIndex = 175;
             // 
             // rJ_RatioButton_http
             // 
             this.rJ_RatioButton_http.AutoSize = true;
             this.rJ_RatioButton_http.CheckColor = System.Drawing.Color.DimGray;
-            this.rJ_RatioButton_http.Location = new System.Drawing.Point(113, 10);
-            this.rJ_RatioButton_http.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_http.Location = new System.Drawing.Point(170, 15);
+            this.rJ_RatioButton_http.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rJ_RatioButton_http.MinimumSize = new System.Drawing.Size(0, 32);
             this.rJ_RatioButton_http.Name = "rJ_RatioButton_http";
-            this.rJ_RatioButton_http.Size = new System.Drawing.Size(86, 29);
+            this.rJ_RatioButton_http.Size = new System.Drawing.Size(115, 43);
             this.rJ_RatioButton_http.TabIndex = 1;
             this.rJ_RatioButton_http.Text = "http";
             this.rJ_RatioButton_http.UncheckColor = System.Drawing.Color.Gray;
@@ -214,10 +221,11 @@
             this.rJ_RatioButton_https.AutoSize = true;
             this.rJ_RatioButton_https.CheckColor = System.Drawing.Color.DimGray;
             this.rJ_RatioButton_https.Checked = true;
-            this.rJ_RatioButton_https.Location = new System.Drawing.Point(10, 10);
-            this.rJ_RatioButton_https.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_https.Location = new System.Drawing.Point(15, 15);
+            this.rJ_RatioButton_https.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rJ_RatioButton_https.MinimumSize = new System.Drawing.Size(0, 32);
             this.rJ_RatioButton_https.Name = "rJ_RatioButton_https";
-            this.rJ_RatioButton_https.Size = new System.Drawing.Size(97, 29);
+            this.rJ_RatioButton_https.Size = new System.Drawing.Size(132, 43);
             this.rJ_RatioButton_https.TabIndex = 0;
             this.rJ_RatioButton_https.TabStop = true;
             this.rJ_RatioButton_https.Text = "https";
@@ -228,19 +236,21 @@
             // 
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.label1);
-            this.panel6.Location = new System.Drawing.Point(25, 229);
+            this.panel6.Location = new System.Drawing.Point(38, 344);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Padding = new System.Windows.Forms.Padding(2);
-            this.panel6.Size = new System.Drawing.Size(303, 52);
+            this.panel6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel6.Size = new System.Drawing.Size(454, 78);
             this.panel6.TabIndex = 176;
             // 
             // panel7
             // 
             this.panel7.Controls.Add(this.alignedPanel2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(153, 2);
+            this.panel7.Location = new System.Drawing.Point(229, 3);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(148, 48);
+            this.panel7.Size = new System.Drawing.Size(222, 72);
             this.panel7.TabIndex = 174;
             // 
             // alignedPanel2
@@ -249,8 +259,9 @@
             this.alignedPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignedPanel2.FillWidth = true;
             this.alignedPanel2.Location = new System.Drawing.Point(0, 0);
+            this.alignedPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alignedPanel2.Name = "alignedPanel2";
-            this.alignedPanel2.Size = new System.Drawing.Size(148, 48);
+            this.alignedPanel2.Size = new System.Drawing.Size(222, 72);
             this.alignedPanel2.TabIndex = 176;
             // 
             // rJ_TextBox_ListenPort
@@ -264,15 +275,16 @@
             this.rJ_TextBox_ListenPort.Font = new System.Drawing.Font("Cascadia Code ExtraLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rJ_TextBox_ListenPort.ForeColor = System.Drawing.Color.Black;
             this.rJ_TextBox_ListenPort.GUID = "";
-            this.rJ_TextBox_ListenPort.Location = new System.Drawing.Point(0, 4);
+            this.rJ_TextBox_ListenPort.Location = new System.Drawing.Point(0, 14);
+            this.rJ_TextBox_ListenPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_TextBox_ListenPort.Multiline = false;
             this.rJ_TextBox_ListenPort.Name = "rJ_TextBox_ListenPort";
-            this.rJ_TextBox_ListenPort.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rJ_TextBox_ListenPort.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.rJ_TextBox_ListenPort.PassWordChar = false;
             this.rJ_TextBox_ListenPort.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rJ_TextBox_ListenPort.PlaceholderText = "";
             this.rJ_TextBox_ListenPort.ShowTouchPannel = false;
-            this.rJ_TextBox_ListenPort.Size = new System.Drawing.Size(148, 40);
+            this.rJ_TextBox_ListenPort.Size = new System.Drawing.Size(333, 60);
             this.rJ_TextBox_ListenPort.TabIndex = 187;
             this.rJ_TextBox_ListenPort.TextAlgin = System.Windows.Forms.HorizontalAlignment.Left;
             this.rJ_TextBox_ListenPort.Texts = "4443";
@@ -283,9 +295,10 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label1.Location = new System.Drawing.Point(2, 2);
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 48);
+            this.label1.Size = new System.Drawing.Size(226, 72);
             this.label1.TabIndex = 173;
             this.label1.Text = "監聽端口";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -294,10 +307,11 @@
             // 
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Font = new System.Drawing.Font("Cascadia Code", 14.25F);
-            this.groupBox1.Location = new System.Drawing.Point(25, 287);
+            this.groupBox1.Location = new System.Drawing.Point(38, 430);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox1.Size = new System.Drawing.Size(653, 251);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 15, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(980, 376);
             this.groupBox1.TabIndex = 181;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SSL Config";
@@ -310,9 +324,10 @@
             this.flowLayoutPanel1.Controls.Add(this.panel12);
             this.flowLayoutPanel1.Controls.Add(this.panel14);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 33);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 49);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(647, 215);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(972, 323);
             this.flowLayoutPanel1.TabIndex = 180;
             // 
             // checkBox2
@@ -321,9 +336,10 @@
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.checkBox2.Location = new System.Drawing.Point(3, 3);
+            this.checkBox2.Location = new System.Drawing.Point(4, 4);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(98, 28);
+            this.checkBox2.Size = new System.Drawing.Size(149, 41);
             this.checkBox2.TabIndex = 182;
             this.checkBox2.Text = "TLSv1.3";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -334,9 +350,10 @@
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.Location = new System.Drawing.Point(107, 3);
+            this.checkBox1.Location = new System.Drawing.Point(161, 4);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 28);
+            this.checkBox1.Size = new System.Drawing.Size(149, 41);
             this.checkBox1.TabIndex = 181;
             this.checkBox1.Text = "TLSv1.2";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -345,19 +362,21 @@
             // 
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.label2);
-            this.panel8.Location = new System.Drawing.Point(3, 37);
+            this.panel8.Location = new System.Drawing.Point(4, 53);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(2);
-            this.panel8.Size = new System.Drawing.Size(641, 52);
+            this.panel8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel8.Size = new System.Drawing.Size(962, 78);
             this.panel8.TabIndex = 183;
             // 
             // panel9
             // 
             this.panel9.Controls.Add(this.alignedPanel3);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(153, 2);
+            this.panel9.Location = new System.Drawing.Point(229, 3);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(486, 48);
+            this.panel9.Size = new System.Drawing.Size(730, 72);
             this.panel9.TabIndex = 174;
             // 
             // alignedPanel3
@@ -366,8 +385,9 @@
             this.alignedPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignedPanel3.FillWidth = true;
             this.alignedPanel3.Location = new System.Drawing.Point(0, 0);
+            this.alignedPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alignedPanel3.Name = "alignedPanel3";
-            this.alignedPanel3.Size = new System.Drawing.Size(486, 48);
+            this.alignedPanel3.Size = new System.Drawing.Size(730, 72);
             this.alignedPanel3.TabIndex = 176;
             // 
             // comboBox_SslCiphers
@@ -376,9 +396,10 @@
             this.comboBox_SslCiphers.BackColor = System.Drawing.Color.White;
             this.comboBox_SslCiphers.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_SslCiphers.FormattingEnabled = true;
-            this.comboBox_SslCiphers.Location = new System.Drawing.Point(0, 7);
+            this.comboBox_SslCiphers.Location = new System.Drawing.Point(0, 12);
+            this.comboBox_SslCiphers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_SslCiphers.Name = "comboBox_SslCiphers";
-            this.comboBox_SslCiphers.Size = new System.Drawing.Size(486, 33);
+            this.comboBox_SslCiphers.Size = new System.Drawing.Size(730, 47);
             this.comboBox_SslCiphers.TabIndex = 171;
             // 
             // label2
@@ -386,9 +407,10 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label2.Location = new System.Drawing.Point(2, 2);
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 48);
+            this.label2.Size = new System.Drawing.Size(226, 72);
             this.label2.TabIndex = 173;
             this.label2.Text = "加密方式";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -397,19 +419,21 @@
             // 
             this.panel12.Controls.Add(this.panel13);
             this.panel12.Controls.Add(this.label4);
-            this.panel12.Location = new System.Drawing.Point(3, 95);
+            this.panel12.Location = new System.Drawing.Point(4, 139);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel12.Name = "panel12";
-            this.panel12.Padding = new System.Windows.Forms.Padding(2);
-            this.panel12.Size = new System.Drawing.Size(641, 52);
+            this.panel12.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel12.Size = new System.Drawing.Size(962, 78);
             this.panel12.TabIndex = 184;
             // 
             // panel13
             // 
             this.panel13.Controls.Add(this.alignedPanel5);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(153, 2);
+            this.panel13.Location = new System.Drawing.Point(229, 3);
+            this.panel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(486, 48);
+            this.panel13.Size = new System.Drawing.Size(730, 72);
             this.panel13.TabIndex = 174;
             // 
             // alignedPanel5
@@ -418,8 +442,9 @@
             this.alignedPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignedPanel5.FillWidth = true;
             this.alignedPanel5.Location = new System.Drawing.Point(0, 0);
+            this.alignedPanel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alignedPanel5.Name = "alignedPanel5";
-            this.alignedPanel5.Size = new System.Drawing.Size(486, 48);
+            this.alignedPanel5.Size = new System.Drawing.Size(730, 72);
             this.alignedPanel5.TabIndex = 176;
             // 
             // comboBox_SslBufferSize
@@ -428,9 +453,10 @@
             this.comboBox_SslBufferSize.BackColor = System.Drawing.Color.White;
             this.comboBox_SslBufferSize.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_SslBufferSize.FormattingEnabled = true;
-            this.comboBox_SslBufferSize.Location = new System.Drawing.Point(0, 7);
+            this.comboBox_SslBufferSize.Location = new System.Drawing.Point(0, 12);
+            this.comboBox_SslBufferSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_SslBufferSize.Name = "comboBox_SslBufferSize";
-            this.comboBox_SslBufferSize.Size = new System.Drawing.Size(486, 33);
+            this.comboBox_SslBufferSize.Size = new System.Drawing.Size(730, 47);
             this.comboBox_SslBufferSize.TabIndex = 171;
             // 
             // label4
@@ -438,9 +464,10 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label4.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label4.Location = new System.Drawing.Point(2, 2);
+            this.label4.Location = new System.Drawing.Point(3, 3);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 48);
+            this.label4.Size = new System.Drawing.Size(226, 72);
             this.label4.TabIndex = 173;
             this.label4.Text = "buffer size";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -449,19 +476,21 @@
             // 
             this.panel14.Controls.Add(this.panel15);
             this.panel14.Controls.Add(this.label6);
-            this.panel14.Location = new System.Drawing.Point(3, 153);
+            this.panel14.Location = new System.Drawing.Point(4, 225);
+            this.panel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel14.Name = "panel14";
-            this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(641, 52);
+            this.panel14.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel14.Size = new System.Drawing.Size(962, 78);
             this.panel14.TabIndex = 185;
             // 
             // panel15
             // 
             this.panel15.Controls.Add(this.alignedPanel6);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(153, 2);
+            this.panel15.Location = new System.Drawing.Point(229, 3);
+            this.panel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(486, 48);
+            this.panel15.Size = new System.Drawing.Size(730, 72);
             this.panel15.TabIndex = 174;
             // 
             // alignedPanel6
@@ -470,8 +499,9 @@
             this.alignedPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignedPanel6.FillWidth = true;
             this.alignedPanel6.Location = new System.Drawing.Point(0, 0);
+            this.alignedPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alignedPanel6.Name = "alignedPanel6";
-            this.alignedPanel6.Size = new System.Drawing.Size(486, 48);
+            this.alignedPanel6.Size = new System.Drawing.Size(730, 72);
             this.alignedPanel6.TabIndex = 176;
             // 
             // comboBox_SslSessionTimeout
@@ -480,9 +510,10 @@
             this.comboBox_SslSessionTimeout.BackColor = System.Drawing.Color.White;
             this.comboBox_SslSessionTimeout.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_SslSessionTimeout.FormattingEnabled = true;
-            this.comboBox_SslSessionTimeout.Location = new System.Drawing.Point(0, 7);
+            this.comboBox_SslSessionTimeout.Location = new System.Drawing.Point(0, 12);
+            this.comboBox_SslSessionTimeout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_SslSessionTimeout.Name = "comboBox_SslSessionTimeout";
-            this.comboBox_SslSessionTimeout.Size = new System.Drawing.Size(486, 33);
+            this.comboBox_SslSessionTimeout.Size = new System.Drawing.Size(730, 47);
             this.comboBox_SslSessionTimeout.TabIndex = 171;
             // 
             // label6
@@ -490,9 +521,10 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Left;
             this.label6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label6.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label6.Location = new System.Drawing.Point(2, 2);
+            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(151, 48);
+            this.label6.Size = new System.Drawing.Size(226, 72);
             this.label6.TabIndex = 173;
             this.label6.Text = "alive time";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -501,10 +533,11 @@
             // 
             this.groupBox2.Controls.Add(this.flowLayoutPanel2);
             this.groupBox2.Font = new System.Drawing.Font("Cascadia Code", 14.25F);
-            this.groupBox2.Location = new System.Drawing.Point(711, 171);
+            this.groupBox2.Location = new System.Drawing.Point(1066, 256);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox2.Size = new System.Drawing.Size(653, 98);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 15, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(980, 147);
             this.groupBox2.TabIndex = 182;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client Config";
@@ -514,28 +547,31 @@
             this.flowLayoutPanel2.Controls.Add(this.panel10);
             this.flowLayoutPanel2.Controls.Add(this.panel16);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 33);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 49);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(647, 62);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(972, 94);
             this.flowLayoutPanel2.TabIndex = 180;
             // 
             // panel10
             // 
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Controls.Add(this.label3);
-            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Location = new System.Drawing.Point(4, 4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel10.Name = "panel10";
-            this.panel10.Padding = new System.Windows.Forms.Padding(2);
-            this.panel10.Size = new System.Drawing.Size(295, 52);
+            this.panel10.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel10.Size = new System.Drawing.Size(442, 78);
             this.panel10.TabIndex = 183;
             // 
             // panel11
             // 
             this.panel11.Controls.Add(this.alignedPanel4);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(153, 2);
+            this.panel11.Location = new System.Drawing.Point(229, 3);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(140, 48);
+            this.panel11.Size = new System.Drawing.Size(210, 72);
             this.panel11.TabIndex = 174;
             // 
             // alignedPanel4
@@ -544,8 +580,9 @@
             this.alignedPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignedPanel4.FillWidth = true;
             this.alignedPanel4.Location = new System.Drawing.Point(0, 0);
+            this.alignedPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alignedPanel4.Name = "alignedPanel4";
-            this.alignedPanel4.Size = new System.Drawing.Size(140, 48);
+            this.alignedPanel4.Size = new System.Drawing.Size(210, 72);
             this.alignedPanel4.TabIndex = 176;
             // 
             // rJ_TextBox_ClientMaxBodySize
@@ -559,15 +596,16 @@
             this.rJ_TextBox_ClientMaxBodySize.Font = new System.Drawing.Font("Cascadia Code ExtraLight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rJ_TextBox_ClientMaxBodySize.ForeColor = System.Drawing.Color.Black;
             this.rJ_TextBox_ClientMaxBodySize.GUID = "";
-            this.rJ_TextBox_ClientMaxBodySize.Location = new System.Drawing.Point(0, 4);
+            this.rJ_TextBox_ClientMaxBodySize.Location = new System.Drawing.Point(0, 14);
+            this.rJ_TextBox_ClientMaxBodySize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_TextBox_ClientMaxBodySize.Multiline = false;
             this.rJ_TextBox_ClientMaxBodySize.Name = "rJ_TextBox_ClientMaxBodySize";
-            this.rJ_TextBox_ClientMaxBodySize.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rJ_TextBox_ClientMaxBodySize.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.rJ_TextBox_ClientMaxBodySize.PassWordChar = false;
             this.rJ_TextBox_ClientMaxBodySize.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rJ_TextBox_ClientMaxBodySize.PlaceholderText = "";
             this.rJ_TextBox_ClientMaxBodySize.ShowTouchPannel = false;
-            this.rJ_TextBox_ClientMaxBodySize.Size = new System.Drawing.Size(140, 40);
+            this.rJ_TextBox_ClientMaxBodySize.Size = new System.Drawing.Size(315, 60);
             this.rJ_TextBox_ClientMaxBodySize.TabIndex = 188;
             this.rJ_TextBox_ClientMaxBodySize.TextAlgin = System.Windows.Forms.HorizontalAlignment.Left;
             this.rJ_TextBox_ClientMaxBodySize.Texts = "20M";
@@ -578,9 +616,10 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label3.Location = new System.Drawing.Point(2, 2);
+            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(151, 48);
+            this.label3.Size = new System.Drawing.Size(226, 72);
             this.label3.TabIndex = 173;
             this.label3.Text = "MaxBodySize";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -589,19 +628,21 @@
             // 
             this.panel16.Controls.Add(this.panel17);
             this.panel16.Controls.Add(this.label7);
-            this.panel16.Location = new System.Drawing.Point(304, 3);
+            this.panel16.Location = new System.Drawing.Point(454, 4);
+            this.panel16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel16.Name = "panel16";
-            this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(295, 52);
+            this.panel16.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel16.Size = new System.Drawing.Size(442, 78);
             this.panel16.TabIndex = 184;
             // 
             // panel17
             // 
             this.panel17.Controls.Add(this.alignedPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(153, 2);
+            this.panel17.Location = new System.Drawing.Point(229, 3);
+            this.panel17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(140, 48);
+            this.panel17.Size = new System.Drawing.Size(210, 72);
             this.panel17.TabIndex = 174;
             // 
             // alignedPanel7
@@ -610,8 +651,9 @@
             this.alignedPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alignedPanel7.FillWidth = true;
             this.alignedPanel7.Location = new System.Drawing.Point(0, 0);
+            this.alignedPanel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.alignedPanel7.Name = "alignedPanel7";
-            this.alignedPanel7.Size = new System.Drawing.Size(140, 48);
+            this.alignedPanel7.Size = new System.Drawing.Size(210, 72);
             this.alignedPanel7.TabIndex = 176;
             // 
             // comboBox_LargeClientHeaderBuffers
@@ -620,9 +662,10 @@
             this.comboBox_LargeClientHeaderBuffers.BackColor = System.Drawing.Color.White;
             this.comboBox_LargeClientHeaderBuffers.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_LargeClientHeaderBuffers.FormattingEnabled = true;
-            this.comboBox_LargeClientHeaderBuffers.Location = new System.Drawing.Point(0, 7);
+            this.comboBox_LargeClientHeaderBuffers.Location = new System.Drawing.Point(0, 18);
+            this.comboBox_LargeClientHeaderBuffers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_LargeClientHeaderBuffers.Name = "comboBox_LargeClientHeaderBuffers";
-            this.comboBox_LargeClientHeaderBuffers.Size = new System.Drawing.Size(140, 33);
+            this.comboBox_LargeClientHeaderBuffers.Size = new System.Drawing.Size(313, 47);
             this.comboBox_LargeClientHeaderBuffers.TabIndex = 172;
             // 
             // label7
@@ -630,9 +673,10 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Left;
             this.label7.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label7.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label7.Location = new System.Drawing.Point(2, 2);
+            this.label7.Location = new System.Drawing.Point(3, 3);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(151, 48);
+            this.label7.Size = new System.Drawing.Size(226, 72);
             this.label7.TabIndex = 173;
             this.label7.Text = "HeaderBuffers";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -642,10 +686,11 @@
             this.groupBox3.Controls.Add(this.listBox_DNS);
             this.groupBox3.Controls.Add(this.panel18);
             this.groupBox3.Font = new System.Drawing.Font("Cascadia Code", 14.25F);
-            this.groupBox3.Location = new System.Drawing.Point(711, 287);
+            this.groupBox3.Location = new System.Drawing.Point(1066, 430);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(8, 10, 8, 3);
-            this.groupBox3.Size = new System.Drawing.Size(653, 251);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(12, 15, 12, 4);
+            this.groupBox3.Size = new System.Drawing.Size(980, 376);
             this.groupBox3.TabIndex = 183;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DNS";
@@ -654,10 +699,11 @@
             // 
             this.listBox_DNS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox_DNS.FormattingEnabled = true;
-            this.listBox_DNS.ItemHeight = 25;
-            this.listBox_DNS.Location = new System.Drawing.Point(8, 33);
+            this.listBox_DNS.ItemHeight = 39;
+            this.listBox_DNS.Location = new System.Drawing.Point(12, 49);
+            this.listBox_DNS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBox_DNS.Name = "listBox_DNS";
-            this.listBox_DNS.Size = new System.Drawing.Size(637, 167);
+            this.listBox_DNS.Size = new System.Drawing.Size(956, 251);
             this.listBox_DNS.TabIndex = 1;
             // 
             // panel18
@@ -666,10 +712,11 @@
             this.panel18.Controls.Add(this.panel19);
             this.panel18.Controls.Add(this.rJ_Button_DNS_add);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel18.Location = new System.Drawing.Point(8, 200);
+            this.panel18.Location = new System.Drawing.Point(12, 300);
+            this.panel18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel18.Name = "panel18";
-            this.panel18.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.panel18.Size = new System.Drawing.Size(637, 48);
+            this.panel18.Padding = new System.Windows.Forms.Padding(4, 0, 4, 4);
+            this.panel18.Size = new System.Drawing.Size(956, 72);
             this.panel18.TabIndex = 0;
             // 
             // rJ_Button_DNS_delete
@@ -690,16 +737,17 @@
             this.rJ_Button_DNS_delete.ForeColor = System.Drawing.Color.White;
             this.rJ_Button_DNS_delete.GUID = "";
             this.rJ_Button_DNS_delete.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_DNS_delete.Location = new System.Drawing.Point(532, 0);
+            this.rJ_Button_DNS_delete.Location = new System.Drawing.Point(799, 0);
+            this.rJ_Button_DNS_delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_Button_DNS_delete.Name = "rJ_Button_DNS_delete";
-            this.rJ_Button_DNS_delete.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_DNS_delete.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.rJ_Button_DNS_delete.ProhibitionBorderLineWidth = 1;
             this.rJ_Button_DNS_delete.ProhibitionLineWidth = 4;
             this.rJ_Button_DNS_delete.ProhibitionSymbolSize = 30;
             this.rJ_Button_DNS_delete.ShadowColor = System.Drawing.Color.DimGray;
             this.rJ_Button_DNS_delete.ShadowSize = 0;
             this.rJ_Button_DNS_delete.ShowLoadingForm = false;
-            this.rJ_Button_DNS_delete.Size = new System.Drawing.Size(46, 45);
+            this.rJ_Button_DNS_delete.Size = new System.Drawing.Size(69, 68);
             this.rJ_Button_DNS_delete.State = false;
             this.rJ_Button_DNS_delete.TabIndex = 178;
             this.rJ_Button_DNS_delete.TextColor = System.Drawing.Color.White;
@@ -709,9 +757,10 @@
             // panel19
             // 
             this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel19.Location = new System.Drawing.Point(578, 0);
+            this.panel19.Location = new System.Drawing.Point(868, 0);
+            this.panel19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(10, 45);
+            this.panel19.Size = new System.Drawing.Size(15, 68);
             this.panel19.TabIndex = 177;
             // 
             // rJ_Button_DNS_add
@@ -732,16 +781,17 @@
             this.rJ_Button_DNS_add.ForeColor = System.Drawing.Color.White;
             this.rJ_Button_DNS_add.GUID = "";
             this.rJ_Button_DNS_add.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_DNS_add.Location = new System.Drawing.Point(588, 0);
+            this.rJ_Button_DNS_add.Location = new System.Drawing.Point(883, 0);
+            this.rJ_Button_DNS_add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_Button_DNS_add.Name = "rJ_Button_DNS_add";
-            this.rJ_Button_DNS_add.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_DNS_add.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.rJ_Button_DNS_add.ProhibitionBorderLineWidth = 1;
             this.rJ_Button_DNS_add.ProhibitionLineWidth = 4;
             this.rJ_Button_DNS_add.ProhibitionSymbolSize = 30;
             this.rJ_Button_DNS_add.ShadowColor = System.Drawing.Color.DimGray;
             this.rJ_Button_DNS_add.ShadowSize = 0;
             this.rJ_Button_DNS_add.ShowLoadingForm = false;
-            this.rJ_Button_DNS_add.Size = new System.Drawing.Size(46, 45);
+            this.rJ_Button_DNS_add.Size = new System.Drawing.Size(69, 68);
             this.rJ_Button_DNS_add.State = false;
             this.rJ_Button_DNS_add.TabIndex = 176;
             this.rJ_Button_DNS_add.TextColor = System.Drawing.Color.White;
@@ -756,9 +806,10 @@
             this.panel20.Controls.Add(this.panel24);
             this.panel20.Controls.Add(this.rJ_Button_location_add);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel20.Location = new System.Drawing.Point(4, 884);
+            this.panel20.Location = new System.Drawing.Point(4, 1328);
+            this.panel20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(1393, 49);
+            this.panel20.Size = new System.Drawing.Size(2094, 74);
             this.panel20.TabIndex = 184;
             // 
             // rJ_Button_loaction_edit
@@ -779,16 +830,17 @@
             this.rJ_Button_loaction_edit.ForeColor = System.Drawing.Color.White;
             this.rJ_Button_loaction_edit.GUID = "";
             this.rJ_Button_loaction_edit.Image_padding = new System.Windows.Forms.Padding(8);
-            this.rJ_Button_loaction_edit.Location = new System.Drawing.Point(1235, 0);
+            this.rJ_Button_loaction_edit.Location = new System.Drawing.Point(1857, 0);
+            this.rJ_Button_loaction_edit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_Button_loaction_edit.Name = "rJ_Button_loaction_edit";
-            this.rJ_Button_loaction_edit.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_loaction_edit.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.rJ_Button_loaction_edit.ProhibitionBorderLineWidth = 0;
             this.rJ_Button_loaction_edit.ProhibitionLineWidth = 0;
             this.rJ_Button_loaction_edit.ProhibitionSymbolSize = 0;
             this.rJ_Button_loaction_edit.ShadowColor = System.Drawing.Color.DimGray;
             this.rJ_Button_loaction_edit.ShadowSize = 0;
             this.rJ_Button_loaction_edit.ShowLoadingForm = false;
-            this.rJ_Button_loaction_edit.Size = new System.Drawing.Size(46, 49);
+            this.rJ_Button_loaction_edit.Size = new System.Drawing.Size(69, 74);
             this.rJ_Button_loaction_edit.State = false;
             this.rJ_Button_loaction_edit.TabIndex = 182;
             this.rJ_Button_loaction_edit.TextColor = System.Drawing.Color.White;
@@ -798,9 +850,10 @@
             // panel23
             // 
             this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel23.Location = new System.Drawing.Point(1281, 0);
+            this.panel23.Location = new System.Drawing.Point(1926, 0);
+            this.panel23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(10, 49);
+            this.panel23.Size = new System.Drawing.Size(15, 74);
             this.panel23.TabIndex = 181;
             // 
             // rJ_Button_location_delete
@@ -821,16 +874,17 @@
             this.rJ_Button_location_delete.ForeColor = System.Drawing.Color.White;
             this.rJ_Button_location_delete.GUID = "";
             this.rJ_Button_location_delete.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_location_delete.Location = new System.Drawing.Point(1291, 0);
+            this.rJ_Button_location_delete.Location = new System.Drawing.Point(1941, 0);
+            this.rJ_Button_location_delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_Button_location_delete.Name = "rJ_Button_location_delete";
-            this.rJ_Button_location_delete.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_location_delete.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.rJ_Button_location_delete.ProhibitionBorderLineWidth = 1;
             this.rJ_Button_location_delete.ProhibitionLineWidth = 4;
             this.rJ_Button_location_delete.ProhibitionSymbolSize = 30;
             this.rJ_Button_location_delete.ShadowColor = System.Drawing.Color.DimGray;
             this.rJ_Button_location_delete.ShadowSize = 0;
             this.rJ_Button_location_delete.ShowLoadingForm = false;
-            this.rJ_Button_location_delete.Size = new System.Drawing.Size(46, 49);
+            this.rJ_Button_location_delete.Size = new System.Drawing.Size(69, 74);
             this.rJ_Button_location_delete.State = false;
             this.rJ_Button_location_delete.TabIndex = 180;
             this.rJ_Button_location_delete.TextColor = System.Drawing.Color.White;
@@ -840,9 +894,10 @@
             // panel24
             // 
             this.panel24.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel24.Location = new System.Drawing.Point(1337, 0);
+            this.panel24.Location = new System.Drawing.Point(2010, 0);
+            this.panel24.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(10, 49);
+            this.panel24.Size = new System.Drawing.Size(15, 74);
             this.panel24.TabIndex = 179;
             // 
             // rJ_Button_location_add
@@ -863,16 +918,17 @@
             this.rJ_Button_location_add.ForeColor = System.Drawing.Color.White;
             this.rJ_Button_location_add.GUID = "";
             this.rJ_Button_location_add.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_location_add.Location = new System.Drawing.Point(1347, 0);
+            this.rJ_Button_location_add.Location = new System.Drawing.Point(2025, 0);
+            this.rJ_Button_location_add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_Button_location_add.Name = "rJ_Button_location_add";
-            this.rJ_Button_location_add.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_location_add.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.rJ_Button_location_add.ProhibitionBorderLineWidth = 1;
             this.rJ_Button_location_add.ProhibitionLineWidth = 4;
             this.rJ_Button_location_add.ProhibitionSymbolSize = 30;
             this.rJ_Button_location_add.ShadowColor = System.Drawing.Color.DimGray;
             this.rJ_Button_location_add.ShadowSize = 0;
             this.rJ_Button_location_add.ShowLoadingForm = false;
-            this.rJ_Button_location_add.Size = new System.Drawing.Size(46, 49);
+            this.rJ_Button_location_add.Size = new System.Drawing.Size(69, 74);
             this.rJ_Button_location_add.State = false;
             this.rJ_Button_location_add.TabIndex = 178;
             this.rJ_Button_location_add.TextColor = System.Drawing.Color.White;
@@ -903,7 +959,8 @@
             this.sqL_DataGridView_location.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.sqL_DataGridView_location.Font = new System.Drawing.Font("新細明體", 9F);
             this.sqL_DataGridView_location.ImageBox = false;
-            this.sqL_DataGridView_location.Location = new System.Drawing.Point(4, 554);
+            this.sqL_DataGridView_location.Location = new System.Drawing.Point(4, 833);
+            this.sqL_DataGridView_location.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.sqL_DataGridView_location.Name = "sqL_DataGridView_location";
             this.sqL_DataGridView_location.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
             this.sqL_DataGridView_location.Password = "user82822040";
@@ -920,7 +977,7 @@
             this.sqL_DataGridView_location.selectedRowBorderColor = System.Drawing.Color.Blue;
             this.sqL_DataGridView_location.selectedRowForeColor = System.Drawing.Color.Black;
             this.sqL_DataGridView_location.Server = "127.0.0.0";
-            this.sqL_DataGridView_location.Size = new System.Drawing.Size(1393, 330);
+            this.sqL_DataGridView_location.Size = new System.Drawing.Size(2094, 495);
             this.sqL_DataGridView_location.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_location.TabIndex = 185;
             this.sqL_DataGridView_location.UserName = "root";
@@ -942,8 +999,9 @@
             this.panel21.Controls.Add(this.panel22);
             this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel21.Location = new System.Drawing.Point(4, 44);
+            this.panel21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(1393, 50);
+            this.panel21.Size = new System.Drawing.Size(2094, 75);
             this.panel21.TabIndex = 186;
             // 
             // rJ_Button_nginx_conf_generate
@@ -964,16 +1022,17 @@
             this.rJ_Button_nginx_conf_generate.ForeColor = System.Drawing.Color.White;
             this.rJ_Button_nginx_conf_generate.GUID = "";
             this.rJ_Button_nginx_conf_generate.Image_padding = new System.Windows.Forms.Padding(5);
-            this.rJ_Button_nginx_conf_generate.Location = new System.Drawing.Point(11, 0);
+            this.rJ_Button_nginx_conf_generate.Location = new System.Drawing.Point(16, 0);
+            this.rJ_Button_nginx_conf_generate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rJ_Button_nginx_conf_generate.Name = "rJ_Button_nginx_conf_generate";
-            this.rJ_Button_nginx_conf_generate.Padding = new System.Windows.Forms.Padding(2);
+            this.rJ_Button_nginx_conf_generate.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.rJ_Button_nginx_conf_generate.ProhibitionBorderLineWidth = 1;
             this.rJ_Button_nginx_conf_generate.ProhibitionLineWidth = 4;
             this.rJ_Button_nginx_conf_generate.ProhibitionSymbolSize = 30;
             this.rJ_Button_nginx_conf_generate.ShadowColor = System.Drawing.Color.DimGray;
             this.rJ_Button_nginx_conf_generate.ShadowSize = 0;
             this.rJ_Button_nginx_conf_generate.ShowLoadingForm = false;
-            this.rJ_Button_nginx_conf_generate.Size = new System.Drawing.Size(51, 50);
+            this.rJ_Button_nginx_conf_generate.Size = new System.Drawing.Size(76, 75);
             this.rJ_Button_nginx_conf_generate.State = false;
             this.rJ_Button_nginx_conf_generate.TabIndex = 178;
             this.rJ_Button_nginx_conf_generate.TextColor = System.Drawing.Color.White;
@@ -984,17 +1043,18 @@
             // 
             this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel22.Location = new System.Drawing.Point(0, 0);
+            this.panel22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(11, 50);
+            this.panel22.Size = new System.Drawing.Size(16, 75);
             this.panel22.TabIndex = 0;
             // 
             // Dialog_set_naginx_conf
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CaptionHeight = 40;
-            this.ClientSize = new System.Drawing.Size(1401, 937);
+            this.ClientSize = new System.Drawing.Size(2102, 1406);
             this.ControlBox = true;
             this.Controls.Add(this.panel21);
             this.Controls.Add(this.sqL_DataGridView_location);
@@ -1005,6 +1065,7 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Dialog_set_naginx_conf";
             this.Text = "NGINX conf generate";
             this.panel1.ResumeLayout(false);
